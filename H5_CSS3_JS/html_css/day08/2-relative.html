@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>相对定位</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		.one{
+			background-color: coral;
+		}
+		.two{
+			background-color: cyan;
+			/*相对于原先的位置进行定位 不脱离文档流   原来位置保留*/
+			position: relative;
+			/*top: 10px;
+			left: 10px;*/
+		}
+		.three{
+			background-color: navy;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="two">two</div>
+	<div class="three">three</div>
+</body>
+</html>

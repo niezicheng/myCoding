@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Floater Div</title>
+	<style type="text/css">
+		.outer{
+			height: 200px;
+			background: #bfe;
+		}
+		.floater{
+			float: left;
+			height: 50%;
+			width: 100%;
+			margin-bottom: -50px;
+			/*background: teal;*/
+		}
+		.inner{
+			clear: both;
+			height: 100px;
+			background: coral;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="floater"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

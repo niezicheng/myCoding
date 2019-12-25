@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM2级事件</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: pink;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0];
+			function handle1(){
+				alert(1);
+			}
+			function handle2(){
+				alert(2);
+			}
+			//DOM2级绑定事件
+			div.addEventListener('click',handle1,false);
+
+			div.addEventListener('click',handle2,false);
+			//解绑，不能执行匿名函数
+			div.removeEventListener('click',handle1,false);
+
+			//DOM0级绑定事件
+			/*div.onclick = function(){
+				alert(3);
+			};
+			div.onclick = function(){
+				alert(4);
+			};*/
+
+			//ie8及以下 
+			//倒序执行
+			/*div.attachEvent('onclick',handle1);
+			div.attachEvent('onclick',handle2);
+			div.detachEvent('onclick',handle1)*/
+
+
+		};
+	</script>
+</head>
+<body>
+	<div>点击我</div>
+</body>
+</html>

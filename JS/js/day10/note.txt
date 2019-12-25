@@ -1,0 +1,100 @@
+继承
+	原型链继承
+		Dog.prototype = new Animal();
+		Dog.prototype.constructor = Dog;
+		Dog.prototype.sayName = function(){};
+	经典继承
+		继承父构造函数中的属性
+		在子构造函数中调用父构造函数
+			Animal.call(this,name,age);
+	组合继承（伪经典继承）
+
+DOM操作
+	nodeType
+	nodeName
+	nodeValue
+	childNode
+	parent.appendChild(node)
+	parent.insertBefore(node,参照节点)
+	parent.removeChild(node)
+	...
+Document类型
+	document实例
+	body <body>
+
+	getElementById()
+
+	返回的为类数组对象，需要使用数组下标选择相应的值：
+	getElementsByTagName()
+	getElementsByClassName()[]
+	getElementsByName()[]
+
+	createElement('div')  //创造新元素节点
+
+Element类型
+	var divNode =	document.getElementsByTagName('div'); 
+	<div class="one" title="hello">hello</div>
+divNode.title = 'world';
+
+获取属性值
+	元素节点.属性名
+	元素节点.getAttribute("属性名")
+设置属性值
+	元素节点.属性名 = "属性值";
+	元素节点.setAttribute("属性名","属性值");
+删除属性
+	元素节点.removeAttribute("属性名");
+设置css样式：
+	元素节点.style.color = "coral";
+
+
+
+事件
+	交互
+	事件类型
+		click
+		mouseover
+		mouseout
+		mouseenter
+		mouseleave
+		dbclick
+		focus
+		blur
+		...
+		load
+	1、html中写事件
+		<div onclick = 'test()'></div>
+	2、DOM0级事件
+		div.onclick = function(){};
+	3、DOM2级事件
+		div.addEventListener('click',function(){})
+	
+	事件：
+		事件三要素：
+			事件目标
+				谁触发的事件去执行
+			事件处理程序
+				function(){}
+			事件对象
+				event
+					type:
+					target:
+					...
+
+			div.onclick = function(event){};
+
+		事件流
+			事件捕获流	从外到内
+			事件冒泡流	从内到外
+			DOM事件流
+				先事件捕获，再处理目标，再冒泡
+
+
+
+
+
+
+
+
+
+

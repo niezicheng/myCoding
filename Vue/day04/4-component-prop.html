@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-list :data='costomers'>
+      <span>*</span>
+    </my-list>
+    <my-list :data='costomers'>
+        <span>*</span>
+      </my-list>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        costomers:[
+          {name:'terry',age:12},
+          {name:'lerry',age:18},
+          {name:'tom',age:21},
+        ],
+        orders:[{
+          cost:22.5,
+          time:'2019.9.19'
+        },{
+          cost:22.5,
+          time:'2019.9.20'
+        },{
+          cost:22.5,
+          time:'2019.9.21'
+        }]
+      },
+      components:{
+        'my-list':{
+          template:`
+          <ul>
+            <li v-for="l in data">
+              <slot></slot>
+              {{ l.name }}--{{ l.age }}
+            </li>
+          </ul>
+          `,
+          // props:['data'],//期待父组件传递给他的参数
+          props:{
+            data:Array,
+          },
+          data(){
+            return {}
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

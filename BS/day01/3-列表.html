@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表样式</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<!-- 
+		1、自定义的样式如果需要改变框架中已经设置的样式【尽量自己定义新的样式类(且选择器最后一个尽量不要使用标签选择器)而不是重新定义原框架中的类(对后面的框架使用该样式会有影响)】
+		2、当我们自己定义样式时,要想覆盖框架样式其权值大小优先级仍然需要考虑，所以大多需要去查看原框架样式元素设置样式的权值【在网页上查看源代码比较方便得知】
+	 -->
+	<style type="text/css">
+		dl .textDirection{
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="list-unstyled">
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+		</ul>
+		<!-- 内敛列表 -->
+		<ol class="list-inline">
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+		</ol>
+		<dl class="dl-horizontal">
+			<dt class="textDirection">HTML</dt>
+			<dd>HyperText Markup Language</dd>
+			<dt>HTML</dt>
+			<dd>HyperText Markup Language</dd>
+			<dt>HTML hello I am javaScript!!!</dt>
+			<dd>HyperText Markup Language</dd>
+		</dl>
+
+		<!-- 代码相关的标签 -->
+		<code>console.log(1)</code>
+		<kbd>$ npm install</kbd>
+<pre class="pre-scrollable">
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+	npm install
+</pre>
+	</div>
+</body>
+</html>

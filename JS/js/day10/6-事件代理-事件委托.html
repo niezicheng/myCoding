@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			border: 1px solid blue;
+			float: left;
+			margin: 10px
+		}
+		ul{
+			border: 1px solid red;
+			overflow: hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var lis = document.getElementsByTagName('li');
+			/*for(var i=0;i<lis.length;i++){
+				lis[i].onclick = (function(num){
+					return function(){
+						alert(num+1);
+					}
+				})(i)
+			}*/
+
+			//将类数组对象lis转换为lis数组
+			lis = Array.prototype.slice.call(lis,0);
+			/*lis.forEach(function(item,index,arr){
+				item.onclick = function(){
+					alert(index+1);
+				}
+			});*/
+
+			//事件代理	原来给li绑定的时间让父元素来代理绑定
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.onclick = function(event){
+				//时间目标event.target
+				if(event.target.nodeName==="LI"){
+					//处理所以li为白色
+					lis.forEach(function(item){
+						item.style.backgroundColor = '#fff';
+					});
+					
+					event.target.style.backgroundColor = 'red';
+				}
+			};
+
+		};
+	</script>
+</head>
+<body>
+	<ul>
+		<li>one</li>
+		<li>two</li>
+		<li>three</li>
+		<li>four</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,72 @@
+一、CSS颜色
+	关键字 red
+	16进制的6位 #ffffff
+	16进制的3位 #fff
+	rgb(0,255,100) 取值范围：0~255 (r:red、g:green、b:blue)
+	rgba(0,255,100,0.5) 最后值a表示为颜色的透明度 取值范围：0~1
+二、CSS单位：
+	px 绝对单位
+	em 相对单位  相对于浏览器的默认的font-size的大小16px  则1em=16px
+			手动修改了body的font-size的大小为20px  则1em=20px
+	rem 相对单位   1rem=16px，与font-size没有关系
+
+	百分比%  当前元素占父类元素的百分比
+三、CSS中的文本样式：
+	a.font属性：
+		1.字体类型：
+			font-family:字体属性值(宋体、cursive【草书】、微软雅黑 等)
+			字体栈(属性值前面的不支持则依次向后取值)：
+			font-family:cursive,宋体,serif
+		
+		
+			如果需要使用网上字体，则相应代码如下：
+			/*网络字体，写在需要使用网络字体的选择器代码块中*/
+			font-family:webfont;
+
+			/*声明字体家族,其不包含在任何选择器样式代码块里面*/
+			@font-face{
+				/*字体家族名字*/
+				font-family: 'webfont';
+				/*地址*/
+				src:url('./font/1.ttf');
+			}
+
+		2.字体倾斜：
+			font-style:属性值(normal【正常】、italic【倾斜】、oblique【模拟倾斜】)
+
+		3.字体粗细：
+			font-weight:属性值(normal【正常】、bold【加粗】、lighter【比父元素更细】、bloder【比父元素更粗】、取数值范围：100~900)
+
+		4.字体变形(大小写)
+			text-transform:属性值(none、uppercase【全大写】、lowercase【全小写】、capitalize【首字母大写】、full-width【单个字体等宽】)
+
+
+	b.text属性：
+		1.文本修饰：
+			text-decoration:属性值(none、underline【下划线】、overline【上划线】、line-through【删除线】、)
+			文本取值样式线条对应的属性：
+				a.text-decoration-color:颜色值
+				b.text-decoration-style:属性值(wavy【波浪线】、double【双实线】)
+				c.text-decoration-line:属性值(line-through【删除线】)
+		
+		2.文本阴影：
+			text-shadow: 23px 23px 1px #ccc,0px 13px 1px coral;   文本阴影 x方向偏移 y方向偏移 模糊距离(清晰度) 阴影颜色
+
+	c.list属性：
+		1.列表项目编号类型：
+			list-style-type:属性值(none【去除项目编号】、disc【黑圆点】、decimal【数值】等等)
+
+		2.列表图片编号：
+			list-style-image:url(对应图片路径)
+
+		3.列表项目编号位置：(默认为：outside；是否包含在li标签内)
+			list-style-position:属性值(outside、inside)
+
+		4.列表类型：
+			list-style:disc url(图片路径) inside;   (list-style:[<type>] [<image>] [<position>];)
+			list-style:none;
+
+	d.line-height属性:
+		对设置了宽高的元素
+			--使用text-align:center;(内部文本水平居中)
+			--使用line-height:元素高度;(内部文本垂直居中)

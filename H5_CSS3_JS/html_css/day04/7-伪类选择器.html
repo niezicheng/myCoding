@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪类选择器</title>
+	<style type="text/css">
+		/*鼠标悬停的时候*/
+		/*.btn-div:hover{
+			background-color: pink;
+			width: 100px;
+			height: 100px;
+		}*/
+
+
+		/*鼠标悬停时，选中.btn-div的下一个兄弟元素(其为兄弟元素，展示出来是不包含在选中的div区域内的)，展示出来(不推荐使用,鼠标悬停div的区域问题，鼠标离开选中div区域则会隐藏兄弟元素)*/
+		/*.btn-div:hover+*{
+			display: block;
+		}*/
+
+		.btn-div:hover>.list-div{
+			display: block;
+		}
+
+		.list-div{
+			/*隐藏元素*/
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn-div">		
+		<button>显示菜单</button>
+		<div class="list-div">
+			<ul>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>JavaScript</li>
+				<li>React</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小车移动</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 1000px;
+			height: 500px;
+			background: #bef;
+			position: relative;
+		}
+		img{
+			width: 100px;
+			height: 50px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<!-- <script type="text/javascript">
+		window.onload = function(){
+			var img = document.getElementsByTagName('img')[0];
+			var left = img.style.left;
+			var top =img.style.top;
+			// console.log(left);
+			document.onkeydown = function(event){
+				console.log(event.keyCode);
+				if(event.keyCode == 37||event.keyCode == 65){
+					img.src = './images/left.png'
+					img.style.width = '100px';
+					img.style.height = '50px';
+					if(left>=10){
+						left =Number(left)-10;
+						img.style.left = left+'px';
+					}else{
+						alert('左边到头了！！！');
+					}
+				}else if(event.keyCode == 38||event.keyCode == 87){
+					img.src = './images/top.png'
+					img.style.width = '50px';
+					img.style.height = '100px';
+					if(top>=10){
+						top =Number(top)-10;
+						img.style.top = top+'px';
+					}else{
+						alert('上边到头了！！！');
+					}
+				}else if(event.keyCode == 39||event.keyCode == 68){
+					img.src = './images/right.png'
+					img.style.width = '100px';
+					img.style.height = '50px';
+					if(left<900){
+						left =Number(left)+10;
+						// console.log(left);
+						img.style.left = left+'px';
+					}else{
+						alert('右边到头了！！！');
+					}
+				}else if(event.keyCode == 40||event.keyCode == 83){
+					img.src = './images/bottom.png'
+					img.style.width = '50px';
+					img.style.height = '100px';
+					if(top<400){
+						top =Number(top)+10;
+						img.style.top = top+'px';
+					}else{
+						alert('下边到头了！！！');
+					}
+				}
+			}
+		};
+	</script> -->
+
+
+
+<script type="text/javascript">
+
+	function util(element,l,u,r,b){
+			var img = element;
+			var left = img.style.left;
+			var top =img.style.top;
+			// console.log(left);
+			document.onkeydown = function(event){
+				console.log(event.keyCode);
+				if(event.keyCode == l){
+					img.src = './images/left.png'
+					img.style.width = '100px';
+					img.style.height = '50px';
+					if(left>=10){
+						left =Number(left)-10;
+						img.style.left = left+'px';
+					}else{
+						alert('左边到头了！！！');
+					}
+				}else if(event.keyCode == u){
+					img.src = './images/top.png'
+					img.style.width = '50px';
+					img.style.height = '100px';
+					if(top>=10){
+						top =Number(top)-10;
+						img.style.top = top+'px';
+					}else{
+						alert('上边到头了！！！');
+					}
+				}else if(event.keyCode == r){
+					img.src = './images/right.png'
+					img.style.width = '100px';
+					img.style.height = '50px';
+					if(left<900){
+						left =Number(left)+10;
+						// console.log(left);
+						img.style.left = left+'px';
+					}else{
+						alert('右边到头了！！！');
+					}
+				}else if(event.keyCode == b){
+					img.src = './images/bottom.png'
+					img.style.width = '50px';
+					img.style.height = '100px';
+					if(top<400){
+						top =Number(top)+10;
+						img.style.top = top+'px';
+					}else{
+						alert('下边到头了！！！');
+					}
+				}
+			}
+	}
+		window.onload = function(){
+			var img1 = document.getElementsByTagName('img')[0];
+			var img2 = document.getElementsByTagName('img')[1];
+
+			// util(img1,37,38,39,40);
+			util(img2,65,87,68,83);
+			util(img1,37,38,39,40);
+
+		};
+	</script>
+</head>
+<body>
+<div>
+	<img src="./images/right.png">
+	<img src="./images/right.png">
+</div>
+</body>
+</html>

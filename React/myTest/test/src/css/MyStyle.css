@@ -1,0 +1,14 @@
+/* css模块化只对类和Id选择器生效  对标签选择器不生效 */
+h3,p{
+  margin:0;
+}
+.title{
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* 使用:global()可以将该样式定义为全局样式 */
+:global(.gcss){
+  font-style: italic;
+  font-size: 20px;
+}

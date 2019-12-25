@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>直线和曲线</title>
+	<style type="text/css">
+		#canvas{
+			border: 1px solid red;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			/*context.beginPath();
+			//直线开始坐标【需要设置】
+			context.moveTo(0,0);
+			//直线终点坐标
+			context.lineTo(100,100);
+			context.strokeStyle = 'coral';
+			context.lineWidth = 3;
+			context.fillStyle = 'cyan';
+			// context.stroke();
+
+			context.moveTo(105,100);
+			context.arc(100,100,5,0,Math.PI*2);
+			// context.fill();
+
+			context.lineTo(200,100);
+			// context.stroke();
+			context.moveTo(205,100);
+			context.arc(200,100,5,0,Math.PI*2);
+			// context.fill();
+
+			context.moveTo(200,100)
+			context.lineTo(250,200);
+			// context.stroke();
+			context.moveTo(255,200);
+			context.arc(250,200,5,0,Math.PI*2);
+			// context.fill();
+
+			context.moveTo(250,200);
+			context.lineTo(320,160);
+			context.stroke();
+			// context.moveTo(325,160);
+			// context.arc(320,160,5,0,Math.PI*2);
+			context.fill();
+			context.closePath();*/
+
+			context.beginPath();
+			context.moveTo(0,0);
+			context.lineTo(100,100);
+			context.lineTo(200,100);
+			context.lineTo(250,200);
+			context.lineTo(320,160);
+			context.lineTo(400,400);
+			context.quadraticCurveTo(400,0,0,0);
+
+			context.strokeStyle = 'cyan';
+			context.lineWidth = 3;
+
+			context.stroke();
+			context.fillStyle = '#bfe';
+			context.fill();
+			
+
+			//绘制转折点
+			context.beginPath();
+			context.arc(100,100,5,0,Math.PI*2);
+			context.closePath();
+			//设置渐变填充样式
+			var gradient = context.createRadialGradient(100,100,1.5,100,100,5);
+			gradient.addColorStop(0,'cyan');
+			gradient.addColorStop(1,'teal');
+			context.fillStyle = gradient;
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,100,5,0,Math.PI*2);
+			context.closePath();
+			//设置渐变填充样式
+			var gradient = context.createRadialGradient(200,100,1.5,200,100,5);
+			gradient.addColorStop(0,'cyan');
+			gradient.addColorStop(1,'teal');
+			context.fillStyle = gradient;
+			context.fill();
+
+			context.beginPath();
+			context.arc(250,200,5,0,Math.PI*2);
+			context.closePath();
+			//设置渐变填充样式
+			var gradient = context.createRadialGradient(250,200,1.5,250,200,5);
+			gradient.addColorStop(0,'cyan');
+			gradient.addColorStop(1,'teal');
+			context.fillStyle = gradient;
+			context.fill();
+
+			context.beginPath();
+			context.arc(320,160,5,0,Math.PI*2);
+			context.closePath();
+			//设置渐变填充样式
+			var gradient = context.createRadialGradient(320,160,1.5,320,160,5);
+			gradient.addColorStop(0,'cyan');
+			gradient.addColorStop(1,'teal');
+			context.fillStyle = gradient;
+			context.fill();
+
+
+			//渐变  填充模式  g
+			
+			//创建线性渐变的对象   参数: 起始 x、y   终点 x、y
+			 var g = context.createLinearGradient(0,350,100,350);
+
+			//创建径性渐变的对象   参数: 起始 x、y 圆半径   终点 x、y 圆半径
+			 var g = context.createRadialGradient(50,350,30,50,350,50);
+			 // var g = context.createLinearGradient(50,400,50,350);
+			 //添加渐变颜色  参数：偏移量【0-1】,颜色值
+			 g.addColorStop(0,'red');
+			 g.addColorStop(1,'coral');
+			 //渐变对象的使用
+			context.fillStyle = g;
+			context.fillRect(0,300,100,100);
+
+
+
+			/*//绘制曲线
+			context.beginPath();
+			context.moveTo(0,0);
+			//两个控制点坐标x1 y1 x2 y2   一个终点坐标x y  曲线无线接近控制点
+			// context.bezierCurveTo(200,0,400,200,400,400);
+			// context.bezierCurveTo(0,400,400,0,400,400);
+
+			//一个控制点坐标x1 y1 x2 y2   一个终点坐标x y  曲线无线接近控制点
+			context.quadraticCurveTo(400,0,400,400);
+
+			context.stroke();*/
+
+			
+			
+
+ 
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCYTPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<title>hello-js</title>
+		<script type="text/javascript">
+			//js代码
+			// var sum = 0;
+			// for(var i=1;i<=100;i++){
+			// 	if(i%3 == 0){
+			// 		sum += i;
+			// 	}
+			// }
+			// console.log('sum='+sum);
+
+
+			var num = 5;
+			var sum = 1;
+			var str = '';
+		for(var i = 1;i<=num;i++){
+			sum *= i;
+			if(i == 5){
+				str += i;
+			}else{
+				str += i +'*';
+			}
+			
+		}
+		console.log(num+'! = '+str+' = '+sum);
+			</script>
+		<!--外部引入的方式 -->
+		<script type="text/javascript" src="./js/1-hello.js">
+			//不能在这里写js代码，即使写了也不生效的
+			//console.log("有src属性的script标签，我在标签里面写的代码");
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

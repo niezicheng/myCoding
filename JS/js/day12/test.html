@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回调函数</title>
+	<script type="text/javascript">
+		/*function test(fun){
+			var msg = '火狐';
+			fun(msg);
+			console.log('11111111');
+		}
+		function handle(){
+
+			test(function(msg){
+				console.log(msg);
+			});
+			
+			console.log('2222222222');
+		}
+		handle();*/
+		var arr = [23,56,12,43,6,23,26];
+		console.log(arr);
+		//反转 翻转 reverse  改变原数组
+		//console.log(arr.reverse());
+		//console.log(arr);
+		console.log('----------------------------');
+		//数组排序
+		//console.log(arr.sort()); //按照字符串ASSIC码形式比较
+		console.log(arr.sort(com));
+		console.log(arr);
+		function com(a,b){
+			//return a-b;  //升序
+			//负数a,b不发生交换 a b  a<b 负值  不交换;  a b  a<b  升序排列
+			//正数数a,b不发生交换   a b  a>b 正值  交换;   b  a   b<a  升序排列
+
+			//return b-a;  //降序
+
+		  //降序
+			if(a<=b){
+				return -1;  //负数不发生交换
+			}else{
+				return 1;  //正数发生交换
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

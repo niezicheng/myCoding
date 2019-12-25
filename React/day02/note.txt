@@ -1,0 +1,36 @@
+React基础
+  React JS 框架
+  JSX JS扩展语言
+
+创建React项目【React脚手架创建react项目】
+  create-react-app app  //创建app React项目
+  cd app  //进入项目文件内
+  yarn start //启动运行项目
+
+  yarn build  //打包项目文件
+
+  组件：
+    函数组件
+      function MyCom(props){
+        return (<div>{props.msg}</div>);
+      }
+
+      <MyCom msg="hello" />
+
+    类组件
+      class MyCom extends React.Component{
+        constructor(props){
+          super(props);
+          this.state = {
+
+          };
+        }
+        render(){
+          return (
+            <div>
+              <h1>{this.props.msg}</h1>
+            </div>);
+        }
+
+      }
+      <MyCom msg="hello" />

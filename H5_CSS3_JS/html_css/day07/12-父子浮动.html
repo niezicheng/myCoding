@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父子浮动</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			border: 1px solid blue;
+			list-style: none;
+			/*清除浮动   父元素高度有其内容高度所决定*/
+			overflow: hidden;
+		}
+		li{
+			border: 1px solid red;
+			width: 100px;
+			height: 100px;
+			float: left;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: cyan;
+
+			/*清除浮动 但其ul仍没有高度  不建议这样使用*/
+			/*clear: both;	*/
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div></div>
+</body>
+</html>

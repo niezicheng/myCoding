@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试~=和*=</title>
+	<style type="text/css">
+		/*10*/
+		.one{
+			color: red !important;
+		}
+		/*10*/
+		.two{
+			color: blue;
+		}
+		/*10*/
+		[class~=one]{
+			/*background-color: pink;*/
+			color: cyan;
+		}
+		/*特性值 权重*/
+		/*
+			style属性内：1000
+			id选择器：100
+			class选择器、伪类选择器：10
+			标签选择器、伪元素选择器：1
+			空格 + > ~：0
+		*/
+		/*1+10*/
+		div.one{
+			
+		}
+		/*1+0+1*/
+		body>div{
+
+		}
+	</style>
+</head>
+<body>
+	<div class="one two">one two</div>
+	<div class="onetwo">onetwo</div>
+</body>
+</html>

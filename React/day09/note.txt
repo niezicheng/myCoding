@@ -1,0 +1,31 @@
+1、安装redux react-redux
+2、创建文件
+  store
+  reducer文件  index.js
+  actionCreator文件
+
+  页面
+    Article.jsx
+
+redux-thunk
+处理异步
+  1、在actionCreators里面可以返回一个函数，在函数内部去发送异步请求，异步请求回来后，在分发action2，actions去
+  更改store中的数据
+
+
+ES6 generator函数 【暂缓执行，可以分段使用】
+  function* test(){
+    console.log(1);
+    yield1;
+    console.log(2);
+    yield1;
+    console.log(3);
+    yield1;
+    console.log(4);
+  }
+  test()  【返回一个迭代器对象】
+  test().next()
+
+  let temp = test();
+  temp.next(); 遇到yield停止【分段执行】
+  temp.next();

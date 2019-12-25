@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>h5中的表单</title>
+	<script>
+		//js代码
+		//更改progress的值，产生动态效果
+		//获取id为download的元素
+		//文档加载完毕后再获取元素
+		window.onload = function(){
+			var ele = document.getElementById("download");
+			// console.log(ele.value);
+			var show = document.getElementById("show");
+			// ele.value = 80;
+			//定时器
+			setInterval(function(){
+				if(ele.value>=100){
+					show.innerHTML = "完成";
+					return;
+				}else{
+					//更改进度条的值
+					ele.value += 5;
+					//获取选定标记中的文本内容并给与其赋值
+					show.innerHTML = ele.value +"%";
+				}
+			},1000);
+		}
+	</script>
+</head>
+<body>
+	<form action="" id="form">
+		<!-- 进度条 -->
+		<progress id="download" value="30" max="100"></progress><output name="result" id="show">30%</output><br />
+		<meter min="0" max="100" low="40" high="60" value="50"></meter>
+		<meter min="0" max="100" low="40" high="60" value="20"></meter>
+		<meter min="0" max="100" low="40" high="60" value="80"></meter>
+		<!-- 最优值属性：optimum -->
+		<!-- 如果optimum再low和hight之间和没给该属性是一样的情况  -->
+		<meter min="0" max="100" low="40" high="60" optimum="50" value="20"></meter>
+		<!--绿色 黄色 红色依次表示越来越差 optimum值小于low值(意味着其值越小越好，分别以low和high为界将其分为三个部分)；反之,则越大越好-->
+		<meter min="0" max="100" low="40" high="60" optimum="20" value="30"></meter>
+		<meter min="0" max="100" low="40" high="60" optimum="80" value="70"></meter>
+		<br />
+
+
+		<input type="text" list="datasourse" name="datalist" autocomplete="off" />
+		<datalist id="datasourse">
+			<option value="hello">hello</option>
+			<option value="world">world</option>
+		</datalist>
+		<!-- autocomplete="off"关闭自动保存记录 -->
+		<input type="text" autocomplete="off" name="test"><br />
+
+
+
+		年月日date:<input type="date" name="" />
+		<br />
+		时间time:<input type="time" name="" />
+		<br />
+		年月日时间datetime-local：<input type="datetime-local" name="" />
+		<br />
+		月份month:<input type="month" name="" />
+		<br />
+		周week：<input type="week" name="" />
+		<br />
+
+		<h3>其他的type值</h3>
+		年龄：<input type="number" name="" /><br />
+		颜色：<input type="color" name="color" /><br />
+		邮箱:<input type="email" name="" /><br />
+		<!-- required必填项，只有填写了该项表单才能进行提交 -->
+		URL：<input type="url" name="" /><br />
+		<!-- pattern进行相应正则表达式输入格式才能通过验证【0-9】{11}：0到9的11位的数值 -->
+		telephone:<input type="tel" name="" pattern="[0-9]{11}" /><br />
+		<!-- 滑块 step:滑块移动一次的步长-->
+		range:<input type="range" name="" min="0" max="100" step="10" value="50" /><br />
+		<button>提交</button>
+		<!-- formnovalidate:表单不进行验证就可以提交 -->
+		<button formaction="./2-form.html" formtarget="_blank" formnovalidate>提交到其他地方</button>
+	</form>
+
+	<hr />
+	form表单外部的input:<input type="text" name="outinput" form="form" />
+</body>
+</html>

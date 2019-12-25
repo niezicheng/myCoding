@@ -1,0 +1,334 @@
+<!-- 栏目管理 -->
+<div>
+	<div class="categroy-manage">
+		<!-- 按钮组 -->
+		<div class="btn-box">
+			<button class="add-btn btn btn-primary btn-sm">新增</button>
+			<button class="batch-btn btn btn-danger btn-sm">批量删除</button>
+			<div class="oper pull-right">
+				<span class="selAll">全选</span>
+				<span class="edit">编辑</span>
+			</div>
+		</div>
+		<!-- 表格组 -->
+		<div class="table-box">
+			<table class="table table-striped text-center">
+				<thead>
+					<tr>
+						<th></th>
+						<th class="text-center">名称</th>
+						<th class="text-center">描述</th>
+						<th class="text-center">栏目序号</th>
+						<th class="text-center">父栏目</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+			
+				</tbody>
+			</table>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn btn-default close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">模态框标题</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 录入信息的表单 -->
+						<form action="" class="form-horizontal">
+							<!-- 栏目名称 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="catename">栏目名称:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" id="catename" name="catename">
+								</div>
+							</div>
+							<!-- 父栏目 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label">父栏目名称:</label>
+								<div class="col-md-10">
+									<select class="form-control">
+									  <option>请选择</option>
+									</select>
+								</div>
+							</div>
+							<!-- 栏目序号 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="cateno">栏目序号:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" name="cateno" id="cateno">
+								</div>
+							</div>
+							<!-- 描述文本域 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="desc">备注:</label>
+								<div class="col-md-10">
+									<textarea class="form-control" rows="3" id="desc"></textarea>
+								</div>
+							</div>
+								
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+						<button class="btn btn-primary" id="toSave">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+//点击编辑按钮显示复选框
+$('.oper .edit').click(function(){
+		if($('.oper .edit').text() === '编辑'){
+			$('tbody td:first-child').css('visibility','visible');
+			$('.oper .selAll').css('display','inline-block');
+			$('.oper .edit').text('取消编辑');			
+		}else{
+			$('tbody td:first-child').css('visibility','hidden');
+			$('.oper .selAll').css('display','none');
+			$('.oper .edit').text('编辑');
+			$('.oper .selAll').text('全选');
+			$('tbody input[type=checkbox]').attr('checked',false);
+		}
+	
+});
+
+
+//当点击复选框后点击全选按钮选中所有复选框
+$('.oper .selAll').click(function(){
+	// console.log($('.oper .selAll').text(),'---------',$('.oper .edit').text())
+	if($('.oper .selAll').text()==='全选' && $('.oper .edit').text() === '取消编辑'){
+		$('tbody input[type=checkbox]').attr('checked',true);
+		$('.oper .selAll').text('取消全选');
+	}else {
+		$('tbody input[type=checkbox]').attr('checked',false);
+		$('.oper .selAll').text('全选');
+	}	
+});
+
+
+
+//区分新增和修改是存储的参数
+var option = '';
+//存储select下的选选项
+var optStr = '';
+
+/**
+ * 设置模态框中select的选项值
+ */
+function setOption(){
+	myAjax('/manager/category/findAllCategory','GET',function(res){
+		if(res.data && res.data.length){
+			res.data.forEach(function(item,index){
+				// console.log(item.parent);
+				//栏目父栏目不为空且重复父栏目不添加
+				if(item.parent && optStr.indexOf('<option data-pid='+item.parent.id+'>'+item.parent.name+'</option>') === -1){
+					optStr += `
+						<option data-pid=`+item.parent.id+`>`+item.parent.name+`</option>
+					`;
+				}
+			});
+		}
+		$('.modal select').html(optStr);
+	},function(error){
+	// console.log(error);
+})
+}
+
+
+/**
+ * 添加按钮并显示模态框进行相关操作
+ */
+$('.btn-box .add-btn').click(function(){
+	// console.log(1111111);
+	// saveOrUpdateCategory({name:'lalala',comment:'lala123',no:100});
+	optStr = '<option>请选择</option><option>不填</option>';
+	//设置option
+	option = '新增';
+	//清空表单数据
+	$('.modal [type=text]').val(null);
+	$('.modal textarea').text(null);
+
+	setOption();
+	
+//设置模态框的标题
+$('.modal-title').text(option+'栏目信息');
+	$('.modal-footer #toSave').text('添加');
+//显示模态框
+$('#myModal').modal('show');
+// saveOrUpdateCategory({name:'lalala',comment:'lala123',no:100});
+// $('#myModal').css('display','block');
+// $('#myModal').addClass('show');
+});
+
+
+/**
+ * 获取添加表单中的值并进行数据添加或修改单条数据
+ */
+$("#toSave").click(function(){
+			//获取数据封装成对象
+			var cateName = $('.modal [name=catename]').val();
+			var id = +($('.modal [name=catename]').prop('data-id'));
+			var no = +($('.modal [name=cateno]').val());
+			var comment = $('.modal textarea').val();
+			var parentName = $('.modal option:selected').val();
+			var parentId = +($('.modal option:selected').attr('data-pid'));
+			// console.log(cateName,parentName,parentId,no,comment);
+			// console.log(id,'***********');
+			if(parentName === '不填' || parentName === '请选择'){
+				parentId = '';
+			}
+			if(option === '新增'){
+				var obj = {
+					name:cateName,
+					no:no,
+					comment:comment,
+					parentId:parentId
+				}
+			}
+			if(option === '修改'){
+				var obj = {
+					id:id,
+					name:cateName,
+					no:no,
+					comment:comment,
+					parentId:parentId
+				}
+			}
+
+			console.log(cateName,no,comment);
+			//将表单数据封装成对象
+			if(cateName && no && comment){
+				// console.log(obj);
+				saveOrUpdateCategory(obj);
+				//隐藏模态框
+				$('#myModal').modal('hide');
+				alert(option+'成功');
+			}else {
+				alert("请将数据填写完整");
+			}
+			// console.log(parentId+'-------');
+			//通过父栏目的父id=>parentId查找当前元素的父元素对象
+			// findCategoryByParentId(obj);
+			// console.log(cateName,parentName,no,comment,parentid,'--------');
+			
+			// var obj = {
+			// 		name:cateName,
+			// 		no:cateno,
+			// 		comment:comment
+			// 		parentId:
+			// 		parent:parent
+			// 	};
+			// 	$("#myModal").modal('hide');
+			// }
+		});
+
+
+
+//查询所有数据
+findAllCategory(findFun);
+
+//查询所有并显示的在页面
+function findFun(res,param){
+	// console.log(res);
+	var str = '';
+		if(res.data && res.data.length>0){
+			res.data.forEach(function(item,index){
+				// console.log(item,index);
+				var parentName = '';
+				if(item.parent){
+					parentName = item.parent.name;
+				}else {
+					parentName = '—';
+				}
+				str += `
+					<tr>
+						<td><input type="checkbox" name=""/></td>
+						<td data-id='`+item.id+`'>`+item.name+`</td>
+						<td>`+item.comment+`</td>
+						<td>`+item.no+`</td>
+						<td>`+parentName+`</td>
+						<td>
+							<i class="fa fa-pencil-square-o" title="编辑" data-id=`+item.id+`></i>
+							<i class="fa fa-trash-o" title="删除" data-id=`+item.id+`></i>
+						</td>
+					</tr>
+				`
+			});
+		}
+		$('.table-box tbody').html(str);
+
+		if(param){
+			$('tbody td:first-child').css('visibility','visible');
+		}else {
+			$('.oper .selAll').css('display','none');
+			$('.oper .edit').text('编辑');
+			$('.oper .selAll').text('全选');
+			$('tbody input[type=checkbox]').attr('checked',false);
+		}
+
+}
+
+//修改数据
+$('tbody').on('click','td i[title=编辑]',function(e){
+	optStr = '<option>请选择</option><option>不填</option>';
+	option = '修改';
+
+	var id = $(this).attr('data-id');
+	console.log(id,'--------');
+	var $result = $(this).parent().prevAll();
+	// console.log($result);
+	// var parentName = $($result[0]).text();
+	var no = $($result[1]).text();
+	var comment = $($result[2]).text();
+	var cateName = $($result[3]).text();
+	$('.modal [name=catename]').val(cateName);
+	$('.modal [name=catename]').prop("data-id",id);
+	$('.modal [name=cateno]').val(no);
+	$('.modal textarea').val(comment);
+	setOption();
+
+	//设置模态框的标题
+	$('.modal-title').text(option+'栏目信息');
+	$('.modal-footer #toSave').text('修改');
+	//显示模态框
+	$('#myModal').modal('show');
+});
+
+
+//删除单条数据
+$('tbody').on('click','td i[title=删除]',function(){
+	var id = +($(this).attr('data-id'));
+	// console.log(this,typeof id,id);
+	deleteCategoryById(id);
+	// alert('删除成功');
+});
+
+
+//批量删除数据
+$('.btn-box .batch-btn').click(function(){
+	// console.log(1111111111);
+	var $result = $('tbody input[type=checkbox]').filter(function(index,item){
+		// console.log(index,item);
+		return item.checked === true;
+	});
+	// console.log($result);
+	var arr = [];
+	if($result && $result.length>0){
+		$result.each(function(index,item){
+			// console.log(index,item);
+			arr.push($(item).parent().next().attr('data-id'));
+		});
+		// console.log(arr);
+		batchDeleteCategory(arr);
+	}
+	
+});
+
+</script>
+</div>

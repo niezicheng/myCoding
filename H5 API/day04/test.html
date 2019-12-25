@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<HTML>
+ <HEAD>
+  <TITLE> ZTREE DEMO </TITLE>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <!-- <link rel="stylesheet" href="./css/demo.css" type="text/css"> -->
+  <link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src='./js/jquery.ztree.core.min.js'></script>
+  <SCRIPT LANGUAGE="JavaScript">
+   var zTreeObj;
+   // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+   var setting = {};
+   // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+   var zNodes = [
+   {name:"test1", open:true, children:[
+      {name:"test1_1"}, {name:"test1_2"}]},
+   {name:"test2", open:true, children:[
+      {name:"test2_1"}, {name:"test2_2"}]}
+   ];
+   $(document).ready(function(){
+   		//后台获取的目录相关数据
+      var array = [
+        {id:2,name:'Java课程',cate_path:'1.2'},
+        {id:3,name:'Spring课程',cate_path:'1.2.3'},
+        {id:1,name:'根编目',cate_path:null},
+        {id:6,name:'Servlet课程',cate_path:'1.2.6'},
+        {id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+        {id:5,name:'Web课程',cate_path:'1.5'},
+        {id:7,name:'React课程',cate_path:'1.5.7'},
+        {id:8,name:'redux课程',cate_path:'1.5.7.8'},
+        {id:9,name:'SpringMVC课程',cate_path:'1.3.9'}
+      ];
+      var arr = []; 
+      array.forEach( function(item, index) {
+      	//设置数组中个对象的child为数组，用于存放属于它下一级目录对象
+        item.children = [];
+        //获取到相应cate_path拆分后的数组组成的数组
+        if(item.cate_path){
+        	//使用.拆分cate_path字符串并填入数组组成二维数组
+          arr.push(item.cate_path.split('.'));
+        }
+      });
+      //循环遍历二维数组将最后对应id目录添加到倒数第二个其父目录中
+      for(var i=0;i<arr.length;i++){
+      	//数组中个子数组的长度
+        var len = arr[i].length;
+        //过滤父元素对象
+        var parent = array.filter(function(item){
+          return item.id == arr[i][len-2];
+        });
+        //过滤子元素对象
+        var child = array.filter(function(item){
+          return item.id == arr[i][len-1];
+        });
+    		//将相应子对象添加到父目录children属性中
+        parent[0].children.push(child[0]);
+      }
+     // console.log(array);
+     // 保存更目录数组即可
+     array = array.filter(function(item,index){
+     	return item.cate_path === null;
+     });
+     zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, array);
+   });
+  </SCRIPT>
+ </HEAD>
+<BODY>
+<div>
+   <ul id="treeDemo" class="ztree"></ul>
+</div>
+</BODY>
+</HTML>

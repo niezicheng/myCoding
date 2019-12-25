@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>太极图</title>
+	<style type="text/css">
+		canvas{
+			animation-name: myani;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+		@keyframes myani{
+			0%{
+				transform: rotateZ(0deg);
+			}
+			100%{
+				transform: rotateZ(1080deg);
+			}
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			//绘制两个半圆
+			context.beginPath();
+			context.arc(200,200,200,Math.PI/2,Math.PI*3/2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.lineWidth = 3;
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,200,200,Math.PI*3/2,Math.PI/2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.lineWidth = 3;
+			// context.stroke();
+			context.fill();
+
+			// 绘制中圆
+			context.beginPath();
+			context.arc(200,100,100,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,300,100,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.stroke();
+			context.fill();
+
+			// 绘制中圆
+			context.beginPath();
+			context.arc(200,100,25,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,300,25,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.stroke();
+			context.fill();
+		};
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+</body>
+</html>

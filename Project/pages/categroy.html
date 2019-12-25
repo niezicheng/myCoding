@@ -1,0 +1,41 @@
+<!-- 栏目管理 -->
+<div>
+	<div class="categroy-manage">
+	<!-- 按钮组 -->
+	<div>
+		<button class="btn btn-primary">新增</button>
+		<button class="btn btn-danger">批量删除</button>
+	</div>
+	<!-- 表格组 -->
+	<div class="table-div">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>名称</th>
+					<th>父栏目</th>
+					<th>描述</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>编号</td>
+					<td>名称</td>
+					<td>父栏目</td>
+					<td>描述</td>
+					<td>
+						<i class="fa fa-pencil-square-o" aria-hidden="true" title="编辑"></i>
+						<i class="fa fa-trash-o" aria-hidden="true" title="删除"></i>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<script type="text/javascript">
+	function getAllCategory(){
+		getAjax()
+	};
+</script>
+</div>

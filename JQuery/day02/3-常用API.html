@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常用API</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//选中多个节点，使用html()获取内部内容，拿的是第一个
+			console.log($('div').html());	//<div>one</div>
+			//选中多个节点，使用text()获取内部内容，拿的是所有节点的文本
+			console.log($('div').text());	//onetwothree
+
+			//设置内部的内容   设置的是所有选中的元素的内容
+			// $('div').html('<h2>hello</h2>');
+			//设置内部文本
+			// $('div').text('hello');
+
+			//拿取的value值也是选中的节点中第一个节点的value
+			console.log($('input').val());
+			console.log($('input')[0].value);
+
+			//设置值
+			console.log($('input').val('hello'));
+
+			//获取每一个选中元素的html
+			/*$('div').html(function(index,item){
+				//index 索引    item 值
+				console.log(index,item);
+			});*/
+
+			/*$('div').each(function(index,item){
+				//index 索引   item DOM节点
+				console.log(index,item);
+				console.log($(item).html());
+			});*/
+		});
+	</script>
+</head>
+<body>
+	<input type="text" name="" value="zhangsan">
+	<input type="text" name="" value="lisi">
+	<div><span>one</span></div>
+	<div><span>two</span></div>
+	<div><span>three</span></div>
+</body>
+</html>

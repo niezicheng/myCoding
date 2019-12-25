@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后代过滤器</title>
+	<style type="text/css">
+		.outer{
+			border:1px solid blue;
+			overflow: hidden;
+			float: left;
+			margin: 10px;
+		}
+		.inner{
+			border:1px solid red;
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin: 10px;
+		}
+		.inner .inner{
+			width: 50px;
+			height: 50px;
+			border: 1px solid green;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$result = $('.outer .inner:first-child');	//可有多个被选中【所有符合条件且作为别人的第一个孩子的元素均可以】
+			// $result = $('.outer :first');	//只有一个元素【所有符合条件元素的第一个】
+			// $result = $('.outer .inner:last-child');
+			// $result = $('.outer .inner:nth-child(even)');	//别人的第偶数个孩子的
+			$result.css('background','#ccc');
+		});
+	</script>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">
+			
+		</div>
+		<div class="inner">
+			<div class="inner"></div>
+		</div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

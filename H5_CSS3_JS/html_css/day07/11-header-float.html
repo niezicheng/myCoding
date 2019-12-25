@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>header-float</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		header,img,article{
+			display: block;
+		}
+		header{
+			/*height: 60px;*/
+			background-color: teal;
+			/*border: 1px solid red;*/
+			color: #fff;
+			padding: 0px 10px;
+
+			/*清除子元素的float浮动对父元素产生的影响  子元素浮动而父元素没有设置高度则父元素不会产生由子元素撑起的高度*/
+			overflow: hidden;
+		}
+		.logo{
+			float: left;
+		}
+		.logo img,logo span,.user img,.user span{
+			float: left;
+		}
+		.logo img{
+			/*float: left;*/
+			width: 80px;
+			height: 60px;
+		}
+		.logo span{
+			/*float: right;*/
+			line-height: 60px;
+
+
+			/*浮动起来的行内元素margin是有效果的*/
+			margin-left: 10px;
+			font-size: 20px;
+			font-family: 微软雅黑;
+		}
+		.user{
+			float: right;
+			/*border: 1px solid blue;*/
+		}
+		.user img{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-top: 10px;
+		}
+		.user span{
+			line-height: 60px;
+			margin-left: 10px;
+		}
+
+		article{
+			height: 20px;
+			background-color: coral;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img src="../day06/images/folder.png" alt="">
+			<span>管理系统</span>
+		</div>
+		<div class="user">
+			<img src="./images/d2a9ccbfe758a6619d25d0299257f860.jpg" alt="">
+			<span>
+				admin
+			</span>
+		</div>
+	</header>
+	<article>
+		内容
+	</article>
+</body>
+</html>

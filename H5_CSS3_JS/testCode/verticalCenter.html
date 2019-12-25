@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垂直居中</title>
+	<style type="text/css">
+		/*.outer{
+			height: 200px;
+			position: relative;
+			background: #bfe;
+		}
+		.outer .inner{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			height: 30%;
+			width: 50%;
+			margin: -15% 0 0 -25%;
+			background: coral;
+		}*/
+		/*IE版本低于7时不能正常使用*/
+		.outer{
+			height: 200px;
+			position: relative;
+			background: #bfe;
+		}
+		.outer .inner{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 50%;
+			height: 30%;
+			margin: auto;
+			background: coral;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">inner content</div>
+	</div>
+</body>
+</html>

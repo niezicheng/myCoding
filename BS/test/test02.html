@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test02</title>
+	<style type="text/css">
+		input[type="text"]{
+			/*display: inline-block;*/
+			width: 200px;
+			height: 40px;
+		}
+		input[type="checkbox"]{
+			-moz-appearance: none;
+			-webkit-appearance: none; /*清除复选框默认样式*/
+		    border: 1px solid #627BF6;
+		    vertical-align: middle;
+		    width: 100px;
+		    height: 100px;
+		    padding: 20px;
+		    /*float: left;
+		    margin-top: 0;
+		    margin-right: 0 !important;*/
+		    /*border-radius: 50%;*/
+		}
+		input[type="checkbox"]:checked {
+			/*background: url(../day03/images/323418.jpg); /*复选框的背景图*/
+			/*background-size: contain;  /*收缩*/
+			/*background-size: cover;	  /*伸长*/
+			/*background-size: 100% 100%;*/
+			/*background-repeat: no-repeat;*/
+			
+			background:coral;
+			background-clip: content-box;
+		}
+		button{
+			width: 200px;
+			height: 40px;
+			background-color: teal;
+			border-style: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="">
+	<input type="checkbox" name="" checked="">
+	<button>取消</button>
+	<button>提交</button>
+</body>
+</html>

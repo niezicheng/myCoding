@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定媒体播放</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			//获取视频节点
+			var video = document.getElementsByTagName('video')[0];
+			//获取button绑定事件
+			var btnDiv = document.getElementById('btnDiv');
+
+			var toggle = document.getElementById('toggle');
+			//切换按钮单独绑定事件
+			toggle.onclick = function(){
+				//true为暂停状态  false为播放状态
+				// alert(video.paused);
+				// console.log(video.paused);
+				if(video.paused){
+					video.play();
+					this.innerText = '暂停1';
+				}else{
+					video.pause();
+					this.innerText = '播放1';
+				}
+			};
+
+			btnDiv.onclick = function(e){
+				var text = e.target.innerText;
+				if (text === '播放') {
+					video.play();
+				}
+				if (text === '暂停') {
+					video.pause();
+				}
+				if (text === '快进') {
+					//当前播放的时间
+					// console.log(video.currentTime);
+					video.currentTime += 10;
+				}
+				if (text === '快退') {
+					video.currentTime -= 10;
+				}
+				if (text === '2.0倍速') {
+					video.playbackRate = 2;
+				}
+				if (text === '0.5倍速') {
+					video.playbackRate = 0.5;
+				}
+				if (text === '音量+') {
+					video.volume += 0.1
+				}
+				if (text === '音量-') {
+					video.volume -= 0.1
+				}
+			};
+
+
+			//document keydown
+			document.onkeydown = function(e){
+				//左上右下  37 38 39 40
+				console.log(e.keyCode);
+				if(e.keyCode === 37){
+					video.currentTime -= 10;
+				}
+				if(e.keyCode === 38){
+					video.volume += 0.1
+				}
+				if(e.keyCode === 39){
+					video.currentTime +=10;
+				}
+				if(e.keyCode === 40){
+					video.volume -= 0.1
+				}
+
+			};
+		};
+	</script>
+</head>
+<body>
+	<div id="btnDiv">
+		<button>播放</button>
+		<button>暂停</button>
+		<button id="toggle">切换</button>
+		<button>快进</button>
+		<button>快退</button>
+		<button>2.0倍速</button>
+		<button>0.5倍速</button>
+		<button>音量+</button>
+		<button>音量-</button>
+	</div>
+	<video src="./media/1.mp4" controls=""></video>
+</body>
+</html>

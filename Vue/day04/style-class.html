@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div style="color:#fff;background:teal">
+      hello World
+    </div>
+    <br />
+    <div :style='str'>
+        hello World
+    </div>
+    <br />
+    <div :style='[obj,obj2]'>
+      hello world
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      created(){
+        setInterval(()=>{
+          this.obj.color = 'red';
+        },3000);
+      },
+      data:{
+        str:"color:#fff;background:teal",
+        obj:{
+          color:'#fff',
+          background:'#ccc',
+        },
+        obj2:{
+          border:'1px solid red',
+        }
+      }
+    });
+  </script>
+</body>
+</html>

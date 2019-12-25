@@ -1,0 +1,61 @@
+//复习
+	Object属性的操作
+		对象的属性特性：
+			configurable
+			enumberable
+			writable 是否可修改属性值
+			value	设置属性的值
+
+	或去属性特性描述
+		Object.getOwnPrototypeDescriptor(obj,'name');
+
+		设置属性特性：
+			Object.difineProperty(obj,'name',{});
+			Object.defineProperties(obj,{});
+
+		属性：数据属性、访问器属性
+
+
+	正则表达式：
+		JS中的正则表达式的使用
+			创建正则表达式对象：
+				1.new RegExp('hello','img');
+				2./hello\d\w{1}\d/img;
+			使用：
+				1.正则表达式的属性及方法
+					pattern.global
+					pattern.ignoreCase
+					pattern.multiline
+					pattern.test(str)  //true or false
+					pattern.exec(str)  //单个查询返回结果的数组或null
+					pattern.lastIndex   //g维护lastIndex属性的值
+				2.String类型对正则表达式的支持方法
+					str.search(/hello/ig);  //返回位置索引或-1
+					str.match(/hello/ig);  //有g 返回所有满足的元素组成的数组或null；没有g，返回第一个匹配的元素组成的数组
+					str.replace(/hello/ig,'JavaScript');  //替换
+					str.split('&');  //以规定字符切割字符串并返回切割后的部分组成的数组
+					str.split(/&/);
+
+		正则表达式
+			模式次数
+				/\d\w{2}\dh{3,}w/
+
+			模式：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

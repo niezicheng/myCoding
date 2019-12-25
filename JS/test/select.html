@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test select</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var select = document.getElementsByTagName('select')[0];
+			console.log(select);
+			select.value = 'shenzhen';
+			select.onchange = function(e){
+				console.log(e.target,this);
+			}
+		};
+	</script>
+</head>
+<body>
+ </div>
+	<select>
+		<option value='nanchang'>南昌</option>
+		<option value='shanghai'>上海</option>
+		<option value='shenzhen'>深圳</option>
+		<option value='beijing'>北京</option>
+	</select>
+</body>
+</html>

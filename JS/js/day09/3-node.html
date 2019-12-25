@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Node</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			margin-right: 20px;
+			float: left;
+		}
+		#two{
+			background-color: coral;
+		}
+		#(three two){
+			background-color: #bef;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			//追加div到body中，创建div，获取div。然后使用appendChild()追加到末尾
+			//创建Element节点
+			var div = document.createElement('div');
+			//在元素节点内部添加内容
+			div.innerText = 'four';
+			//追加节点到末尾
+			document.body.appendChild(div);
+			//将one div追加到body最后。获取到one,在追加
+			var one = document.getElementsByClassName("one")[0];
+			//克隆节点 false【默认】 浅复制，复制节点但不复制子节点   true 深复制，即克隆元素节点也克隆里面的子节点
+			// var cloneOne = one.cloneNode(true);
+			// cloneOne.innerText = 'cloneOne';
+			document.body.appendChild(one);  
+			// document.body.appendChild(cloneOne);  //同一个节点在DOM里面只能保存一个
+		};
+	</script>
+</head>
+<body>
+	<!-- <div id="one">one</div> -->
+	<div class="one">one</div>
+	<div id="two">two</div>
+	<div id="two">two</div>
+	<div id="three two">three</div>
+</body>
+</html>

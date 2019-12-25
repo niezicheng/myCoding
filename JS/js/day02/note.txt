@@ -1,0 +1,51 @@
+JS来源
+
+特点
+	1.浏览器端执行，node环境执行
+	2.解释性语言
+	3.弱类型语言
+	4.自上而下执行
+
+数据类型：
+	基本数据类型：
+		null undified string number boolean
+
+	引用数据类型：
+		object {}   //写一些属性或方法
+		Array[]     //存放任意类型的元素
+				['a',1,true,boolean,function test()]
+		Function
+			function test(形参,形参...){}
+			调用函数：test(实参,实参...)
+
+		//函数的声明
+			function add(a,b){
+				return a+b;
+			}
+		//函数的使用
+			var result = add(1,2);
+
+typeof 
+	数据类型
+
+
+
+操作符
+
+数据类型的转换
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

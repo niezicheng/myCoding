@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图标-alert</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<script type="text/javascript" src="../../JQuery/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		//点击删除按钮后弹出框显示并且三秒后消失
+		$(function(){
+			$("#del-btn").click(function(){
+				// alert(1);
+				// $(".info-div").removeClass("hidden");
+				// $(".info-div").fadeIn(1000);
+				$(".info-div").animate({
+					right:'10px',
+					opacity:1
+				},2000);
+
+				//两秒后消失，消失时间为1秒
+				setTimeout(function(){
+					$('.info-div').fadeOut(1000,function(){
+						$('.info-div').css({
+							right:'-210px',
+							opacity:0,
+							display:'block'
+						});
+					});
+					
+				},2000);
+
+			});
+		});
+	</script>
+	<style type="text/css">
+		body{
+			overflow-x: hidden;
+		}
+		.info-div{
+			width: 200px;
+			height: 100px;
+			position: absolute;
+			top: 10px;
+			right: -210px;
+			/*display: none;*/
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="well">
+			<button class="btn btn-default btn-primary">
+				<span class="glyphicon glyphicon-download"></span> 下载
+			</button>
+			<button class="btn btn-success" id="del-btn">删除</button>
+			<!-- alert组件 -->
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert">&times;</button>
+				<div>hello</div>
+			</div>
+			<!-- 右上角的提示框 -->
+			<div class="info-div">
+				<div class="alert alert-success alert-dismissable">
+					<button class="close" data-dismiss="alert">&times;</button>
+					<div>删除成功</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

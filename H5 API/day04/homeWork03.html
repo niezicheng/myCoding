@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>目录结构</title>
+	<!-- <link rel="stylesheet" href="./css/demo.css" type="text/css"> -->
+  <link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+  <script type="text/javascript" src='./js/jquery.ztree.core.min.js'></script>
+  <script type="text/javascript">
+  	$(function(){
+  		var dbName = 'catalogue';
+			var objectStoreName = 'cate_info';
+
+
+  		//从数据库中查询数据并在前台页面显示
+  		query(function(that,event){
+  			var array = that.result
+  			// var array = event.target.result
+  			// console.log(array);
+  			getMyData(array);
+  		});
+
+
+  		/**
+  		 * 将数据库中的数据转化为相应所需要的数据格式并在zTrees上显示
+  		 * @param  {[type]} array [description]
+  		 * @return {[type]}       [description]
+  		 */
+  		function getMyData(array){
+      var arr = []; 
+      array.forEach( function(item, index) {
+      	//设置数组中个对象的child为数组，用于存放属于它下一级目录对象
+        item.children = [];
+        //获取到相应cate_path拆分后的数组组成的数组
+        if(item.cate_path){
+        	//使用.拆分cate_path字符串并填入数组组成二维数组
+          arr.push(item.cate_path.split('.'));
+        }
+      });
+      //循环遍历二维数组将最后对应id目录添加到倒数第二个其父目录中
+      for(var i=0;i<arr.length;i++){
+      	//数组中个子数组的长度
+        var len = arr[i].length;
+        //过滤父元素对象
+        var parent = array.filter(function(item){
+          return item.id == arr[i][len-2];
+        });
+        //过滤子元素对象
+        var child = array.filter(function(item){
+          return item.id == arr[i][len-1];
+        });
+    		//将相应子对象添加到父目录children属性中
+        parent[0].children.push(child[0]);
+      }
+	     // console.log(array);
+	     // 保存更目录数组即可
+	     array = array.filter(function(item,index){
+	     	return item.cate_path === null;
+	     });
+	     zTreeObj = $.fn.zTree.init($("#treeDemo"), {}, array);
+  		}
+
+  		/**
+  		 * 获取对象仓库封装
+  		 * @param  {[type]} handle [description]
+  		 * @return {[type]}        [description]
+  		 */
+			function myIndexDb(handle){
+				var request = indexedDB.open(dbName);
+				request.onsuccess = function(){
+					var db = this.result;
+					var ts = db.transaction(objectStoreName,'readwrite');
+					var store = ts.objectStore(objectStoreName);
+					handle(store);
+				};
+			}
+
+			/**
+			 * 添加修改数据
+			 * @param {[type]} obj [description]
+			 */
+			function addOrUpdate(obj){
+				myIndexDb(function(store){
+					var req = store.put(obj);
+					req.onsuccess = function(){
+						console.log('添加成功');
+					};
+					req.onerror = function(){
+						console.log('添加失败');
+					};
+				});
+			}
+
+			/**
+			 * 查询所有数据
+			 * @param  {[type]} fun1 [description]
+			 * @param  {[type]} fun2 [description]
+			 * @return {[type]}      [description]
+			 */
+			function query(fun1,fun2){
+				myIndexDb(function(store){
+					var req = store.getAll();
+					req.onsuccess = function(event){
+						fun1(this,event);
+						// console.log('查询成功',req.result);
+					};
+					req.onerror = function(){
+						fun2();
+						console.log('查询失败');
+					};
+				});
+			}
+
+			/**
+			 * 查询单条数据
+			 * @param  {[type]} fun1 [description]
+			 * @param  {[type]} key  [description]
+			 * @param  {[type]} fun2 [description]
+			 * @return {[type]}      [description]
+			 */
+			function querySingle(fun1,key,fun2){
+				myIndexDb(function(store){
+					var req = store.get(key);
+					req.onsuccess = function(event){
+						fun1(this,event);
+						console.log('查询成功',req.result);
+					};
+					req.onerror = function(){
+						fun2();
+						console.log('查询失败');
+					};
+					// console.log(req);
+					// console.log(req.result);
+				});
+			}
+
+
+			/**
+			 * 删除数据【有参数key为删除单条数据，无参数则是删除所有数据】
+			 * @param  {[type]} fun1 [description]
+			 * @param  {[type]} key  [description]
+			 * @param  {[type]} fun2 [description]
+			 * @return {[type]}      [description]
+			 */
+			function deleteData(fun1,key,fun2){
+				myIndexDb(function(store){
+					if(key){
+						var req = store.delete(key);
+					}else {
+						var req = store.clear();
+					}
+					req.onsuccess = function(event){
+						fun1(event);
+						// console.log('删除成功',this);
+					};
+					req.onerror = function(){
+						fun2();
+						// console.log('删除失败');
+					};
+				});
+			}
+
+			/**
+			 * 删除数据仓库【参数为所需要删除的数据仓库名】
+			 * @param  {[type]} osn [description]
+			 * @return {[type]}     [description]
+			 */
+			function deleteDB(osn){
+				var request = indexedDB.open(dbName);
+				var db = request.result;
+				db.deleteObjectStore(osn);
+			}
+
+
+  	});
+  </script>
+</head>
+<body>
+	<div class="content_wrap">
+		<div class="zTreeDemoBackground left">
+			<ul id="treeDemo" class="ztree"></ul>
+		</div>
+	</div>
+</body>
+</html>

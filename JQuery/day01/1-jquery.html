@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-helloWorld</title>
+	<!-- 引入第三方资源库 -->
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+			//$div是jQuery对象，是jQuery函数调用后的返回值,是一个类数组对象，元素值DOM节点
+			var div = document.getElementsByTagName('div');
+			console.log(Array.isArray(div));
+			var $div = $('div');
+			console.log($div);
+		});
+	</script>
+</head>
+<body>
+	<div>hello world！！！</div>
+	<div>hello</div>
+</body>
+</html>

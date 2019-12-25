@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试伪类选择器</title>
+	<style type="text/css">
+		/*在指定元素之前添加内容*/
+		section p::before{
+			/*content属性值为要添加的内容*/
+			content: '*';
+			color: red;
+		}
+
+		/*在指定元素之后添加内容*/
+		section p::after{
+			/*content属性值为要添加的内容*/
+			content: '*';
+			color: red;
+		}
+
+		/*选中第一个字符*/
+		section::first-letter{
+			color: red;
+			font-size: 30px;
+		}
+		/*选中第一行文字*/
+		section::first-line{
+			color: blue;
+		}
+		/*用户选中文本设置(只有自身内部文本有该样式效果，里面包含的元素内容不含有，即p标签不会有该样式效果)*/
+		section::selection{
+			background-color: teal;
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<article>
+			<section>
+				我是section第一段文字<br />
+				我是section第二段文字 
+				<span>span</span>
+				<p>第一段话</p>
+				<p>第二段话</p>
+				<p>第三段话</p>
+				<p>第四段话</p>
+			</section>
+		</article>
+</body>
+</html>

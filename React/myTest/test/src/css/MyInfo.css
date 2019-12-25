@@ -1,0 +1,10 @@
+.my-info{
+  border:1px dotted #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.title{
+  font-size: 18px;
+  color: teal;
+}

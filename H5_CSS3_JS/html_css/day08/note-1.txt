@@ -1,0 +1,4 @@
+文本超出部分产生省略号：
+	1.white-space:nowrap;  内部文本不换行，默认为换行
+	2.overflow:hidden;  溢出内容隐藏
+	3.text-overflow:ellipsis;  省略号(ellipsis)     修剪(clip) 默认的 

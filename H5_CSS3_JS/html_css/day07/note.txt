@@ -1,0 +1,247 @@
+一、overflow:溢出内容的处理 
+	overflow:hidden;  溢出内容隐藏(在父元素内使用,可以清除子元素浮动对父元素的影响)
+	overflow:auto; 自动滚动(有溢出产生滚动，没有就不产生滚动条)
+	overflow:scroll; 不管有没有溢出均产生滚动条
+
+图片精灵技术
+	服务器
+	前项目部署到服务器上，图片当然也是在服务器上。网页如果要显示a图片，如果显示b图片，如果套很多图片
+
+
+二、盒子模型：
+	
+	margin(外边距)、border(边框)、padding(内间距)、内容区域
+
+	1.w3c盒子模型(默认盒子模型-标准的盒子模型)：
+
+		a.w3c盒子模型设置的宽高为内容区的宽高;
+		b.padding(内间距)、border(边框)、margin(外边距)均属于所设置宽高外的部分；
+		c.盒子宽高：border宽高+padding宽高+内容区域宽高【设置的宽高】
+		d.所占屏幕宽高：盒子宽高+margin宽高
+
+	2.ie盒子模型
+
+		a.ie盒子模型设置的宽高为盒子宽高
+		b.盒子宽高【设置的宽高】：border宽高+padding宽高+内容区域宽高
+		c.所占屏幕宽高：盒子宽高+margin宽高
+
+	3.两种盒子的比较代码如下：
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+			}
+			.one{
+				background-color: teal;
+				/*width: 80px;
+				height: 80px;*/
+				padding: 10px;
+				box-sizing: border-box;
+
+				border-left: 10px solid cyan;
+				border-bottom: 10px solid coral;
+				border-right: 10px solid cyan;
+				border-top: 10px solid coral;
+			}
+		</style>
+		<body>
+			<div class="one">one</div>
+			<div class="two">two</div>
+		</body>
+
+
+三、border属性：
+	1.border-radius:5px(或百分比);  设置边框圆角
+	2.border-top-left-radius: 40px;  设置左上角边框圆角
+	3.border-bottom-right-radius: 40px;  设置右下角边框圆角
+
+	4.如果设置子元素圆角且父元素有背景颜色则父子元素均需要设置圆角边框：
+	eg：
+		<style type="text/css">
+			div{
+				width: 200px;
+				height:200px;
+				background-color: pink;
+			}
+			.inner,.outer{
+				border-radius: 30px;
+			}
+			.inner{
+				background-color: teal;
+			}
+	    </style>
+
+		<body>
+			<div class="outer">
+				<div class="inner">
+					
+				</div>
+			</div>
+		</body>
+
+
+四、background属性：
+	1.background-image:url(图片路径);  设置背景图片
+	2.background-repeat:(背景图片平铺方式)
+		<style>
+			/*背景图片重复出现的方式*/
+			background-repeat: no-repeat;
+			/*在x方向铺满一行*/
+			background-repeat: repeat-x;
+			/*在y方向平铺一列*/
+			background-repeat: repeat-y;
+			/*默认的铺满整个区域*/
+			background-repeat: repeat;
+		</style>
+	3.background-size:100% 100%;(宽、高)  设置背景图片大小
+
+	4.图片精灵技术：(在元素区域内显示背景图片中指定区域图像)
+		实例代码如下：
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>图片精灵技术</title>
+				<style type="text/css">
+					div{
+						width: 153px;
+						height: 156px;
+						background-image: url(./images/QQ图片20190620112449.jpg);
+					}
+					.one{
+						/*设置背景图片的位置*/
+						background-position: -113px -120px;
+					}
+					.two{
+						background-position: -633px -652px;
+					}
+				</style>
+			</head>
+			<body>
+				<div class="one"></div>
+				<div class="two"></div>
+			</body>
+			</html>
+
+	5.background-attachment：   固定显示图片背景
+		实例代码：
+			<style type="text/css">
+				body{
+					background-image: url(./images/d2a9ccbfe758a6619d25d0299257f860.jpg);
+					/*背景图片绑定的位置，视口区？元素*/
+					/*1、固定背景 不随滚动条的滚动而滚动*/
+					background-attachment: fixed;
+					/*2、默认的  随着滚动条滚动*/
+					background-attachment: scroll;
+				}
+			</style>
+
+五、float(浮动)
+
+	清除浮动：
+		兄弟之间清除浮动产生的影响：clear:both;
+		父子之间清除浮动产生的影响：overflow:hidden;
+	1、浮动
+		实例代码：
+		<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>浮动</title>
+				<style type="text/css">
+					div{
+						width: 100px;
+						height: 100px;
+					}
+					/*浮动文字不会被覆盖*/
+					.one{
+						height: 200px;
+						background-color: red;
+						/*左浮动  浮动元素脱离文档流 原来的位置不保留*/
+						float: right;
+					}
+					.two{
+						background-color: orange;
+						float: right;
+					}
+					.three{
+						background-color: yellow;
+						/*margin-top: 100px;*/
+						/*清除其他元素的浮动对自身元素(位置等)产生的影响*/
+						/*清除兄弟元素的浮动*/
+						/*clear: both;*/
+						float: right;
+					}
+					.four{
+						background-color: green;
+						float: right;
+					}
+					.five{
+						background-color: blue;
+						/*float: right;*/
+						clear: both;
+					}
+					.six{
+						background-color: cyan;
+						/*float: right;*/
+					}
+				</style>
+			</head>
+			<body>
+				<div class="one">one</div>
+				<div class="two">two</div>
+				<div class="three">three</div>
+				<div class="four">four</div>
+				<div class="five">five</div>
+				<div class="six">six</div>
+			</body>
+			</html>
+
+	2、父子浮动
+		实例代码：
+		<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>父子浮动</title>
+				<style type="text/css">
+					*{
+						margin: 0;
+						padding: 0;
+					}
+					ul{
+						border: 1px solid blue;
+						list-style: none;
+						/*清除浮动   给父元素设置了高度*/
+						/*overflow: hidden;*/
+					}
+					li{
+						border: 1px solid red;
+						width: 100px;
+						height: 100px;
+						float: left;
+					}
+					div{
+						width: 100px;
+						height: 100px;
+						background-color: cyan;
+
+						/*清除浮动*/
+						clear: both;	
+					}
+				</style>
+			</head>
+			<body>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<div></div>
+			</body>
+			</html>
+
+
+

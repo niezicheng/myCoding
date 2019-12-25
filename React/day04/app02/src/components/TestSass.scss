@@ -1,0 +1,11 @@
+.TestSass{
+  span{
+    color:red;
+  }
+  span:last-child{
+    color: blue;
+  }
+  .one{
+    font-size:10px;
+  }
+}

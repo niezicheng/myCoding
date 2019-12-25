@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+  <style>
+    .alert{
+      margin:1em;
+      padding:.5em;
+      background:coral;
+      color:#fff;
+      border-radius: 5px;
+    }
+    .d-none{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <my-component @close="closeHandle" v-if="isShow">hello</my-component>
+  </div>
+  <script>
+    Vue.component('my-component',{
+      template:`
+        <div @click='closeHandle' class="alert">
+          <slot></slot>
+        </div>
+      `,
+      data:function(){
+        return {}
+      },
+      methods:{
+        closeHandle(){
+          //避免子组件与父子间嵌套多层关系直接获取父组件可能比较困难
+          // this.$parent.isShow = false;
+          //2.通知父组件要关闭当前的component
+          this.$emit("close");
+        }
+      }
+    });
+
+    new Vue({
+      el:'#app',
+      data:{
+        isShow:true
+      },
+      methods:{
+        closeHandle(){
+          this.isShow = false
+        }
+      }
+      
+    })
+  </script>
+</body>
+</html>

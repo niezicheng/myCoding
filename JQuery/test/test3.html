@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test3</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background: coral;
+		}
+		.second{
+			margin-top:30px;
+			background: teal;
+			text-decoration: 
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// var height = $('div').height(200);
+			// console.log(height,height.height());
+
+			$("button").click(function() {
+				$("div.first").slideUp(3000).delay(2000).fadeIn(2000);
+				$("div.second").slideUp(3000).fadeIn(4000);
+			});
+			// $('button').trigger('click')
+
+			// $('button').on('click', function(){
+			// 	// console.log(1111);
+			// 	$('.first').stop().slideToggle(2000);
+			// });
+
+			var n = $('button').queue("fx");
+			console.log(n);
+
+		});
+	</script>
+</head>
+<body>
+	<button>点击我</button>
+	<div class="first">first</div>
+	<div class="second">second</div>
+
+
+</body>
+</html>

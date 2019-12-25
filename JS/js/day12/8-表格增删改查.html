@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格增删改查</title>
+	<script type="text/javascript" src='./js/myAjax.js'></script>
+	<script type="text/javascript">
+		// console.log(myAjax);
+		window.onload = function(){
+			findAllCategory();
+			//1、获取tbody
+			//2、获取后台数据
+			//3、展示数据到前台页面
+			var tbody = document.getElementsByTagName('tbody')[0];
+			var btnsDiv = document.getElementsByClassName('btns-div')[0];
+			/*var inputs = document.getElementsByTagName('input');
+			inputs = Array.prototype.slice.call(inputs,0);*/
+
+			
+			//查找category的数据
+			function findAllCategory(){
+				myAjax('GET','/manager/category/findAllCategory','',function(res){
+					// console.log(res.data);
+					// var data = Array.prototype.slice.call(res.data,0);
+					var str = '';
+					if (res.data&&res.data.length>0) {
+						res.data.forEach(function(item){
+							str += `
+								<tr>
+									<td><input type="checkbox" value='`+item.id+`'></td>
+									<td>`+item.name+`</td>
+									<td>`+item.comment+`</td>
+									<td><button data-id="`+item.id+`">删除</button></td>
+								</tr>
+							`;
+						});
+					}
+					tbody.innerHTML = str;
+
+				},function(error){
+					// console.log(error,'++++');
+					console.log(error);
+				});
+			}
+
+
+			//单个删除
+			/*
+				1、获取要删除的id
+				2、传递给后台删除
+				3、删除后的数据在页面上查询显示
+			*/
+			tbody.onclick = function(event){
+				var target = event.target;
+				if(target.nodeName === 'BUTTON'){
+					// console.log(target);
+					var id = target.getAttribute('data-id');
+					// console.log(id);
+					function deleteCategoryById(obj){
+						myAjax('GET','/manager/category/deleteCategoryById',obj,function(res){
+							findAllCategory();
+						},function(){});
+					}
+					deleteCategoryById({id:id});
+				}
+			};
+
+			//批量删除
+			/*1、获取用户的checkbox复选框
+			2、获取要删除的id数组
+			3、传递后台进行删除
+			4、查询显示*/
+			btnsDiv.onclick = function(event){
+				// console.log('111111111');
+				var target = event.target;
+				console.log(target);
+				if(target.innerText == '新增'){
+						/*
+						1、获取用户输入数据
+						2、进行保存
+						3、查询显示数据
+						*/
+						saveOrUpdateCategory({
+							name:'zc',
+							comment:'n',
+							no:100
+						});
+
+				}
+				if(target.innerText == '批量删除'){
+					//过滤用户选中的复选框
+					// console.log('11111111');
+					//如果放到上面可能会获取不到数据，节点可能还没有追加上去
+
+					var inputs = document.getElementsByTagName('input');
+					inputs = Array.prototype.slice.call(inputs,0);
+
+
+					var ids = inputs.filter(function(item){
+						return item.checked;
+					}).map(function(item){
+						return item.value;
+					});
+					console.log(ids);
+					batchDeleteCategory({ids:ids.join()});
+				}
+
+				function batchDeleteCategory(obj){
+					myAjax('POST','/manager/category/batchDeleteCategory',obj,function(res){
+						console.log(res,'批量删除');
+						findAllCategory();
+					},function(error){
+						console.log(error);
+					});
+				}
+
+				function saveOrUpdateCategory(obj){
+					myAjax('POST','/manager/category/saveOrUpdateCategory',obj,function(res){
+						console.log(res,'保存或修改');
+						findAllCategory();
+					},function(error){
+						console.log(error);
+					})
+				}
+
+
+			};
+
+		};
+	</script>
+</head>
+<body>
+	<div class="btns-div">
+		<button>新增</button>
+		<button>批量删除</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>名称</th>
+				<th>描述</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr>
+				<td><input type="checkbox" name=""></td>
+				<td></td>
+				<td></td>
+				<td><button>删除</button></td>
+			</tr> -->
+		</tbody>
+	</table>
+</body>
+</html>

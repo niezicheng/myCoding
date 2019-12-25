@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>magnifying glass</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#canvas1{
+			border: 1px solid red;
+		}
+		#canvas2{
+			border: 1px solid coral;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas1 = document.getElementById('canvas1');
+			var canvas2 = document.getElementById('canvas2');
+			var context1 = canvas1.getContext('2d');
+			var context2 = canvas2.getContext('2d');
+
+			//获取画布的宽度
+			// var width = canvas1.getAttribute('width');	//获取的属性值带有单位的
+			var width = canvas1.width;
+			//图片放大的倍数
+			var mult = 4;
+			// 边界值
+			var num =width*(mult-1);
+			//图片路径
+			var src1 = "./images/small1.jpg";
+			var src2 = "./images/big1.jpg";
+
+			var image1 = new Image();
+			image1.src = src1;
+			image1.onload = function(){
+				context1.drawImage(image1,0,0,width,width);
+			};
+
+			
+			//绘制图像函数
+			function drawMyImg(x,y){
+				var image2 = null;
+				var image2 = new Image();
+				image2.src = src2;
+				// console.log(image2.src);
+				image2.onload = function(){
+					context2.drawImage(image2,-x,-y,width*mult,width*mult);
+				};
+			}
+
+			canvas1.onmousemove = function(e){
+				// 鼠标相对于屏幕的位置
+				// var x = e.screenX*mult;
+				// var y = (e.screenY-125)*mult;
+				// 鼠标相对于窗口区的位置
+				var x = e.clientX*mult;
+				var y = e.clientY*mult;
+				if (x>=num && y>=num) {
+					drawMyImg(num,num);
+				}else if (x<num && y<num) {
+					drawMyImg(x,y);
+				}else{
+					if (x>=num) {
+						drawMyImg(num,y);
+					}
+					if (y>=num) {
+						drawMyImg(x,num);
+					}	
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<canvas id="canvas1" width="200px" height="200px"></canvas>
+	<canvas id="canvas2" width="200px" height="200px"></canvas>
+</body>
+</html>

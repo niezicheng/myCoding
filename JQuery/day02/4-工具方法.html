@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工具方法</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//将jquery对象转成数组
+			var arr = $('div').get();
+			arr = $('div').toArray();
+			console.log(arr);
+			//获取类数组对象索引上的元素
+			var temp = $('div').get(1);
+			console.log(temp);	//返回类数组对象索引位置上的DOM节点
+			console.log($('div')[1]);	//返回类数组对象索引位置上的DOM节点
+			console.log($('div').eq(1));	//返回类数组对象索引位置上的元素的jquery对象
+
+			console.log('----------------------------first-------------------------------');
+			console.log($('div').first());
+			console.log($('div:first'));
+
+			console.log('----------------------------filter-------------------------------------');
+			//过滤	过滤出div文本后缀大于二的div
+			var $result = $('div').filter(function(index,item){
+				//item是DOM节点
+				console.log(index,item);
+				var text = $(item).text();
+				return text.slice(text.length-1) > 2;
+			});
+			console.log($result);
+
+		});
+	</script>
+</head>
+<body>
+	<div>hello1</div>
+	<div>hello2</div>
+	<div>hello3</div>
+	<div>hello4</div>
+</body>
+</html>

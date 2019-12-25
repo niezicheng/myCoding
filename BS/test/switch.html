@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>switch</title>
+	<link rel="stylesheet" type="text/css" href="../../myProject/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../myProject/css/bootstrap-switch.min.css">
+	<!-- <script type="text/javascript" src="../../myProject/js/jquery-3.4.1.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+	<script type="text/javascript" src="../../myProject/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../myProject/js/bootstrap-switch.js"></script>
+</head>
+<body>
+	<input name="status" type="checkbox" data-size="small">  
+     <script type="text/javascript"> 
+      $('[name="status"]').bootstrapSwitch({ 
+      onText:"启动",  
+      offText:"停止",  
+      onColor:"success",  
+      offColor:"info",  
+      size:"small",  
+    onSwitchChange:function(event,state){  
+      if(state==true){  
+        alert('已打开');  
+      }else{  
+        alert('已关闭');  
+      }  
+    }  
+  
+       })  
+  
+    </script> 
+</body>
+</html>
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+<link href="https://cdn.bootcss.com/bootstrap-switch/4.0.0-alpha.1/css/bootstrap-switch.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdn.bootcss.com/bootstrap-switch/4.0.0-alpha.1/js/bootstrap-switch.min.js"></script> -->

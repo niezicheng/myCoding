@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>w3c盒子-默认盒子-标准的盒子模型</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+		div{
+			/*内容区的宽高100*100*/
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			/*内间距 padding*/
+			/*一个值表示上下左右四个值*/
+			/*padding: 100px;*/
+			/*两个值表示 上下  左右*/
+			/*padding: 10px 20px;*/
+			/*三个值表示  上  左右  下*/
+			/*padding: 10px 20px 30px;*/
+			/*四个值表示  上 右 下 左*/
+			padding: 10px 20px 30px 40px;
+			/*盒子宽:100+60+2*/
+			/*盒子高:100+40+2*/
+			/*外边距 margin*/
+			margin: 20px;
+			/*所占屏幕的宽：盒子宽+左右margin*/
+			/*所占屏幕的高：盒子高+上下margin*/
+		}
+	</style>
+</head>
+<body>
+	<div>hello</div>
+</body>
+</html>

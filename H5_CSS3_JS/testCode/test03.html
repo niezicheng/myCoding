@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试父子级样式使用的优先级</title>
+	<style type="text/css">
+
+		.div1>*{
+			background-color: red;
+		}
+		/*.div1 .div2{
+			background-color: red;
+		}*/
+
+		#span2+*>span{
+			background-color: white;
+		}
+
+		.div1 span{
+			background-color: blue;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<span>span1</span>
+		<span id="span2">span2</span>
+		<div class="div2">
+		div2
+			<span>span3</span><br />
+			<span>span4</span><br/>
+		</div>
+	</div>
+</body>
+</html>

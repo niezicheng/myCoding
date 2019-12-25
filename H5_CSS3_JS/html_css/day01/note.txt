@@ -1,0 +1,27 @@
+1.块状元素(块级元素):
+一般是其他元素的容器，可容纳内联元素和其他块状元素，块状元素排斥其他元素与其位于同一行，宽度(width)高度(height)起作用。
+div、p、address、blockquote、center、dir、dl、dt、dd、fieldset、form、h1~h6、hr、isindex、menu、noframes、noscript、ol、pre、table、ul
+ 
+2.内联元素(行内元素):
+内联元素只能容纳文本或者其他内联元素，它允许其他内联元素与其位于同一行，但宽度(width)高度(height)不起作用。
+特殊元素：img元素为内联元素但却可以设置其宽高。
+a、img、abbr、acronym、b、bdo、big、br、cite、code、dfn、em、font、i、input、kbd、label、q、s、samp、select、small、span、strike、strong、sub、sup、tt、u、var、textarea
+ 
+3.块状元素与内联（行内）元素的嵌套规则：
+　　a.块状元素可包含内联元素或某些块元素，但内联元素不可包含块元素，只能包含内联元素。
+　　　　<div><h1></h1><p></p></div>     正确
+　　　　<a href="#"><span></span></a>    正确
+　　　　<span><div></div></span>     错误
+　　b.块级元素不能放在<p>里面
+　　　　<p><ol><li></li></ol></p>    错误
+　　　　<p><div></div></p>　　错误
+　　c.有几个特殊块级元素只能包含内联元素，不能包含块级元素。这几个特殊标签是 h1~h6、p、dt
+　　d.li 内可包含 div 标签
+　　　　<li><div></div></li>
+　　e.块级元素与块级元素并列、内联元素与内联元素并列
+　　　　<div><h2></h2><p></p></div>　　正确
+　　　　<div><a href="#"></a><span></span></div>　　正确
+　　　　<div><h2></h2><span></span></div>　　正确
+
+4.HTML嵌套规则：
+如果不按照HTML规则书写代码时，浏览器就不会正确解析，会将不符合嵌套规则(块级元素不能放在行内元素中)的节点放到目标节点的下面，或者变成纯文本。HTML存在许多种类型的标签，有的标签下面只允许特定的标签存在，这就是HTML嵌套规则。

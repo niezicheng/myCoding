@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function() {
+      var arr = [1, 6, 2, 2, 7, 19, 13];
+      Array.prototype.mySort = function() {
+        var array = [];
+        // 数组去重
+        this.forEach(function(item, index) {
+          if(array.indexOf(item) == -1) {
+            array.push(item);
+          }
+        });
+        // 排序[升序]
+        // 计算数组循环比较的次数
+        var count = array.length;
+        while(count) {
+          for(var i=0; i<array.length; i++) {
+            if(i !== array.length-1) {
+              if(array[i]>array[i+1]) {
+                var temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+              }
+            }
+          }
+          count--;
+        }
+        return array;
+        
+      }
+      arr.mySort();
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

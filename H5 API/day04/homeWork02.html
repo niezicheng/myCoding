@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>存储数据到数据库中</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>indexedDb</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var dbName = 'catalogue';
+			var objectStoreName = 'cate_info';
+			//测试环境Google和foxfire
+			var btns = document.getElementsByTagName('button');
+
+			myIndexDb(function(store){
+					query(function(that,event){
+						// console.log(that,'---',event);
+						// result = event.target.result;
+					});
+				});
+
+
+
+
+			//在版本更新的时候创建对象仓库
+			btns[0].onclick = function(){
+				var request = indexedDB.open(dbName,'2.0');
+				request.onsuccess = function(event){
+					console.log("数据库连接成功、如果没有就创建");
+				};
+				//版本更新事件监听
+				request.onupgradeneeded = function(){
+					//创建时间仓库
+					var db = this.result;
+					// console.log(this.result,'--------------');
+					// 判断某个对象仓库是否存在  如果存在则删除，没有则创建
+					if(db.objectStoreNames.contains(objectStoreName)){
+		        db.deleteObjectStore(objectStoreName);
+		      }
+           //创建【参数：仓库名，第二个参数为一个对象】
+           db.createObjectStore(objectStoreName,{
+                    keyPath:"id",		//主键
+                    autoIncrement:true 		//是否自增
+                });
+           console.log('对象仓库已创建');
+				};
+			};
+
+			//获取对象仓库
+			btns[1].onclick = function(){
+				myIndexDb(function(store){
+					console.log('获取对象仓库成功',store);
+				});
+			};
+
+			//添加修改数据
+			btns[2].onclick = function(){
+				myIndexDb(function(store){
+					var arr = [
+						{id:1,name:'根编目',cate_path:null},
+						{id:2,name:'Java课程',cate_path:'1.2'},
+						{id:3,name:'Spring课程',cate_path:'1.2.3'},
+						{id:6,name:'Servlet课程',cate_path:'1.2.6'},
+						{id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+						{id:5,name:'Web课程',cate_path:'1.5'},
+						{id:7,name:'React课程',cate_path:'1.5.7'},
+						{id:8,name:'redux课程',cate_path:'1.5.7.8'}
+					];
+					arr.forEach(function(item,index){
+						addOrUpdate(item);
+					});
+					
+				});
+			};
+
+			//查询数据
+			btns[3].onclick = function(){
+				myIndexDb(function(store){
+					query();
+				});
+			};
+
+			//删除数据
+			btns[4].onclick = function(){
+				myIndexDb(function(store){
+					deleteData();
+				});
+			}
+			
+			//获取对象仓库封装
+			function myIndexDb(handle){
+				var request = indexedDB.open(dbName);
+				request.onsuccess = function(){
+					var db = this.result;
+					var ts = db.transaction(objectStoreName,'readwrite');
+					var store = ts.objectStore(objectStoreName);
+					handle(store);
+				};
+			}
+
+			//添加修改数据
+			function addOrUpdate(obj){
+				myIndexDb(function(store){
+					var req = store.put(obj);
+					req.onsuccess = function(){
+						console.log('添加成功');
+					};
+					req.onerror = function(){
+						console.log('添加失败');
+					};
+				});
+			}
+
+			//查询数据【有参数key为查询单条数据，无参数则是查询所有数据】
+			function query(fun1,key,fun2){
+				var req;
+				myIndexDb(function(store){
+					if(key){
+						var req = store.get(key);
+					}else {
+						var req = store.getAll();
+					}
+					req.onsuccess = function(event){
+						fun1(this,event);
+						// console.log('查询成功',req.result);
+					};
+					req.onerror = function(){
+						fun2();
+						// console.log('查询失败');
+					};
+					// console.log(req);
+					// console.log(req.result);
+				});
+
+			}
+
+			//删除数据【有参数key为删除单条数据，无参数则是删除所有数据】
+			function deleteData(fun1,key,fun2){
+				myIndexDb(function(store){
+					if(key){
+						var req = store.delete(key);
+					}else {
+						var req = store.clear();
+					}
+					req.onsuccess = function(event){
+						fun1(event);
+						// console.log('删除成功',this);
+					};
+					req.onerror = function(){
+						fun2();
+						// console.log('删除失败');
+					};
+				});
+			}
+
+			//删除数据仓库【参数为所需要删除的数据仓库名】
+			function deleteDB(osn){
+				var request = indexedDB.open(dbName);
+				var db = request.result;
+				db.deleteObjectStore(osn);
+			}
+
+		};
+	</script>
+</head>
+<body>
+	<h2>先点击获取对象仓库-对象存储-数据仓库按钮在进行增删改查操作</h2>
+	<button>创建对象仓库</button>
+	<button>获取对象仓库-对象存储-数据仓库</button>
+	<button>添加修改数据</button>
+	<button>查询数据</button>
+	<button>删除数据</button>
+	<button>删除对象仓库</button>
+</body>
+</html>
+</body>
+</html>

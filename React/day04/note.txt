@@ -1,0 +1,38 @@
+refs引用参照的使用
+  this.refs 对象,里面存放该组件内的所有引用  可以通过属性去获取实例
+
+  <div ref=''></div>
+  <MyForm ref=''></MyForm>
+
+  <div ref={(node)=>{console.log(node)}}></div>
+表单的双向数据绑定
+  将数据模型中的数据展示在表单控件内
+  value={this.state.form.username}
+  check={this.state.form.gender = '男'}
+  复选框 
+
+  当表单控件发生更改的时候，修改数据模型
+
+  Sass
+    SassScript
+    脚本语言，经过编译之后，转成css脚本语言  是一个css的预处理工具
+    .sass
+    .scss
+      可以以正常的css去写
+      .div{
+        .one{}
+        .two{}
+      }
+安装sass环境
+  yarn add node-sass
+  .scss【样式之间嵌套使用,也可以在sass文件中使用表达式】
+  import '';
+
+  hash路由【带#】
+
+  浏览器路由
+
+页面
+  学生管理
+  课程管理
+  教师管理

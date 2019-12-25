@@ -1,0 +1,335 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+article,nav,header,img{
+	display: block;
+}
+html,body,.warpper{
+	height: 100%;
+}
+
+/**
+ * 头部内容样式
+ */
+.page-top{
+	height: 50px;
+}
+
+/*头部左边*/
+.page-top .top-left{
+	line-height: 50px;
+	background-color: #3d556d;
+	color: #fff;
+	font-size: 16px;
+}
+
+.page-top .top-left>img{
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 10px 10px 10px 5px;
+}
+
+/*头部右边*/
+.page-top .top-right{
+	line-height: 50px;
+	/*background: coral;*/
+	font-size: 25px;
+}
+.page-top .top-right i{
+	margin:0 20px;
+}
+.page-top .top-right .message{
+	display: inline-block;
+	position: relative;
+}
+.page-top .top-right .mes-count{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	text-align: center;
+	background-color: red;
+	border-radius: 50%;
+	color: white;
+	font-weight: bold;
+	font-size: 12px;
+	position: absolute;
+	top: 13px;
+	left: 33px;
+}
+/*登录用户*/
+.page-top .top-right .login-user{
+	margin-right: 45px;
+	font-size: 18px;
+	color: #ef1414;
+}
+.page-top .top-right img{
+	display: inline-block;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+
+/**
+ * 页面内容样式
+ */
+.page-content{
+	height: calc(100% - 50px);
+}
+.page-content .content-left,.page-content .content-right{
+	height: 100%;
+}
+.page-content .content-left{
+	background-color: #32323f;
+	padding: 20px;
+}
+
+.page-content .content-left ul{
+	
+}
+
+.page-content .content-left li a{
+	font-size: 16px;
+	/*width: 300px;*/
+}
+
+.page-content .content-left li a i{
+	font-size: 20px;
+	margin-right: 5px;
+}
+.page-content .content-left li i[class*=fa-home],.page-content .content-left li i[class*=fa-book]{
+	margin-left: -5px;
+}
+.page-content .content-left li a i:last-child{
+	float: right;
+	line-height: 23px;
+}
+
+/*内容右边*/
+.page-content .content-right{
+	background-color: #eee;
+	overflow: auto;
+	position: relative;
+}
+/*内容无数据显示提示信息样式*/
+.content-right .prompt-data{
+	position: absolute;
+	font-size: 30px;
+	color: #aaa;
+	top: 250px;
+	left: 400px;
+}
+
+
+/**
+ * 操作按钮盒子
+ */
+.btn-box{
+	padding: 15px;
+	padding-right: 0px;
+	border-bottom: 2px solid #ddd;
+}
+.oper{
+	/*width: 200px;*/
+}
+.oper .selAll{
+	display: none;
+}
+.btn-box .oper>span{
+	font-size: 16px;
+	padding: 0 10px;
+	color: #337ab7;
+}
+.btn-box .oper>span:hover{
+	color: #1a3f5e;
+	cursor: pointer;
+}
+.btn-box .oper>span:first-child{
+	color: #ac2925;
+}
+.btn-box .oper>span:first-child:hover{
+	color: #6b1b19;
+}
+
+
+/**
+ * 表格样式内容
+ */
+.table-box{
+	margin-top: 10px;
+}
+.table-box .table{
+	margin-bottom: 0px;
+}
+.table-box tbody td:first-child{
+	visibility: hidden;
+}
+.table-box td i{
+	cursor: pointer;
+	margin-right: 5px;
+	font-size: 18px;
+}
+.table-box td i:last-child{
+	margin-right: 0px;
+}
+.table-box td i[title=编辑]{
+	color: #337ab7;
+}
+
+.table-box td i[title=删除]{
+	color: #c9302c;
+}
+
+.table-box tr>*:first-child{
+	width: 55px;
+	border-style: none;
+	background-color: #eee;
+}
+
+
+/*
+*
+*模态框label修改
+*
+*/
+.modal label{
+	padding-right: 10px;
+}
+
+.modal .radio{
+	display: inline-block;
+}
+.modal .radio:first-child{
+	margin-right: 5px;
+}
+.modal .prompt-pwd{
+	color: red;
+}
+.modal .my-eye{
+	position: relative;
+}
+.modal .my-eye i{
+	position: absolute;
+	top:10px;
+	right: 28px;
+}
+.modal .myPwd-box{
+	display: none;
+}
+.modal .update-pwd{
+	line-height: 25px;
+}
+.update-pwd .checkbox{
+	line-height: 18px;
+}
+.update-pwd .checkbox span::after{
+	top:7px;
+}
+
+/**
+ * user用户管理样式
+ */
+.user-content{
+	padding-top: 30px;
+}
+.user-content .user-item img{
+	display: block;
+	margin: 15px auto;
+	height:140px;
+}
+.user-content .user-item .item{
+	margin-left: 8px;
+	/*white-space: pre-wrap;*/
+	word-wrap: break-word;
+}
+.user-content .user-item .thumbnail{
+	margin-bottom: 20px;
+	font-size: 16px;
+	line-height: 2.0;
+	position: relative;
+}
+
+/*隐藏删除按钮，当鼠标悬浮式显示*/
+.user-content button[class*=close]{
+	position: absolute;
+	top: 5px;
+	right: 8px;
+	display: none;
+	
+}
+
+/*鼠标悬浮显示删除按钮*/
+.user-content .user-item:hover button{
+	display: block;
+}
+
+/**
+ * 首页内容样式
+ */
+.home{
+	padding:30px 15px; 
+}
+.home .left-box,#hbroke,#hColumnar,#hSector{
+	border-radius: 5px;
+}
+
+.home .left-box{
+	background-color: #fff;
+	overflow: hidden;
+	padding:15px 25px;
+	margin-bottom: 15px;
+}
+.home .left-box:last-child{
+	margin-bottom: 0px;
+}
+.home .left-box .icon{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 25px;
+	background-color: #63b919;
+	float: left;
+}
+.home .left-box .icon i{
+	color:#fff;
+}
+.home .left-box .desc{
+	float: left;
+	margin-left: 20px;
+}
+.desc span{
+	display: block;
+	height:25px;
+	line-height: 1.0;
+	font-size: 25px;
+	color: #63b919;
+}
+.center-box,.right-box .right-box-top,.right-box .right-box-btm{
+	position: relative;
+}
+.right-box .right-box-top{
+	margin-bottom: 5px;
+}
+.center-box .desc{
+	position: absolute;
+	top: 20px;
+	left: 25px;
+	font-size: 15px;
+}
+.right-box .desc span{
+	font-size: 20px;
+}
+
+.right-box .desc{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 12px;
+}
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航栏(流式布局flex)</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+			display: flex;
+			background-color: teal;
+			height: 50px;
+			color: #fff;
+			justify-content: space-between;
+			justify-content: space-around;
+		}
+		li{
+			/*border: 1px solid red;*/
+			line-height: 50px;
+			padding: 0px 20px;
+			cursor: pointer;
+		}
+		li:hover{
+			background-color: #c2c2c2;
+			color: teal;
+			border-radius: 5px;
+			box-shadow: 3px 3px 1px #ccc;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>首页</li>
+		<li>列表页</li>
+		<li>新闻页</li>
+		<li>关于我们</li>
+		<li>其他</li>
+	</ul>
+</body>
+</html>

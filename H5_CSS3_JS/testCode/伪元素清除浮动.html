@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪元素清除浮动</title>
+	<style type="text/css">
+		.inner{
+			width: 200px;
+			height: 100px;
+			background: cyan;
+			float: left;
+		}
+		.one{
+			width: 200px;
+			height: 100px;
+			background: coral;
+		}
+		/*
+			伪元素::after或:after【CSS2.1中的伪元素表示】(二者等价只不过是css版本的表示形式不一样)
+			在未设置高度的父容器使用::after伪元素添加一个额外的元素，对该元素使用清除兄弟浮动
+			其实在需要清除浮动的元素后面使用一个没有高度的空div再进行兄弟清除浮动也是可以的，而且这样还不需要借助于父元素
+		*/
+		 .outer::after{
+			content: "";
+			display: block;
+			clear:both;
+		} 	
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">inner</div>
+	</div>	
+	<div class="one">我是inner  div后面的兄弟div</div>
+</body>
+</html>

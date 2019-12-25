@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本类型</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var text = document.body.firstChild;
+			console.log(text);
+			text.appendData('world');	//追加文本内容
+			text.splitText(5);	//参数为索引
+			console.log(document.body.childNodes);
+			document.body.normalize();
+			console.log(document.body.childNodes);
+			console.log(text);
+			console.log(text.substringData(5,5));
+			console.log(text);
+			console.log(text.deleteData(5,5));	//删除部分文本内容
+			console.log(text);
+		};
+	</script>
+</head>
+<body>hello</body></html>

@@ -1,0 +1,70 @@
+/*
+	宠物医院登录页样式
+*/
+body{
+	background-image: url(../images/bg-image.jpg);
+}
+.content-box .top{
+	height: 20px;
+}
+.content-box .top a{
+	color: #fff;
+}
+.id-select{
+	margin: 30px 0 40px 0;
+	font-size: 14px;
+	height: 20px;
+	line-height: 20px;
+}
+.id-select label{
+	display: inline-block;
+	position: relative;
+	width: 120px;
+	padding-left: 30px;
+}
+#boss{
+	margin-right: 20px;
+}
+.id-select input{
+	position: absolute;
+	top: 4px;
+	left: 30px;
+}
+
+.item{
+	width: 280px;
+	/*height: 40px;*/
+	margin:30px auto;
+	position: relative;
+}
+.item input{
+	width: 100%;
+	height: 40px;
+	border: 2px solid #ebebeb;
+	text-indent: 15px;
+	color: #767676;
+}
+button{
+	height: 35px;
+	width: 280px;
+	border-style: none;
+	background-color: #FF552E;
+	font-size: 16px;
+	color: #fff;
+	margin-top: 20px;
+}
+.forgetPwd{
+	position: absolute;
+	top: -15px;
+	right: 0px;
+}
+
+/*下方同意协议*/
+.protocal{
+	color: #999;
+	margin-left: 3px;
+}
+.protocal a{
+	color: #FF552E;
+	font-size: 14px;
+}

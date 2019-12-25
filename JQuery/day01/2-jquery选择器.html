@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery选择器</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		div.one{
+			width: 200px;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		/*$(function(){
+			alert(1);
+		});*/
+		//文档加载完毕后执行
+		$(document).ready(function(){
+			//JQuery中的事件   给div绑定点击事件
+			console.log($('div'));
+			//给所有选中的div绑定选中事件
+			$('div').click(function(event){
+				// alert(1);
+				console.log(this);	//点击的相应DOM节点
+			});
+
+			//样式操作  给div背景
+	/*	$('div').css('background','red');
+			$('div').css('margin','10px');*/
+			$('div').css({
+				background:'red',
+				margin:'10px'
+			});
+
+			//获取相应css属性值
+			console.log($('div').css('width'));
+		});
+	</script>
+</head>
+<body>
+	<div>hello</div>
+	<div class="one">world</div>
+</body>
+</html>

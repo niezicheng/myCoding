@@ -1,0 +1,53 @@
+/*
+	主人要执行的相应单个操作样式
+*/
+body{
+	background-image: url(../images/pet-owner.jpg);
+}
+.content-box{
+	margin-left: 160px;
+}
+.warpper h3{
+	margin-bottom: 50px;
+}
+.item{
+	height: 30px;
+	line-height: 30px;
+	width: 280px;
+	margin: 0 auto 35px;
+}
+/*.item .toggle{
+	
+}*/
+.item .input-text{
+	display: inline-block;
+	width: 230px;
+	height: 100%;
+	margin-left: 10px;
+	border: 2px solid #ccc;
+}
+.item>.sub-btn,.item>.res-btn{
+	width: 100px;
+	height: 30px;
+	/*line-height: 30px;*/
+	margin: 30px 15px;
+	background-color: #1783F0;
+	border-style: none;
+	border-radius: 3px;
+	/*color: #fff;*/
+}
+.bottom{
+	width: 300px;
+	margin: 0 auto;
+}
+.bottom>span{
+	color: #999;
+}
+.bottom>span b{
+	color: #FF552E;
+}
+.bottom .return>a{
+	font-size: 16px;
+	font-weight: 400;
+	color: #999;
+}

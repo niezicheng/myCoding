@@ -1,0 +1,55 @@
+img
+	src=""
+		路径
+	alt=""
+		提示信息
+	width:宽度
+	height：高度
+table
+	thead
+	tbody
+		tr
+			th/td
+	tfoot
+table
+	border="1px"
+	cellpadding="0px"
+	cellspacing="0px"
+	align="center"
+tr
+	aligen="left"
+td
+	align="right"
+caption
+	align="bottom"
+
+header
+	头部
+footer
+	底部
+nav
+	导航
+article
+	文章
+section
+	章节
+address
+	地址
+aside
+	侧边栏、广告栏
+header,footer,nav,article,section,address,aside.img{
+	display:block;
+}
+
+form表单
+	form
+		input
+			type=""
+				text 单行文本输入框
+				password 密码框
+				submit 提交按钮
+				radio 单选按钮
+				
+
+
+

@@ -1,0 +1,83 @@
+redux-thunk,redux-saga(ES6-Generator函数)
+
+function* test(){}
+
+react-redux
+  类组件=>函数组件
+  用户写的组件全部为函数组件(无状态组件)=>数据交由redux来调用
+
+UI组件与容器组件分开
+  UI组件：函数组件
+  容器组件提供数据【调用react-redux的connect方法将一个UI组件内部包裹一个容器组件；UI组件想要
+  获取数据从props中获取】
+
+直接将数据仓库绑定到根组件，内部的子组件都可以使用【store=>根组件】
+
+React  UI库【框架】
+  想要状态管理机制，使用Redux
+  如果想要异步交互使用Redux-thunk【Redux-saga】中的一个
+  如果要简化代码，获取业务逻辑和UI组件分离，那么使用react-redux
+
+技术栈：
+  react 
+  redux 
+  redux-thunk[redux-saga] 
+  react-redux
+
+
+备忘录
+  action
+  reducer
+  store
+
+  actionCreators文件夹
+    import {GET_A} from './actionTypes'
+    AactionCreator.js
+      export const getA = (value)=>{
+        return {
+          type:'GET_A',
+          value
+        }
+      }
+    BactionCreator.js
+    import {GET_A} from './actionTypes'
+      export const getB = (value)=>{
+        return {
+          type:'GET_B',
+          value
+        }
+      }
+
+    文件夹 actionTypes
+     index.js
+      export const GET_A = 'GET_A'
+      export const GET_B = 'GET_B'
+
+    文件夹 reducers
+      Areducer.js
+        AinitState = {};
+        export default (state=AinitState,action)=>{
+          ...
+          return state;
+        }
+      Breducer.js
+        BinitState = {};
+        export default (state=BinitState,action)=>{
+          ...
+          return state;
+        }
+
+    store
+      import {createStore} from 'redux';
+      import Areducer from './Areducer'
+      import Breducer from './Breducer'
+      let totle = combineReducers({
+        Areducer,
+        Breducer,
+      })
+      let store = createStore(totle)
+
+      state={
+        Areducer:{},
+        Breducer:{}
+      }

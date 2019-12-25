@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制节点</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.one').click(function(){
+				alert(1);
+			});
+			//jq  clone()复制元素本身及子节点		true 深复制 复制事件     默认false  浅复制  不复制事件  
+			//js的原生的cloneNode()    深复制代表复制子节点   浅复制代表不复制子节点    与事件没有关系
+			var $clone = $('.one').clone(true);		
+			//将克隆节点追加到body最末尾
+			// $('body').append($clone);
+
+			//替换节点
+			$('.one').replaceWith($('<div>hello</div>'));
+			
+			$('<div>world</div>').replaceAll('.two');
+		});
+	</script>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="one">one</div>
+	<div class="two">two</div>
+</body>
+</html>

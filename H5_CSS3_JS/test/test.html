@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function() {
+      var name = "222";
+      var a = {
+      name: "111",
+      say:function(){
+      console.log(this, typeof (this.name));
+      }
+      }
+      var b = {
+      name:"333",
+      say:function(fun){
+      fun(); 
+      }
+      }
+      var fun = a.say;
+      fun();       // 
+      a.say()	;	   // 输出111 字符串
+      b.say(a.say);
+      b.say = a.say;
+      b.say(); // 输出333 字符串【上面函数为值传递，】
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

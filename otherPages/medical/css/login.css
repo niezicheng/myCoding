@@ -1,0 +1,107 @@
+/*去除元素自带边距*/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: arial,tahoma,宋体;
+	background-image: url(../images/bg.jpg);
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+.lf{
+	float: left;
+}
+.rg{
+	float: right;
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+/*页面容器*/
+.container{
+	width: 1280px;
+	height: 500px;
+	/*background: #bef;*/
+	padding-top: 30px;
+}
+/*登录模块区域*/
+.warpper{
+	width: 487px;
+	height: 500px;
+	background-color: #fff;
+	margin-left: 600px;
+	/*margin: 0 auto;*/
+	box-shadow: 2px 3px 3px #ccc; 
+}
+.logTitle{
+	margin-bottom: 20px;
+}
+/*单个表单输入框整体样式*/
+.warpper .item{
+	width: 300px;
+	height: 32px;
+	line-height: 32px;
+	border-bottom:2px solid #ccc;
+	padding: 8px;
+	margin: 0 auto;
+	margin-bottom: 12px;
+	position: relative;
+}
+.item label{
+	float: left;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.item input{
+	height: 30px;
+	width: 225px;
+	text-indent: 5px;
+	border-style: none;
+}
+.item>.myEye{
+	display: none;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+/*选择用户身份*/
+.warpper .identify{
+	width: 300px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.identify label{
+	margin-right: 12px;
+	position: relative;
+	padding-left: 19px;
+}
+.identify label>input{
+	position: absolute;
+	top: 1px;
+	left: 0px;
+}
+.login{
+	width: 230px;
+	margin: 0 auto;
+
+}
+.login>button{
+	width: 230px;
+	height: 30px;
+	background-color: #C9F2F2;
+	opacity: 1;
+	border-style: none;
+	color: #666;
+}
+
+.login>button:hover{
+	opacity: 0.8;
+}
+
+

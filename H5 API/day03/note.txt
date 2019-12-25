@@ -1,0 +1,26 @@
+拖放API
+	拖放元素
+		是一个可拖放的元素【img a标签默认为可拖放元素】
+		其他属性设置为可拖放元素  draggable = 'true'
+
+		拖放事件：
+			dragstrat	拖放开始
+			drag 	正在拖放中
+			dragend		拖放结束
+
+
+	目标元素:
+		放置拖放元素位置的元素
+		<!-- 在firefox底下，div不可以放置拖放元素
+		在Google底下，div不可以放置拖放元素
+		需要处理兼容问题 -->
+		设置可放置的目标元素
+			在dragover事件内，阻止默认行为
+
+		放置事件：
+			dragenter 	进入目标元素事件
+			dragover	鼠标在目标元素内部活动
+			drop		放置事件
+
+	拖放事件的顺序：
+		dragstrat->drag->dragenter->dragover->drop->dragend

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性操作</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//通过属性名获取属性值【只能获取到类数组对象中的第一个DOM节点的属性值】
+
+			//使用attr操作正常属性
+			console.log($('div').attr('title'));	//hello
+			console.log($('div').attr('data-id'));	//1001
+			console.log($('input').attr('checked')); //checked
+
+			//推荐使用prop操作booleans属性
+			console.log($('div').prop('title'));	//hello
+			console.log($('div').prop('data-id'));		//undefined
+			console.log($('input').prop('checked')); //checked
+
+			//通过属性设置属性值【设置类数组对象中的所有DOM节点的对应属性值】
+			// $('div').attr('title','设置后的title值');
+			$('div').attr('data-id','attr设置后的data-id值');
+			// $('input').attr('checked',false);
+
+
+			/*
+				使用prop可以修改正常属性的属性值，但如果修改标签中自定义属性则不能而是创建自身定义的相应属性且只能有prop获取
+				不会在标签中显示出来
+			*/
+			// $('div').prop('title','prop设置后的title值');
+
+			//自定义属性
+			$('div').prop('data-id','prop设置后的data-id值');	//会生成prop自定义的属性且只能由prop获取其属性的属性值
+			console.log($('div').prop('data-id'),'----------');	
+			console.log($('div').attr('data-id'),'**********');
+
+			// $('input').prop('checked',false);
+
+
+			//删除属性
+			// $('div').removeAttr('title');
+			// $('div').removeAttr('data-id');
+			// $('input').removeAttr('checked');
+
+			$('div').removeProp('title');	//不生效
+			$('div').removeProp('data-id');	//不生效
+			$('input').removeProp('checked'); //不生效
+
+
+			//prop可以设置属性但不会在标签中显示且只能通过prop获取其属性值
+			$('div').prop('data-ii',111);
+			// $('div').attr('data-ii',111);
+			console.log($('div').prop('data-ii'));	//111
+			console.log($('div').attr('data-ii'));	//undefined
+			$('div').removeProp('data-ii');  //只能删除通过prop设置的属性
+			console.log($('div').prop('data-ii'));	//undifined
+			
+		});
+	</script>
+</head>
+<body>
+	<div title="hello" data-id = '1001'>hello</div>
+	<div title="world" data-id = '1002'>world</div>
+	<input type="checkbox" name="" checked >默认被选中的
+</body>
+</html>

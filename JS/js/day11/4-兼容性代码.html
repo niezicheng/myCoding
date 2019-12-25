@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//事件兼容性对象eventUtil
+		var eventUtil = {
+			// 1.事件的绑定
+			bind:function(el,type,handle){
+				if (el.addEventListener) {
+					el.addEventListener(type,handle);
+				}else if(el.attachEvent){
+					el.attachEvent('on'+type,handle);
+				}else{
+					el.['on'+type] = handle;
+				}
+			},
+			// 2.事件的解绑
+			unbind:function(el,type,handle){
+				if (el.removeEventListener) {
+					el.removeEventListener();
+				}else if(el.detachEvent){
+					el.detachEvent('on'+type,handle);
+				}else{
+					el.['on'+type] = null;
+				}
+			},
+			// 3.事件对象
+			getEvent:function(event){
+				return event?event:window.event;
+			},
+			// 4.事件目标
+			getTarget:function(event){
+				return event.target?event.target:event.srcElement;
+			},
+			// 5.事件冒泡
+			stopProp:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancelBubble = true;
+				}
+			},
+			// 6.事件默认
+			preventDef:function(event){
+				if (event.preventDefault) {
+					event.preventDefault();
+				}else{
+					event.returnValue = false;
+				}
+			}
+		};
+
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0];
+				console.log(div);
+
+			eventUtil.bind(div,'click',function(event){
+				var e = eventUtil.getEvent(event); //e就是事件对象
+				console.log(e);
+				console.log(this);
+				alert(1);
+			});
+
+
+		};
+	</script>
+</head>
+<body>
+	<div>div</div>
+</body>
+</html>

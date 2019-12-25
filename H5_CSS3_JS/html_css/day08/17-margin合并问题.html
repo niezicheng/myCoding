@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>margin合并</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			/*float则margin累加起来，不会进行合并*/
+			/*float: left;*/
+		}
+		.one{
+			margin: 20px;
+		}
+		.two{
+			margin: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="two">two</div>
+</body>
+</html>

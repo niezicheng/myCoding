@@ -1,0 +1,77 @@
+JS
+	JavaScript 
+	LiveScript   网景
+	JScript   IE
+	...ECMAScript    JS的核心标准
+
+
+	组成：
+		ECMAScript	核心语法规则
+		DOM  文档对象模型【对文档节点的操作】
+		BOM  浏览器对象模型【对浏览器的操作】
+
+
+解释性语言：
+	被内置于浏览器中的JS解析器解析执行，执行前无需编译。
+弱类型语言：
+自上而下顺序执行：
+
+
+JS 注释
+ // 单行注释
+ /*
+ 	多行注释
+ */
+
+JS中的关键字和保留字
+	关键字  有特殊功能的单词
+	 var if else for while do switch...
+	 break continue...
+	
+	保留字 将来可能有特殊功能的单词
+		class abstract static super interface...
+
+JS的变量
+	var关键字声明一个变量
+		var a = 1;   //对变量a进行声明和初始化
+		a = 'helloWorld';
+		var a,b,c;
+
+	变量的命名规则：
+		1.由字母、数字、下划线、$符号组成
+		2.不能使用数字开头
+		3.有特殊意义  使用驼峰命名法
+		4.不能使用关键字和保留字
+		5.名称对大小写敏感
+
+数据类型：
+	基本数据类型5种：
+  undefined类型  未定的类型 【变量声明单没有初始化的变量，显示的将undefined赋值给一个变量】
+
+	null类型 空，一般用来存放一个空对象的指针
+
+	boolean类型  两个取值  true 、false
+
+	number类型 数字类型、数值类型
+
+	string类型 字符串类型
+		eg:var str = 'helloWorld';
+	
+	引用数据类型有3种-1种：
+		Object类型 对象
+			var obj = {};
+			var o = {name:'nzc',age:21};
+		Array类型 数组
+			var arr = [1,2,3];
+		Function类型 函数
+			function test(){}
+			var test = function(){}
+
+typeof 取值
+
+undefined
+number 
+boolean
+string
+object  object/null/array
+function

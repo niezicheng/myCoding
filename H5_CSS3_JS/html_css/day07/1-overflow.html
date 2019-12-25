@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overflow(溢出处理)</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+		.over-div{
+			/*溢出内容隐藏*/
+			/*overflow: hidden;*/
+			/*如果有溢出就产生滚动条，没有就不产生滚动条*/
+			overflow: auto;
+			/*无论有没有溢出都产生滚动条*/
+			/*overflow: scroll;*/
+		}
+		.one{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="over-div">
+		text-decoration:属性值(none、underline【下划线】、overline【上划线】、line-through【删除线】、)
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+			文本取值样式线条对应的属性：
+				a.text-decoration-color:颜色值
+				b.text-decoration-style:属性值(wavy【波浪线】、double【双实线】)
+				c.text-decoration-line:属性值(line-through【删除线】)
+	</div>
+	<div class="one">
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒布局-伸缩盒布局-flex布局</title>
+	<style type="text/css">
+
+		.container{
+			height: 650px;
+			border: 1px solid red;
+			display: flex;
+			/*flex-direction: column;*/
+			flex-direction: row;
+			/*flex-direction: row-reverse;*/
+			/*flex-direction: column-reverse;*/
+
+
+			/*主轴对齐方式*/
+			/*justify-content: flex-start;*/
+			/*项目在主轴的终点对其*/
+			/*justify-content: flex-end;*/
+			/*项目在主轴上居中对其*/
+			/*justify-content: center;*/
+
+			/*项目在主轴上，项目与项目之间有间距*/
+			/*justify-content: space-between;*/
+			/*项目四周有空间*/
+			/*justify-content: space-around;*/
+
+
+			/*交叉轴上的对齐方式*/
+			/*交叉轴的终点对齐*/
+			/*align-items: flex-end;*/
+			/*align-items: flex-start;*/
+			/*align-items: center;*/
+
+			/*如果项目没有设置宽高  默认对齐宽度  stretch 拉伸项目高度，占满父元素高度*/
+			/*align-items: stretch;*/
+			/*基准线对齐   项目内部的文本对齐  项目设置高度*/
+			/*align-items: baseline;*/
+
+
+			/*项目多了的情况下，一个主轴放不下可以进行换行显示*/
+			/*flex-wrap: wrap;*/
+
+			/*多主轴在交叉轴上的对齐方式*/
+			/*align-content: flex-start;*/
+			/*align-content: flex-end;*/
+			/*align-content: center;*/
+			/*align-content: space-between;*/
+			/*默认的【stretch】*/
+			/*align-content: stretch;*/
+
+			flex-flow: row wrap;
+
+		}
+		.container>div{
+			/*width: 200px;*/
+			flex: 1;
+			height: 200px;
+			border: 1px solid blue;
+		}
+		div.one{
+			/*最小占据主轴上的空间*/
+			/*flex-basis: 200px;*/
+			/*flex: 200px 1;*/
+
+			flex: 2;
+			height: 100px;
+			/*padding: 10px;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="one">one</div>
+		<div class="two">two</div>
+		<div class="three">three</div>
+
+		<!-- <div class="one">one</div>
+		<div class="two">two</div>
+		<div class="three">three</div>
+
+		<div class="one">one</div>
+		<div class="two">two</div>
+		<div class="three">three</div>
+
+		<div class="one">one</div>
+		<div class="two">two</div>
+		<div class="three">three</div> -->
+	</div>
+</body>
+</html>

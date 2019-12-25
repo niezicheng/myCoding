@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第一个vue代码</title>
+  <!-- 1.导入vue的script标签 -->
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <!-- 2.设计视图(view) -->
+  <div id="app">
+    <p>{{msg}}</p>
+    <p>{{num}}</p>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+  <!-- 3.编写vm与m -->
+  <script>
+    //实例化一个Vue对象
+    new Vue({
+      el:"#app",
+      data:{
+        msg:'hello',
+        num:1,
+      },
+      //vue实例创建之前但vue实例时存在的，但data和menthods中的数据还未添加到实例中
+      beforeCreate(){
+
+      },
+      // vue生命周期钩子函数，页面还未挂载到页面上，在该阶段执行页面的初始化
+      created(){
+        this.changeNum();
+      },
+      methods:{
+        changeNum(){
+          setInterval(()=>{
+          this.num++;
+        },1000);
+        }
+      }
+    });
+  </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字体</title>
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+		i{
+			font-size: 50px;
+			color: red;
+		}
+		div{
+			/*字体家族*/
+			/*font-family:宋体; */
+
+			/*有衬线*/
+			/*font-family: serif;*/
+			/*无衬线*/
+			/*font-family: sans-serif;*/
+
+			/*等宽字体*/
+			/*font-family: monospace;*/
+
+			/*草书*/
+			/*font-family: cursive;*/
+
+			/*梦幻的*/
+			/*font-family: fantasy;*/
+
+			/*字体栈*/
+			font-family: 翩翩体-简,华文行楷,宋体;
+
+			/*网络字体 WebFont*/
+			font-family: webfont;
+		}
+
+		/*声明字体家族*/
+		@font-face{
+			/*字体家族名字*/
+			font-family: 'webfont';
+			/*地址*/
+			src:url('./font/1.ttf');
+		}
+	</style>
+</head>
+<body>
+	<i class="fa fa-bandcamp" aria-hidden="true"></i>
+	<div>你好，hello</div>
+	<img width="50px" src="./images/开心果.png">
+</body>
+</html>

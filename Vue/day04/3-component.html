@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+  <style>
+    .alert{
+      margin:1em;
+      padding:.5em;
+      background:coral;
+      color:#fff;
+      border-radius: 5px;
+    }
+    .d-none{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <my-component>hello</my-component>
+    <my-component>world</my-component>
+    <my-component>警告信息</my-component>
+    <my-component>提示信息</my-component>
+  </div>
+  <script>
+    Vue.component('my-component',{
+      template:`
+        <div @click='closeHandle' :class="{ alert:true,'d-none':isHide }">
+          <slot></slot>
+        </div>
+      `,
+      data:function(){
+        return {
+          isHide:false
+        }
+      },
+      methods:{
+        closeHandle(){
+          this.isHide = true; 
+        }
+      }
+    });
+
+    new Vue({
+      el:'#app'
+    })
+  </script>
+</body>
+</html>

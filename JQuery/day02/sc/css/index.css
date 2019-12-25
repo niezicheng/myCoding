@@ -1,0 +1,39 @@
+/*公共的样式*/
+*{
+	margin: 0;
+	padding: 0;
+}
+header,nav,article,img{
+	display: block;
+}
+html,body{
+	height: 100%;
+}
+/*首页的样式*/
+/*头部的样式*/
+header{
+	height:60px;
+	background-color: teal;
+}
+/*体部样式*/
+article.sc-body{
+	background-color: coral;
+	height: calc(100% - 60px);
+	display: flex;
+}
+.sc-body nav{
+	width: 180px;
+	text-align: center;
+}
+.sc-body ul li{
+	cursor: pointer;
+	list-style: none;
+	line-height: 30px;
+}
+.sc-body ul li:hover{
+	color: teal;
+}
+.sc-body .content{
+	flex:1;
+	background-color: #ccc;
+}

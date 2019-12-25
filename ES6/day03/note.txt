@@ -1,0 +1,40 @@
+对象的扩展
+	属性简写
+	let name = 'zhangsan';
+	let age = 12;
+	let obj = {
+		name,
+		age
+	};
+	方法的简写
+	 let obj = {
+	 	sayName(){
+
+	 	}
+	 };
+	 属性名表达式
+	 let name = 'test';
+	 let obj ={
+	 	[name]:'zhangsan',
+	 	[name+'hello']:'hello'
+	 };
+
+	 Object.is(a,b) ===
+	 Object.is(+0,-b) false
+	 Object.is(NaN,NaN)	true   isNaN();
+	
+
+对象浅复制
+	引用的赋值
+
+对象深复制
+	复制内部的内容
+	let obj = {};
+	let obj2 = {};
+	for(key in obj){
+		obj2[key] = obj[key];
+	}
+
+	let obj2 = parse(JSON.stringify(obj));
+
+

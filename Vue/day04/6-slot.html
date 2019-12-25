@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>作用域插槽</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 1.编写v-for来遍历 -->
+    <!-- 2.使用组件遍历 -->
+    <li-list :data='customers'>
+      <template v-slot="slot">
+        <li>
+          <span>{{ slot.row.id }}</span>
+          <span>{{ slot.row.name }}</span>
+          <span>{{ slot.row.age }}</span>
+        </li>
+      </template>
+    </li-list>
+    <li-list :data='products'>
+      <template v-slot="slot">
+        <li>
+          <span>{{ slot.row.id }}</span>
+          <span>{{ slot.row.name }}</span>
+          <span>{{ slot.row.price }}</span>
+          <span>{{ slot.row.descrip }}</span>
+        </li>
+      </template>
+    </li-list>
+  </div>
+  <script>
+    Vue.component("li-list",{
+      template:`
+        <ul>
+          <slot v-for='item in data' :row="item"></slot>
+        </ul>
+      `,
+      props:["data"],
+    })
+
+
+    new Vue({
+      el:"#app",
+      data:{
+        customers:[{
+          id:1,name:'terry',age:22
+        },{
+          id:2,name:'terry',age:22
+        },{
+          id:3,name:'terry',age:2
+        }],
+        products:[{
+          id:1,name:'T-shite',price:26,descrip:"夏天穿的衣服"
+        },{
+          id:2,name:'毛衣',price:26,descrip:"冬天穿的衣服"
+        },{
+          id:3,name:'裤子',price:26,descrip:"全年都可以穿"
+        }],
+      }
+    });
+  </script>
+</body>
+</html>

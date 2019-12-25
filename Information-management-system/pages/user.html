@@ -1,0 +1,411 @@
+<!-- 栏目管理 -->
+<div class="user-manage">
+	<!-- 按钮组 -->
+	<div class="btn-box">
+		<button class="add-btn btn btn-primary btn-sm">新增</button>
+		<button class="batch-btn btn btn-danger btn-sm">批量删除</button>
+		<div class="oper pull-right">
+			<span class="selAll">全选</span>
+			<span class="edit">编辑</span>
+		</div>
+	</div>
+	<div class="user-content">
+		<!-- 相应用户数据信息显示区域 -->
+		<!-- <div class="container">
+
+		</div> -->
+	</div>
+	
+		<!-- 模态框 -->
+		<div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn btn-default close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">模态框标题</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 录入信息的表单 -->
+						<form action="" class="form-horizontal">
+							<!-- 用户名称 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="username">用户名:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" id="username" name="username">
+								</div>
+							</div>
+							<div class="myPwd-box">
+								<!-- 密码框 -->
+								<div class="form-group new-pwd">
+									<label class="col-md-2 control-label" for="password">密码:</label>
+									<div class="col-md-10 my-eye">
+										<input type="password" class="form-control" id="password" name="password">
+										<i class="fa fa-eye-slash" aria-hidden="true"></i>
+										<!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+									</div>
+								</div>
+								<!-- 确认密码 -->
+								<div class="form-group">
+									<label class="col-md-2 control-label" for="confirm-pwd">确认密码:</label>
+									<div class="col-md-10 my-eye">
+										<input type="password" class="form-control" name="confirm-pwd" id="confirm-pwd">
+										<i class="fa fa-eye-slash" aria-hidden="true"></i>
+										<!-- <span class="prompt-pwd">请确认两次输入的密码一致</span> -->
+									</div>
+								</div>
+							</div>
+							
+							<!-- 真实姓名 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="nickname">真实姓名:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" id="nickname" name="nickname">
+								</div>
+							</div>
+							<!-- 确认密码 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="email">邮箱:</label>
+								<div class="col-md-10">
+									<input type="email" class="form-control" name="email" id="email">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+						<button class="btn btn-primary" id="toSave">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script type="text/javascript">
+
+/**
+ * 设置模态矿中的密码显示与否【小眼睛】
+ */
+$('.modal').on('click','.my-eye i',function(){
+	// console.log($(this).parent().children().first());
+	//获取点击图标相应的输入框
+	var input = $(this).parent().children().first();
+	var type = $(input).attr('type');
+	// console.log(input,type);
+	//根据输入框type类型变换相应type类型及图标样式
+	if (type === 'password') {
+		$(input).attr('type','text');
+		$(this).removeClass('fa-eye-slash');
+		$(this).addClass('fa-eye');
+	}else {
+		$(input).attr('type','password');
+		$(this).removeClass('fa-eye');
+		$(this).addClass('fa-eye-slash');
+	}
+});
+
+
+
+/**
+* 获取添加表单中的值并进行数据添加或修改单条数据
+*/
+$("#toSave").click(function(){
+	//获取数据封装成对象
+	var username = $('.modal [name=username]').val();
+	//修改用户时获取相应用户的id
+	var uid = +($('.modal [name=username]').prop('data-uid'));
+	var enabled = $('.modal [name=username]').prop('data-enable');
+	var oldPwd = $('.modal [name=username]').prop('data-oldPwd');
+	var password = $('.modal [name=password]').val();
+
+	var confirmPwd = $('.modal [name=confirm-pwd]').val();
+	var nickname = $('.modal [name=nickname]').val();
+	var email = $('.modal [name=email]').val();
+
+	var userPwd = password;
+	console.log(uid,enabled,password,'---',oldPwd,confirmPwd,'----',nickname,email,'---');
+	if(option === '新增'){
+		var obj = {
+			username:username,
+			password:password,
+			nickname:nickname,
+			email:email
+		}
+	}
+	if(option === '修改'){
+		password = password?password:oldPwd;
+		var obj = {
+			id:uid,
+			username:username,
+			password:password,
+			nickname:nickname,
+			email:email,
+			enabled:enabled
+		}
+	}
+		// console.log(obj);
+	//将表单数据封装成对象
+	if(username && password && nickname && email){
+		// console.log(obj);
+		/**
+		*模态框表单密码数据验证 
+		*/
+		if(userPwd === confirmPwd){
+			saveOrUpdateUser(obj);
+			//隐藏模态框
+			$('#myModal').modal('hide');
+			alert(option+'成功');
+			//显示提示在添加成功后移除提示内容
+			$('.modal .prompt-pwd').remove();
+		}else {
+			// 密码提示信息[如果提示信息不存在则添加提示信息元素]
+			if (!$('.prompt-pwd').is('span')) {
+				$('.modal [name=confirm-pwd]').after('<span class="prompt-pwd">请确认两次输入的密码一致</span>');
+			}
+			// console.log(!$('.prompt-pwd').is('span'),"---",$('.prompt-pwd'));	
+		}	
+	}else {
+		alert("请按提示将所有数据填写完整");
+	}
+
+});
+
+
+
+/**
+* 添加按钮并显示模态框进行相关操作
+*/
+$('.btn-box .add-btn').click(function(){
+	//存在修改信息中的添加元素将其删除
+	$('.modal .update-pwd').remove();
+	$('.modal .old-pwd').remove();
+	$('.modal .new-pwd label').text('密码')
+
+	//显示我的密码框
+	$('.modal .myPwd-box').css({
+		display:'block'
+	})
+	//设置option
+	option = '新增';
+	//清空表单数据
+	$('.modal input').val(null);
+	//显示提示在添加成功后移除提示内容
+	$('.modal .prompt-pwd').remove();
+
+	//设置模态框的标题
+	$('.modal-title').text(option+'用户');
+	$('.modal-footer #toSave').text(option);
+	//显示模态框
+	$('#myModal').modal('show');
+});
+
+
+/**
+ * 修改用户信息
+ * @param  {[type]} ){	} [description]
+ * @return {[type]}        [description]
+ */
+$('.user-content').on('click','.user-item .thumbnail img',function(){
+	//获取到最近的匹配元素
+	var that = $(this).closest('.thumbnail');
+	//隐藏密码框,将是否显示密码复选按钮设为false,移除之前未关闭的开关元素
+	$('.modal .myPwd-box').css({
+		display:'none'
+	});
+	$('.update-pwd').remove();
+	$('.old-pwd').remove();
+	$('.modal .update-pwd [type=checkbox]').prop('checked',false);
+	//清空上次输入的新密码和确认密码框的数据
+	$('.modal [name=password]').val(null);
+	$('.modal [name=confirm-pwd]').val(null);
+
+	//设置option
+	option = '修改';
+	// 获取相应用户信息
+	var username = $(that).find('[name=username]').text();
+	var uid = $(that).find('[name=username]').attr('data-uid');
+	//获取相应的参数密码数据【data-pwd】
+	var password = $(that).find('[name=username]').prop('data-pwd');
+	var nickname = $(that).find('[name=nickname]').text();
+	var email = $(that).find('[name=email]').text();
+	//使用prop方法获取boolean类型属性值
+	var enabled = $(that).find('[name=switch]').prop('checked');
+	
+	// console.log(username,uid,password,nickname,email,enabled,'-----');
+	// 将相应的数据值填入到修改弹入模态框相应元素中
+	
+	//添加旧密码input填写框及控制显示是否修改密码开关
+	$('.modal .myPwd-box').before(`
+		<div class="form-group update-pwd">
+			<div class="col-md-10 col-md-offset-2">
+				<div class="checkbox checkbox-slider--b">
+				  <label>
+				    <input type="checkbox" name='switch'><span>是否需要修改密码</span>
+				  </label>
+				</div>  
+			</div>
+		</div>
+		`);
+	var $oldPwd = $(`
+		<div class="form-group old-pwd">
+			<label class="col-md-2 control-label" for="old-pwd">旧密码:</label>
+			<div class="col-md-10 my-eye">
+				<input type="password" class="form-control" id="old-pwd" name="old-pwd">
+				<i class="fa fa-eye-slash" aria-hidden="true"></i>
+				<!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+			</div>
+		</div>
+		`);
+	//将旧密码框添加到新密码框之前
+	$('.modal .new-pwd').before($oldPwd);
+	//修改密码框为新密码框
+	$('.modal .new-pwd label').text('新密码');
+
+	//开关复选框内容改变监听事件
+	$('.modal .update-pwd [type=checkbox]').change(function(){
+		//使用密码修改开关控制密码框的显示输入
+		var checked = $('.modal .update-pwd [type=checkbox]').prop('checked');
+		// console.log(checked,'------');
+		if (checked) {
+			$('.modal .myPwd-box').css({
+				display:'block'
+			});
+			//将密码填写到相应的旧密码框中
+			$('.modal [name=old-pwd]').val(password);
+
+		}else {
+			$('.modal .myPwd-box').css({
+				display:'none'
+			})
+		}
+	});
+
+	// 将其他相应信息填入到相应input框中
+	$('.modal [name=username]').val(username);
+	$('.modal [name=username]').prop('data-uid',uid);
+	$('.modal [name=username]').prop('data-enable',enabled);
+	$('.modal [name=username]').prop('data-oldPwd',password);
+	$('.modal [name=nickname]').val(nickname);
+	$('.modal [name=email]').val(email);
+	// console.log(uid,enabled,password,nickname,email,'---');
+
+
+	//设置模态框的标题
+	$('.modal-title').text(option+'用户');
+	$('.modal-footer #toSave').text(option);
+	//显示模态框
+	$('#myModal').modal('show');
+
+});
+
+
+/**
+ * 查询所有用户数据
+ * @param  {[type]} res){								} [description]
+ * @return {[type]}                  [description]
+ */
+findAllUser(findUserFun);
+
+function findUserFun(res){
+	// console.log(res);
+	var str = '';
+	//循环遍历所有数据添加相应节点到页面上
+	if(res.data && res.data.length>0){
+		//循环遍历所有用户信息
+		res.data.forEach( function(item, index) {
+			// console.log(typeof item.enabled)
+			var imgSrc = './images/my-head.jpg';
+			// if(item.userface){
+			// 	imgSrc = item.userface;
+			// }else {
+			// 	imgSrc = 'data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
+			// }
+			str += `
+	        <div class="col-lg-4 user-item">
+		        <div class="thumbnail">
+	        	<button class="btn btn-default close" data-dismiss="modal" data-uid=`+item.id+`>&times;</button>
+		        	<img class="img-circle" src="`+imgSrc+`" alt="Generic placeholder image" width="140" height="140">
+		        	<div class="caption">
+		        		<div class="item row">
+			          	<div class="col-md-4 text-center">用户名</div>
+			          	<div class="col-md-8" name='username' data-uid =`+item.id+`>`+item.username+`</div>
+			          </div>
+			          <div class="item row">
+			          	<div class="col-md-4 text-center">真实姓名</div>
+			          	<div class="col-md-8" name='nickname'>`+item.nickname+`</div>
+			          </div>
+			          <div class="item row">
+			          	<div class="col-md-4 text-center">注册时间</div>
+			          	<div class="col-md-8">`+item.regTime+`</div>
+			          </div>
+			          <div class="item row">
+			          	<div class="col-md-4 text-center">email</div>
+			          	<div class="col-md-8" name='email'>`+item.email+`</div>
+			          </div>
+			          <div class="item row">
+			          	<div class="col-md-4 text-center">开关</div>
+			          	<div class="col-md-8">
+			          		<div class="checkbox checkbox-slider--b">
+										  <label>
+										    <input type="checkbox" name='switch' data-checked=`+item.enabled+`><span></span>
+										  </label>
+										</div>      
+			          	</div>
+			          </div>
+		        	</div> 
+		        </div>
+	        </div>
+			`;
+		});
+		
+		//添加获取数据HTML内容到相应节点中
+		$('.user-content').html(str);
+
+		// 循环遍历开关按钮并显示相应数据值
+		$('.user-content input[type=checkbox]').each(function(index,item){
+			var temp = $(item).attr('data-checked');
+			if(temp === 'true'){
+				$(item).prop('checked',true);
+			}else {
+				$(item).prop('checked',false);
+			}
+		});
+		// 设置显示图片固定宽高
+		$('.user-item img').each(function(index,item){
+			$(item).attr('display','block');
+			$(item).attr('width','140px');
+			$(item).attr('height','140px');
+		});
+
+		//使用prop方法隐式的为name标签添加相应密码参数[data-pwd]	
+			$('.user-content .user-item div[name=username]').each(function(index,element){
+				// console.log(index,'---',element);
+				res.data.forEach(function(item,index){
+					if($(element).attr('data-uid') == item.id){
+						$(element).prop('data-pwd',item.password);
+				}
+			});
+			// console.log($(element).prop('data-pwd'));
+		});
+
+	}
+}
+
+//删除用户操作
+$('.user-content').on('click','button[class*=close]',function(){
+	var id = +$(this).attr('data-uid');
+	// console.log(id);
+	deleteUserById(id);
+
+});
+
+//使用hover事件没有用
+// $('.user-content').on('click','.user-item',function(){
+// 	console.log($(this).find('button'));
+// 	$(this).find('button').css({
+// 		display:'block'
+// 	});
+// });
+
+
+</script>
+
+</div>

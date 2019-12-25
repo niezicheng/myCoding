@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		/*浮动文字不会被覆盖*/
+		.one{
+			height: 200px;
+			background-color: red;
+			/*左浮动  浮动元素脱离文档流 原来的位置不保留*/
+			float: right;
+		}
+		.two{
+			background-color: orange;
+			float: right;
+		}
+		.three{
+			background-color: yellow;
+			/*margin-top: 100px;*/
+			/*清除其他元素的浮动对自身元素(位置等)产生的影响*/
+			/*清除兄弟元素的浮动*/
+			/*clear: both;*/
+			float: right;
+		}
+		.four{
+			background-color: green;
+			float: right;
+		}
+		.five{
+			background-color: blue;
+			float: right;
+			clear: both;
+		}
+		.six{
+			background-color: cyan;
+			/*float: right;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="two">two</div>
+	<div class="three">three</div>
+	<div class="four">four</div>
+	<div class="five">five</div>
+	<div class="six">six</div>
+</body>
+</html>

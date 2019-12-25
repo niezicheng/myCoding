@@ -1,0 +1,57 @@
+console.log(test);
+function test(){}
+var test = 1;
+
+
+var test;
+function test(){}
+console.log(test); //fun
+test = 1;
+
+
+function test(){}
+console,log();
+test = 1;
+
+
+构造函数和原型和实例间的关系
+	每一个构造函数都有一个原型对象
+		Object.prototype.constructor === Object;
+	实例是通过构造函数创建出来的，实例可以调用构造它的构造函数对应的原型对象
+	中的属性和方法
+		obj.toString === Object.ptototype.toString
+		Object.prototype.isPrototypeof(obj)
+
+
+函数
+	创建方式：
+		function test(){}
+		var test = functoin(){};
+	属性：arguments  //类数组对象   用来保存实参
+					arguments.length	/实参的个数
+					arguments.callee  //test函数
+				this
+					函数运行的执行环境
+					test()    在函数内部  this-->globel对象或windows对象
+						在node.js环境中-->  globel
+						在windows环境中-->  windows
+----------------------------------------------------------------------------------------
+调用方式
+	test();  globel对象
+	test.call(Object,[参数2],[参数3]);
+	Object:   this指向对象
+	参数2、参数3  test()方法携带的参数
+
+	test().apply(Object,[参数数值])
+	[参数数组]  test()需要携带的参数组合成的数组
+
+
+	tets.bind(Object)([参数列表])
+	test.bind(Object,[参数列表])()  //只是更改了函数中this指向的对象，函数不会执行   换回的是函数    后面还需要语句来执行它
+
+
+
+
+
+
+

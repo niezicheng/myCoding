@@ -1,0 +1,104 @@
+/**
+ * index.html页面样式
+ */
+*{
+	margin: 0;
+	padding: 0;
+}
+article,nav,header,img{
+	display: block;
+}
+html,body{
+	height: 100%;
+}
+body{
+	display: flex;
+}
+
+/*左侧*/
+.info-left{
+	width: 200px;
+	/*background: coral;*/
+}
+
+/*右侧*/
+.info-right{
+	flex: 1;
+	/*background:teal;*/
+}
+
+/*设置头部*/
+.info-left>header,.info-right>header{
+	height: 60px;
+	background: #ccc;
+}
+
+.info-right .info-content{
+	height: calc(100% - 60px);
+	overflow: auto;
+	padding: 10px;
+	/*background: coral;*/
+}
+
+
+/*左侧头部*/
+.info-left>header{
+	line-height: 60px;
+	background: #3d556c;
+	font-size: 20px;
+	color: #fff;
+}
+
+.info-left>header img{
+	float: left;
+	width: 40px;
+	height:40px;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+/*nav*/
+.info-left nav{
+	height: calc(100% - 60px);
+	border-right: 1px solid #ccc;
+}
+.info-left li{
+	line-height: 30px;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.info-left li:hover{
+	color: #3d556c;
+	background: #ccc;
+}
+
+.info-left li i:first-child{
+	margin-right:10px; 
+}
+.info-left li i:last-child{
+	float: right;
+	line-height: 30px;
+}
+
+
+/*表格div*/
+.table-div{
+	margin-top: 10px;
+}
+/*表格内图标颜色*/
+.table-div td i{
+	cursor: pointer;
+	margin-right: 5px;
+}
+.table-div td i:last-child{
+	margin-right: 0px;
+}
+.table-div td i[title=编辑]{
+	color: #5cb85c;
+}
+
+.table-div td i[title=删除]{
+	color: #c9302c;
+}

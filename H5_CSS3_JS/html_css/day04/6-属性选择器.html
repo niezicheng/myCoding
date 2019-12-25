@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid coral;
+		}
+		/*属性选择器*/
+		/*有class属性元素被选中*/
+		/*div[class]{
+			background-color: pink;
+		}*/
+		/*选中class值为one*/
+		/*[class=one]{
+			background-color:pink; 
+		}*/
+		/*属性值中包含什么字符串的*/
+		/*[class*=o]{
+			background-color:pink; 
+		}*/
+		/*属性值以什么开始的字符串*/
+		/*[class^=t]{
+			background-color:pink;
+		}*/
+		/*属性值以什么结束的*/
+		/*[class$=e]{
+			background-color:pink; 
+		}*/
+		/*属性值中包含某个值(属性class中多个中的某个值)的*/
+		[class~=one]{
+			background-color:pink; 
+		}
+		.one{
+			color: red;
+		}
+		.two{
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="one two three">one</div>
+	<div class="two">two</div>
+	<div class="three">three</div>
+	<div></div>
+	<span class="span">span</span>
+</body>
+</html>

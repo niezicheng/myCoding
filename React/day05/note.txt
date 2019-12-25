@@ -1,0 +1,123 @@
+css局部导入
+  1、更改webpack.config.js文件
+    yarn eject   暴露配置文件
+
+    moudle:true,
+    getLocalIdent:getCSSModuleLocalIndex,
+    localIdentName:""
+  导入时使用一个对象接收即可
+
+  2、使用scss
+    不用更改webpack配置文件
+    搭建sass环境：
+    yarn add node-sass
+    cnpm i -save-dev node-sass
+  .scss
+  .sass
+直接导入文件名路径
+
+路由：
+  yarn add react-router-dom
+
+  import {BrowserRouter,HashRouter,Switch,Link,NavLink,Route,redirect}
+
+  <HashRouter>
+    // <Link to="/"></Link>
+    // <Link to="/person"></Link>
+    //<NavLink exact activaClassName="myScssClass" to="/">首页</NavLink>
+    <Redirect from="/" to="/person"></redirect>
+    <NavLink to="/person">个人信息</NavLink>
+    <NavLink to="/search">搜索信息</NavLink>
+
+    <Link to={{
+      pathname:'/course',
+      search:'?name="zhangsan"'
+    }}></Link>
+
+    <div>
+    <Switch>
+      //<Route exact path="/" component={Index}></Route>
+      <Route path="/person" component={Person}></Route>
+      <Route path="/search" component={Search}></Route>
+      <Route path="/course" component={Course}></Route>
+      //动态路由传参
+      <Route path="/sc/:param" component={Sc}><Route>
+    </Switch>
+  </div>
+  </HashRouter>
+  
+  <NavLink to="/sc/3?name=zhangsan"></NavLink>
+
+API
+ this.props.history.push()
+ this.props.history.push({
+   pahtname:'/person',
+   msg:"msg"
+ })
+
+ //获取参数  Person组件挂载完毕后获取参数msg
+ this.props.location.msg
+
+ 路由跳转
+API
+  this.props.history.push('/course')
+  this.props.history.push({
+    pathname:'/course',
+    test:'test',
+    state:{}
+  })
+NavLink
+<NavLink activaClassName="" to="/course"></NavLink>
+Link
+<Link to="/course"></Link>
+a
+<a href='#/course'></a>
+路由传参
+API路由传参
+  this.props.history.push({
+    pathname:'/course',
+    test:'test',
+    state:{
+      name:'zhangsan'
+    }
+  });
+  //获取参数
+  在目标组件挂载函数componentDidMount()后获取
+  this.props.location.test
+  this.props.location.state
+
+查询字符串传参
+  /course?name=zhangsan
+  获取参数
+    this.props.location.search
+动态路由传参
+  <Route path="/course/:id" component={Course}></Route>
+  /course/1001
+  获取参数
+   this.props.match.params.id
+
+
+全局导入
+  将所有样式都导入
+按需导入  【高级配置】
+  使用什么就导入什么样式
+
+高级配置
+1、$ yarn add antd
+2、$ yarn add react-app-rewired customize-cra
+3、修改package.json
+4、创建一个 config-overrides.js 用于修改默认配置
+5、$ yarn add babel-plugin-import
+6、修改config-overrides.js 文件
+const { override, fixBabelImports } = require('customize-cra');
+module.exports = override(
+  fixBabelImports('import', {
+    libraryName: 'antd',
+    libraryDirectory: 'es',
+    style: 'css',
+  }),
+);
+7、按需引入
+import { Button } from 'antd';
+
+自定义主题

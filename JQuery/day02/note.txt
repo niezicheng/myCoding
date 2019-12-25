@@ -1,0 +1,15 @@
+1、调用事件方法
+2、使用bind和unbind
+3、使用on和off
+事件代理
+	body.onclick = function(event){
+		if(event.target.nodeName === 'BUTTON'){
+
+		}
+	}
+
+	$('body').on('click','button',function(){});
+
+点击按钮新增或修改需要弹出模态框
+	修改模态框：表单中表单控件的数据时空的
+	修改模态框：要修改人的信息，直接展示出来

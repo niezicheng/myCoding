@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById('div').onclick=function(msg){
+			  console.log(msg);
+			}
+			document.getElementById('div').click();
+			document.getElementById('div').onclick('我是onclick');
+		};
+		
+	</script>
+</head>
+<body>
+	<div id='div'>div</div>
+</body>
+</html>

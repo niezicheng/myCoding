@@ -1,0 +1,35 @@
+组件在项目中的使用
+组件生命周期函数【钩子函数】
+ componentWillMount
+ componentDidMount
+ shouldComponentUpdate
+ componentWillUpdate
+ componentDidUpdate
+ componentWillUnmount
+事件
+  绑定【建议使用箭头函数】
+    handle = ()=>{}
+    <div onClick={this.handle}></div>
+    handle(){}
+    <div onClick={this.handle.bind()}></div>
+    <div onClick={(e)=>{this.handle(e)}}></div>
+  this
+  传递参数
+
+Refs参照
+  this.refs ====>对象，存放的是：组件中使用的ref属性，并且属性值为字符串，将node节点保存到refs。
+  DOM对象
+  event.target可以获取
+  <div ref="hello"></div>
+  this.refs:
+  {
+    hello:divDOM Node
+  }
+  this.refs.hello   获取ref属性值为hello的DOMNode
+
+  <MyCom ref="mycom" />   this.refs.mycom
+
+
+  双向数据绑定
+    input text
+    

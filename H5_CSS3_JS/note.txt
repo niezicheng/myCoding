@@ -1,0 +1,41 @@
+1.在开始书写页面是尽量顺序的进行页面重构:
+	1.从整体到局部；从上而下；从左往右；从里而外。
+	2.使用大的容器将整体内容包裹起来，以至于在后面缩放页面是不会产生局部内容错位。
+	3.在了解一部分框架的知识可以尽量的对代码进行优化处理。(尽可能的少重复使用相同的代码，可以将其写到一个类选择块中)
+
+2.overflow:hidden;
+	a.当如果想不设置容器的高度，让其按照浮动子元素的高度自动调整，则使用
+	overflow:hidden;来清除子元素浮动对父类产生的影响。但与此同时，如果
+	多个容器嵌套使用该属性，则可能该属性的另一个作用(超出部分剪切，并且其余内容不可见)会对内容产生影响。
+
+	b.在某些情况下还是要对相应的容器设置高度的，要不可能会对其子元素产生影响(overflow:hidden;子元素部分超出内容隐藏)
+
+3.z-index: 对定位元素有效(改变容器的显示优先级);一般将元素设置为relative。
+
+4.outline: 可以设置容器四周边框样式，但与border不同的是它是不占内存空间的，并且不能单独设置某一条或几条边框线。
+
+5.图片作为背景图片：
+	a.使用宽高来剪切显示整个图片的部分
+	b.可以使用background-position来对其进行定位选择
+ 
+6.对某些图片进行缩放动画时，为保证其图片不超过显示区域但存在动画过程，应为其父容器设置固定的宽高，并在
+使用动画缩放时对溢出部分隐藏(overflow:hidden;)
+
+7.过渡:transition与css动画animation之间的区别：
+	a、animation多两个参数 循环(animation-iteration-count)和动画方式(animation-direction)
+	b、transition 不能自行触发，需要通过hover等动作，或者结合js事件进行触发。而animation可以自行运行
+	c、transition可控性相对较弱，只能够指定起始和结束的状态，而animation可以定义多个关键帧(使用%)
+	d、动画在运行结束之后，需要回到初始状态(若要保持最终状态需要使用：animation-fill-mode:beforeward;)
+	而transition则是在运行后保持最后状态。
+
+8.另类技术：(使用pisition:sticky;实现粘性布局)
+	它是结合position:relative;和position:fixed;两种定位功能于一体的特殊定位功能;(使用过程中可能存在兼容性问题)
+
+	a.在特定阈值前显示为相对定位relative;在阈值后显示为fixed。至少需要使用一个阈值，要不其类似于相对定位relative。
+	特定阈值：top、bottom、left、right    
+	若同时存在的话，一般优先顺序：top>bottom   left>right
+
+	b.使用粘性布局position:sticky;的元素的父元素overflow属性值需要为可见的visible。
+	若其父元素为定位元素则他为相对于父元素的定位而不是相对于视口区viewport。
+
+示例代码如下：

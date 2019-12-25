@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Location</title>
+	<script type="text/javascript">
+		console.log(location);
+		console.log(window.location === document.location);
+
+		window.onload = function(){
+			var btns = document.getElementsByTagName('button');
+			btns[0].onclick = function(){
+
+				//在历史记录中添加路径
+				// location = './3-弹出框.html';
+				// location.href = './3-弹出框.html'
+				// location.assign('./3-弹出框.html');
+
+				//不在历史记录中添加路径，重定向
+				// location.replace('./3-弹出框.html');
+
+				//在新选项卡中打开
+				// window.open('./3-弹出框.html');
+
+				// window.close(); 	//关闭当前窗口
+				// moveTo() 	移动当前窗口
+				// resizeTo()	改变当前窗口的位置
+			};
+
+			btns[1].onclick = function(){
+				//参数默认为false,可以从缓存中获取;如果为true，强制从服务器中获取
+				location.reload();
+			};
+
+			btns[2].onclick = function(){
+				//跳转下一页
+				// history.forward();
+				history.back();
+				
+				// history.go(1);	//正数向前跳一页；负数向后跳一页
+
+			};
+		};
+	</script>
+</head>
+<body>
+	<button>打开新页面</button>
+	<button>刷新</button>
+	<button>下一页</button>
+</body>
+</html>

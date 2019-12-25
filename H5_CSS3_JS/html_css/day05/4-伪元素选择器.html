@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪元素选择器</title>
+	<style type="text/css">
+		/*在之前添加的内容*/
+		/*section p::before{*/
+		/*在之后添加内容*/
+		section p::after{
+			/*指定添加的内容*/
+			content: '*';
+			color: red;
+		}
+		form span::before{
+			content: '*';
+			color: red;
+		}
+		/*选中第一个字符*/
+		div::first-letter{
+			font-size: 30px;
+			color: coral;
+		}
+		/*选中第一行文本*/
+		div::first-line{
+			color: navy;
+		}
+		/*用户选中文本的设置*/
+		div::selection{
+			background-color: teal;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<article>
+		<section>
+			<p>第一段话</p>
+			<p>第二段话</p>
+			<p>第三段话</p>
+			<p>第四段话</p>
+		</section>
+	</article>
+	<form>
+		<div>
+			第一段话，第一段话，第一段话，第一段话，第一段话，第一段话<br />
+			第一段话，第一段话，第一段话，第一段话，第一段话，第一段话
+		</div>
+		<div>
+			<span>用户名：</span>
+			<input type="text" required="" />
+		</div>
+		<br />
+		<div>
+			<span>密码：</span>
+			<input type="password" required="" />
+		</div>
+		<br />
+		<input type="submit" name="" value="提交">
+	</form>
+</body>
+</html>

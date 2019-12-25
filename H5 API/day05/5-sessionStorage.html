@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sessionStorage</title>
+	<script type="text/javascript">
+		// console.log(sessionStorage);
+		// console.log(localStorage);
+		//存储数据【存储数据为字符串】
+		sessionStorage.setItem('name','zhangsan');
+		sessionStorage.setItem('age','21');
+		sessionStorage.setItem('obj',JSON.stringify({name:'zhangsan',age:21}));
+		// sessionStorage.setItem('obj',"{name:'zhangsan',age:21}");
+		// sessionStorage.setItem('obj',{name:'zhangsan',age:21});
+		//获取数据
+		var age = sessionStorage.getItem('age');
+		console.log(age);
+		var obj = sessionStorage.getItem('obj');
+		console.log(JSON.parse(obj));
+		// console.log(obj);
+		// console.log(typeof obj);
+		console.log(sessionStorage.key(1));
+
+		//获取localStorage中的数据
+		console.log(localStorage.getItem("address"));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

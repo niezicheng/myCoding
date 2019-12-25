@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test1</title>
+	<style type="text/css">
+		.container{
+			width: 512px;
+			height: 288px;
+			overflow: hidden;
+			border: 1px solid red;
+		}
+		.warpper{
+			overflow: hidden;
+			width:2048px; 
+		}
+		img{
+			float: left;
+		}
+
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			console.log($('img'));
+
+			var id = setInterval(function(){
+				// console.log(111);
+				$($('img')[0]).animate({
+					width:'0px'
+				},1000);
+			},1000)
+		});
+		
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="warpper">
+			<img width="512px" src="../images/1.jpg">
+			<img width="512px" src="../images/2.jpg">
+			<img width="512px" src="../images/3.jpg">
+			<img width="512px" src="../images/4.jpg">
+		</div>
+		
+	</div>
+</body>
+</html>

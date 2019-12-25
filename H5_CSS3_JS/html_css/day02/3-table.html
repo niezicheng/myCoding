@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+</head>
+<body>
+<!-- thead表头；tfoot表尾 -->
+<!-- tr代表一行；td代表一行中的某一列 -->
+<!-- cellspacing单元格与单元格之间的间隙 
+     cellpaddiing单元格与其中内容间的间隙
+-->
+	<table border="1px" cellspacing="0" cellpadding="0" align="center" bgcolor="teal" width="200px">
+		<caption align="bottom">
+			表1-1 学生信息表
+		</caption>
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</tr>
+		<tr align="center"> 
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td align="center">12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+	</table>
+	<hr />
+
+
+
+	<!-- 表格详细化结构 -->
+	<table width="200px" height="100px" border="1px" cellspacing="0" bgcolor="teal">
+		<caption>
+			表2-1 学生信息表
+		</caption>
+		<thead>
+		<!-- 表头 -->
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<!-- 总计 -->
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<!-- 单元格的合并 -->
+	<table width="200px" border="1px" cellspacing="0" cellpadding="0" align="center">
+		<caption>
+			表3-1 学生信息表
+		</caption>
+		<colgroup>
+			<col />
+			<!-- 接下来的3列当做同一列来处理 -->
+			<col span="3" style="background-color:pink;" />
+		</colgroup>
+		<tr>
+			<td colspan="2">11</td>
+			<!-- <td>12</td> -->
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<td>21</td>
+			<td>22</td>
+			<td rowspan="2">23</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>31</td>
+			<td>32</td>
+			<!-- <td>33</td> -->
+			<td>34</td>
+		</tr>
+		<tr>
+			<td>41</td>
+			<td>42</td>
+			<td>43</td>
+			<td>44</td>
+		</tr>
+	</table>
+</body>
+</html>

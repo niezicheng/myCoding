@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单选择器</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//使用JQuery实现获取用户选中的复选框，然后获取value组成的数组
+			//给checkbox绑定事件
+			var arr = [];
+			$('form :checkbox').click(function(){
+				// alert(1);
+				var $result = $('form :checkbox:checked');
+				// console.log($result);
+				/*
+					1、获取到内部的DOM，获取DOM对应的value属性值，放到arr中
+					2、将$result转化为数组，然后在映射出value属性
+					3、使用JQuery对象提供的map方法，将value映射出来
+				*/
+
+
+				//1、当点击第二次时会出现累加情况问题
+				/*for(var i=0;i<$result.length;i++){
+					arr.push($result[i].value);
+				}*/
+
+				//2
+				/*arr = Array.prototype.slice.call($result,0);
+				arr = arr.map(function(item){
+					return item.value;
+				});*/
+
+				//3
+				//jQuer对象中存放的都是DOM节点
+				$arr = $result.map(function(index,item){
+					//item DOM
+					// console.log(index,item);
+					// return item.value;
+					return $(item).val();
+				});
+				arr = Array.prototype.slice.call($arr,0);
+				console.log(arr);
+
+
+			});
+		});
+	</script>
+</head>
+<body>
+	<form action="">
+		<div>
+			<input type="tetx" name="">
+		</div>
+		<div>
+			<input type="checkbox" name="" value="1">
+			<input type="checkbox" name="" value="2">
+			<input type="checkbox" name="" value="3">
+		</div>
+	</form>
+</body>
+</html>

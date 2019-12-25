@@ -1,0 +1,75 @@
+数组的扩展
+	Array.from(类数组、set/map有Iterator接口的数据结构类型)转为数组
+	Array.of()
+	arr.find(function(item,index,arr){
+		return item>10;
+	})
+	arr.findIndex(function(item,index,arr){
+		return item>10;
+	})
+	arr.includes(2);
+	arr.fill(9);  数组替换填充
+	arr.keys();
+		//返回key值迭代器对象  for-of
+	arr.values();
+	arr.entries();
+
+
+-----------------------------------------------------------------------------------
+Set集合    					Map集合 
+Array      					Object
+
+new Set();					new Map();
+增删改查						增删改查
+遍历 								遍历 
+set.add(value); 添加数据
+set.delete(value); 删除数据
+set.has();	查询数据		
+set.clera();	清空数据
+...
+set.keys();
+set.values();
+set.entries();
+set.forEach(function(value,key,set){});
+
+map
+	map.set(key,value);	添加数据
+
+set 		---Array
+	值，不可有重复的数据
+	
+map 		---Object
+	键值对,键值可以是任何数据类型
+
+
+模块
+	js文件，在某个js文件
+	NodeJS的模块
+		module.exports.a = 1;  导出
+		require('./a.js');
+		require('./a');
+	ES模块
+		export 导出
+		export default 导出
+		import 导入
+
+Promise
+	承诺机制,
+	对象里放置的是异步的处理函数。容器。
+		如果内部异步成功,调用resolve函数
+		如果内部异步失败,调用reject函数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

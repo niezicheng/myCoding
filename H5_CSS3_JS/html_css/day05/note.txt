@@ -1,0 +1,100 @@
+伪类与伪元素选择器归纳:
+
+一.伪类选择器(伪类以":"开头，用在选择器后，用于指明元素在某种特殊的状态下才能被选中)
+	1.a标签伪类选择器，其他标签类似
+		eg:
+			<style type="text/css">
+			  /*设置a标签未访问样式*/
+				a:link{
+					/*coral:珊瑚色*/
+					color: coral;
+				}
+				/*设置标签访问后样式*/
+				a:visited{
+					color:red;
+				}
+				/*设置鼠标悬停a标签时的样式*/
+				a:hover{
+					/*cyan:青色*/
+					color: cyan;
+					/*设置鼠标在a标签上显示为手指样式*/
+					cursor:pointer;
+				}
+				/*设置a标签点击后的样式*/
+				a:active{
+					color: #ccc;
+				}
+			</style>
+
+	2.表示子元素的伪类选择器:(n也可以为:odd【奇数】、even【偶数】)
+		:first-child  选中的所有子元素中的第一个孩子
+		:last-child  选中的所有子元素中的最后一个孩子
+		:nth-child(n) 选中所有子元素的第n个孩子
+		:nth-last-child(n) 选中所有子元素的倒数第n个孩子
+		:first-of-type 	选中所有子元素中每种类型中的第一个孩子
+		:last-of-type 	选中所有子元素中每种类型中的最后一个孩子
+		:nth-of-type(n)  选中所有子元素中每种类型中的第n个孩子
+		:nth-last-of-type(n) 	选中所有子元素中每种类型中的倒数第n个孩子
+
+		:only-child 获取独生子元素，即选中元素中只含有他一个孩子
+
+	3.伪类选择器-form表单:(:前面填写需选中元素对应的选择器)
+		:focus     聚焦状态时使用的样式
+		:disabled  标签禁用时使用的样式
+		:enabled	 标签可用时使用的样式
+		:default   标签默认选中时使用的样式
+		:checked	 用户选中时使用的样式
+		:valid     通过验证后使用的样式
+		:invalid	 不通过验证使用的样式
+		:required  选中必填项时使用的样式
+		:optional  选填项使用的样式
+		:in-range  在范围内使用的样式
+		:out-of-range  在范围外使用的样式
+		
+
+二.伪元素选择器(伪元素以"::"开头，用在选择器后，用于选择指定的元素。)
+eg:
+	<style type="text/css">
+		/*在指定元素之前添加内容*/
+		section p::before{
+			/*content属性值为要添加的内容*/
+			content: '*';
+			color: red;
+		}
+
+		/*在指定元素之后添加内容*/
+		section p::after{
+			/*content属性值为要添加的内容*/
+			content: '*';
+			color: red;
+		}
+
+		/*选中第一个字符*/
+		section::first-letter{
+			color: red;
+			font-size: 30px;
+		}
+		/*选中第一行文字*/
+		section::first-line{
+			color: blue;
+		}
+		/*用户选中文本设置(只有自身内部文本有该样式效果，里面包含的元素内容不含有，即p标签不会有该样式效果)*/
+		section::selection{
+			background-color: teal;
+			color: yellow;
+		}
+	</style>
+	<!-- body中内容 -->
+	<body>
+	<article>
+			<section>
+				我是section第一段文字<br />
+				我是section第二段文字 
+				<span>span</span>
+				<p>第一段话</p>
+				<p>第二段话</p>
+				<p>第三段话</p>
+				<p>第四段话</p>
+			</section>
+		</article>
+</body>

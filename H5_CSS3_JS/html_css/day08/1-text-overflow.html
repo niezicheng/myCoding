@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本超出产生省略号</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			/*内部文本不换行，默认换行的*/
+			white-space: nowrap;
+			/*溢出内容隐藏*/
+			overflow: hidden;
+			/*省略号*/
+			text-overflow: ellipsis;
+			/*text-overflow: clip;*/
+
+		}
+	</style>
+</head>
+<body>
+	<div>
+		margin(外边距)、border(边框)、padding(内间距)、内容区域
+
+	1.w3c盒子模型(默认盒子模型-标准的盒子模型)：
+
+		a.w3c盒子模型设置的宽高为内容区的宽高;
+		b.padding(内间距)、border(边框)、margin(外边距)均属于所设置宽高外的部分；
+		c.盒子宽高：border宽高+padding宽高+内容区域宽高【设置的宽高】
+		d.所占屏幕宽高：盒子宽高+margin宽高
+
+	2.ie盒子模型
+
+		a.ie盒子模型设置的宽高为盒子宽高
+		b.盒子宽高【设置的宽高】：border宽高+padding宽高+内容区域宽高
+		c.所占屏幕宽高：盒子宽高+margin宽高
+
+	</div>
+</body>
+</html>

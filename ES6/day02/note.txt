@@ -1,0 +1,54 @@
+NodeJS的介绍
+	运行介绍的平台
+	语言，有一些内置模块，http,url,querystring,path,...
+	npm包管理工具
+	第三方的包或模块进行添加和删除或更新
+		cnpm
+			npm install -g cnpm
+		yarn
+			npm install -g yarn
+
+		npm install xxx
+		npm uninstall xxx	
+		npm install   下载项目所有依赖
+
+		NodeJS中，JS文件是模块
+
+WebPack的介绍 打包工具
+	Webpack工具，一切皆模块，js、css、vue、文件d都是模块
+	打包 npm run build
+
+ES6的介绍
+
+基础知识
+let关键字
+	特性：
+		1.块级作用域
+		2.变量声明提升
+		3.暂时性死区
+		4.同一模块区域不能重复声明
+
+const关键字
+	特性：
+		1.块级作用域
+		2.变量声明提升
+		3.暂时性死区
+		4.同一模块区域不能重复声明
+		5.声明时初始化
+		6.不可修改
+
+解构：
+	交换数据x,y的值
+		let x = 1;let y = 2;
+		[x,y] = [y,x];
+	函数参数的赋值：
+		function test([a=0,b=1]){}
+		test([1,2]);
+		获取局部数据
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网页动态时间</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var span = document.getElementsByTagName('span')[0];
+			var dateStr = formatDate();
+			span.innerText = dateStr;
+
+			//每隔一秒放置一个新时间
+			setInterval(function(){
+				span.innerText = formatDate();
+			},1000);
+
+			function addZero(param){
+				return param<10?'0'+param:param;
+			}
+			function formatDate(){
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth()+1;
+				month = addZero(month);
+				var day = date.getDate();
+				day = addZero(day);
+				var hours = date.getHours();
+				hours = addZero(hours);
+				var minutes = date.getMinutes();
+				minutes = addZero(minutes);
+				var seconds = date.getSeconds();
+				seconds = addZero(seconds);
+				//2019-07-23 09:45:00
+				return year+'-'+month+'-'+day+' '+hours+':'+minutes+':'+seconds;
+				// return '2019-07-23 09:45:00';
+			}
+
+		};
+	</script>
+</head>
+<body>
+	<div>
+		当前时间:
+		<span></span>
+	</div>
+</body>
+</html>

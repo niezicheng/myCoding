@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>{{ msg }}</p>
+    <p>{{ msg.split('').reverse().join('') }}</p>
+    <p>{{ reverseMsg }}</p>
+    <p>{{ upperMsg }}</p>
+    <p>{{ toUpperMsg() }}</p>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        msg:'hello world',
+      },
+      // 计算属性[只有当return返回的属性值发生变化才会执行comuted里面对应的函数][缓存机制]
+      computed:{
+        reverseMsg:function(){
+          return this.msg.split('').reverse().join('');
+        },
+        upperMsg:function(){
+          return this.msg.toUpperCase();
+        }
+      },
+      create(){
+        setInterval(()=>{
+          this.msg = 'a';
+        },3000);
+      },
+      methods:{
+        toUpperMsg:function(){
+          return this.msg.toUpperCase();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

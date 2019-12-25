@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>课堂练习</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/index.js"></script>
+</head>
+<body>
+  <div class="warpper">
+    <!-- header -->
+    <div class="header">
+      <div class="header-top">
+        <img src="../images/logo.png" alt="logo" width="80px">
+        <span>大数据任务追踪平台</span>
+      </div>
+      <div class="header-btm">
+          <!-- logo -->
+          <img class="pull-left" src="../images/logo.png" alt="logo">
+          <!-- nav -->
+          <nav class="pull-left">
+            <ul>
+              <li><a href="#">首页</a></li>
+              <li><a href="#">大数据技术栈</a></li>
+              <li><a href="#">课堂练习</a></li>
+              <li><a href="#">项目演练</a></li>
+              <li><a href="#">资源展示</a></li>
+            </ul>
+          </nav>
+          <!-- seaech input -->
+          <div class="search pull-left">
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入关键字">
+                  <div class="search-btn input-group-addon bg-primary">搜索</div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="log-reg pull-left">
+            <a>登录</a>
+            |
+            <a>注册</a>
+          </div>
+      </div>
+    </div><!-- header -->
+    <!-- middle content -->
+    <div class="middle">
+      <div class="content-box">
+        <!-- teacher practice page -->
+        <div class="teac-practice">
+          <!-- open course item -->
+          <div class="open-course">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="course-practice">姓名</label>
+                <input type="email" class="form-control" id="course-practice" placeholder="pracName">
+              </div>
+              <div class="form-group">
+                <label for="username">简介</label>
+                <input type="password" class="form-control" id="username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <label for="myclass">班级</label>
+                <select class="form-control">
+                  <option>web1901</option>
+                  <option>jd1901</option>
+                  <option>bd1901</option>
+                  <option>web1902</option>
+                  <option>jd1902</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="endtime">结束时间</label>
+                <input type="password" class="form-control" id="endtime" placeholder="time">
+              </div>
+              <button type="submit" class="btn btn-sm bg-primary">开启</button>
+            </form>
+          </div>
+          <!-- some operation -->
+          <div class="operation-item">
+            <!-- operation left -->
+            <div class="col-md-5 operation">
+              <div class="btn btn-primary btn-sm">编辑</div>
+              <div class="btn btn-primary btn-sm">全选</div>
+              <div class="btn btn-primary btn-sm">删除</div>
+              <div class="btn btn-primary btn-sm">取消</div>
+            </div>
+            <!-- operation right -->
+            <div class="col-md-7">
+              <!-- select class -->
+              <div class="selectClass">
+                <label for="exampleInputPassword3">班级</label>
+                <select class="form-control">
+                  <option>web1901</option>
+                  <option>jd1901</option>
+                  <option>bd1901</option>
+                  <option>web1902</option>
+                  <option>jd1902</option>
+                </select>
+              </div>
+              <!-- search -->
+              <div class="search">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入关键字">
+                      <div class="search-btn input-group-addon bg-primary">搜索</div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div> 
+          </div>
+          <!-- 表格内容 -->
+          <div class="table-content bg-white">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th class="text-center"></th>
+                  <th class="text-center">名称</th>
+                  <th class="text-center">简介</th>
+                  <th class="text-center">提交次数</th>
+                  <th class="text-center">提交人数</th>
+                  <th class="text-center">相关操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" name="" id=""></td>
+                  <td>课堂练习一</td>
+                  <td>无心</td>
+                  <td>100</td>
+                  <td>30</td>
+                  <td>
+                    <button class="update-btn btn btn-primary btn-sm">修改</button>
+                    <button class="btn btn-danger btn-sm">删除</button>
+                    <button class="btn btn-primary btn-sm">关闭</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-top row">
+        <!-- footer top nav -->
+        <nav class="col-md-6 col-md-offset-3">
+            <ul>
+              <li><a href="#">免责条款</a></li>  
+              <li><a href="#">版权说明</a></li>  
+              <li><a href="#">登录问题</a></li>  
+              <li><a href="#">关于我们</a></li>  
+              <li><a href="#">问题反馈</a></li>  
+            </ul>
+        </nav>
+      </div>
+      <!-- footer bottom -->
+      <div class="footer-btm row">
+        <div class="col-md-3 footer-btm-left">
+          <img src="../images/footer-left.png" alt="">
+        </div>
+        <div class="col-md-6 footer-btm-mid">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit 
+            amet lacus accumsan et viverra justo commodo. Proin sodales
+            pulvinar sic tempor. Sociis natoque penatibus et magnis dis 
+            parturient montes, nascetur ridiculus mus. Nam fermentum, 
+            nulla luctus pharetra vulputate, felis tellus mollis orci, 
+            sed rhoncus pronin sapien nunc accuan eget.
+          </p>
+        </div>
+        <div class="col-md-3 footer-btm-right">
+          <img src="../images/footer-right.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- addOrUpdate modal frame -->
+  <!-- 模态框 -->
+  <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn btn-default close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">模态框标题</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 录入信息的表单 -->
+						<form action="" class="form-horizontal">
+							<!-- 名称 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="username">名称:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" id="username" name="username">
+								</div>
+              </div>
+              <!-- 简介 -->
+							<div class="form-group">
+                  <label class="col-md-2 control-label" for="brief-input">简介:</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" name="brief-input" id="brief-input">
+                  </div>
+                </div>
+							<!-- 班级 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label">班级:</label>
+								<div class="col-md-10">
+									<select class="form-control">
+									  <option>请选择</option>
+									  <option>web1901</option>
+									  <option>web1902</option>
+									  <option>web1903</option>
+									  <option>jd1901</option>
+									  <option>jd1902</option>
+									  <option>jd1903</option>
+									  <option>bd1901</option>
+									</select>
+								</div>
+							</div>
+							<!-- 时间 -->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="endtime">结束时间:</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" name="endtime" id="endtime">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">取消</button>
+						<button class="btn btn-primary" id="toSave">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

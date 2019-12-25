@@ -1,0 +1,22 @@
+JQuery函数的参数
+	1、函数
+		$(function(){});
+		文档加载完毕后执行function里面的代码
+	2、选择器字符串	$('选择器类型')
+		$('div')
+		$('.one')
+		$('#one>*:first')
+		$('#one>*').eq(2)
+		返回的是JQuery对象，类数组对象，存放的是DOM节点
+	3、DOM节点
+		var div = document.getElementsByTagName('div');
+		$(div);		//返回JQuery对象   将DOM节点转化为JQuery对象
+	4、html字符串
+		$('<div>hello</div>')		
+		创建对应的节点，并且返回JQuery对象
+		$('<div>hello</div>')[0]===>DOM节点
+
+将DOM节点转化为JQuery对象
+	$(dom节点)
+将JQuery对象转化为DOM节点
+	$('div')[0]

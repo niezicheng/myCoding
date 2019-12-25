@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax异步请求</title>
+	<script type="text/javascript">
+		//js原生的ajax
+		//获取所有的数据
+		function getAllData(){
+			//创建XMLHttpRequest实例
+			var http = new XMLHttpRequest();
+			//发送请求的方式和url地址
+			http.open('GET','http://www.wangshuwen.com/api/getRegion');
+			//监听http对象状态发生更改
+			http.onreadystatechange = function(){
+				if(http.status === 200 && http.readyState === 4){
+					console.log(http.responseText);
+					var res = http.responseText;
+					console.log(JSON.parse(res));
+					console.log(JSON.parse(res).data); //data数据数组
+					//遍历数组，追加节点
+					var arr = JSON.parse(res).data;
+				}
+			};
+			//发送请求
+			http.send();
+		}
+		getAllData();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

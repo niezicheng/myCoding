@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>目录层级划分</title>
+  <script type="text/javascript" src="../../JQuery/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      var array = [
+        {id:1,name:'根编目',cate_path:null},
+        {id:2,name:'Java课程',cate_path:'1.2'},
+        {id:3,name:'Spring课程',cate_path:'1.2.3'},
+        {id:6,name:'Servlet课程',cate_path:'1.2.6'},
+        {id:4,name:'SpringBoot课程',cate_path:'1.2.3.4'},
+        {id:5,name:'Web课程',cate_path:'1.5'},
+        {id:7,name:'React课程',cate_path:'1.5.7'},
+        {id:8,name:'redux课程',cate_path:'1.5.7.8'}
+      ];
+      //设置数组中个对象的child为数组，用于存放属于它下一级目录对象
+      var arr = []; 
+      array.forEach( function(item, index) {
+        item.children = [];
+        //获取到相应cate_path拆分后的数组组成的数组
+        if(item.cate_path){
+          arr.push(item.cate_path.split('.'));
+        }
+      });
+      // console.log(arr);
+      for(var i=0;i<arr.length;i++){
+        var len = arr[i].length;
+        // console.log(arr[i][len-2]-1,'----',arr[i][len-1]-1);
+        // console.log(array[arr[i][len-2]-1],'*************',array[arr[i][len-1]-1]);
+        // array[arr[i][len-2]-1].children.push(array[arr[i][len-1]-1]);
+        var parent = array.filter(function(item){
+          return item.id == arr[i][len-2];
+        });
+        var child = array.filter(function(item){
+          return item.id == arr[i][len-1];
+        });
+        // console.log(parent,'---',child);
+        parent[0].children.push(child[0]);
+      }
+      // console.log(array);
+
+
+
+    });
+  </script>
+</head>
+<body>
+	
+</body>
+</html>

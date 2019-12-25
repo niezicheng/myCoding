@@ -1,0 +1,117 @@
+CSS（Cascading Style Sheets）层叠样式表
+1.CSS级联-CSS层叠：
+规定在哪个HTNL中使用哪个样式。
+body{
+	font-size:16px; //body默认字体大小
+}
+
+2.HTML中css样式的使用方式：
+a.外部样式表：
+<link rel="stylesheet" type="text/css" href="css文件路径">
+<style type="text/css">
+	/*导入外部样式：放在第一行去导入*/
+	@import url(./style/div.css);
+</style>
+
+b.内部样式表：
+<style type="text/css">
+	
+</style>
+
+c.行内样式表：<div style="color:#fff;background-color: teal;">
+
+d.@import 导入
+	可以再css文件中导入css文件也可以在html文件中导入一个css文件
+	<style type="text/css">
+		/*导入外部样式：放在第一行去导入*/
+		@import url(./style/div.css);
+		div{
+			color: coral;
+		}
+	</style>
+
+
+3.CSS选择器：选中匹配的元素，然后进行样式的设置（权值、权重、特性值）
+	*普遍选择器
+	style属性内：权值：1000
+	id选择器：权值100
+	class选择器：权值10      伪类选择器：权值10     属性选择器：权值10
+	标签选择器 div h1：权值1     伪元素选择器 ：权值1
+	空格 + > ~：权值0
+	组合选择器：div,span
+	嵌套选择器：div.one   class属性值为one的div元素
+				div .one div后代class属性值为one的元素
+	后代选择器：
+		空格：所有后代
+		>   :子代
+		兄弟选择器：
+			+：下一个兄弟元素
+			~：后面的所有兄弟元素
+	属性选择器：
+		[attr] 选中标签中还有attr属性的元素
+		[attr=val] 选中属性值为val的元素
+		[attr^=val] 选中属性值以val开始的元素
+		[attr$=val] 选中属性值以val结尾的元素
+		[attr*=val] 选中属性值中包含val字符串的元素
+		[attr~=val] 选中属性值中有一个值为val的元素
+
+	选择器的优先级：id选择器>class选择器>标签选择器>*普通选择器
+
+
+
+4.级联比较
+css级联，权重的优先，相同则就近原则
+
+采用就近原则，对于要修饰的元素权值相同，在使用的各种css样式中哪种修饰里标签更近则采用哪种样式来进行修饰（就近原则）
+但有一种情况除外：标签自身属性的宽高，若在css样式中重新修饰则会再用css中的样式div1 {color: red;} /*标签,权值为1*/
+
+即：采用样式的优先级：标签自身属性最弱，行内样式最强，而外部样式表、内部样式表、@import导入则采用就近原则(离修饰标签近的优先使用)
+注：标签自身属性及标签样式属性
+
+eg：
+	嵌套选择器：权值累加比较
+	div1 span {color: green;} /*两个标签,权值为1+1=2*/
+ 
+	div1>span {color: purple;} /*权值与上面的相同,因此采取就近原则*/
+ 
+	.div1 {color: white;} /*类选择符,权值为10*/
+ 
+	div1 span.success {color: purple;} /*权值为1+1+10=12*/
+	
+附加知识：
+    加了!important 那么它的优先级会比较高，将不去看起权值和考虑就近原则，ie6不兼容，无法识，不推荐使用。
+
+    eg:
+	    div1 {
+	    color:red !important; /*除了ie6，其他浏览器会认为红色优先级高，显示红色字体*/
+	    color:green; /*ie6浏览器则顺序读取css所以显示绿色*/
+	    }
+
+
+
+5.DOM（文件对象模型：document object model）     
+DOM树：
+元素节点、注释节点、属性节点
+相关知识点：原生JS JQuery React Vue AngularJS
+
+6.后代选择器
+相同标签元素的后代或兄弟元素优先级仍遵从CSS选择器中优先级，与其在样式表中的先后出现顺序无关
+采用层次选择器时,优先次序按照其CSS选择器权值累加和的大小来决定,如上第3点：CSS选择器 所示
+eg:	
+	<style type="text/css">
+		/*id为p2的下一个兄弟节点*/ 
+	    #p2+span{
+			border: 1px dotted red;
+		}
+
+		/*id为p2的所有的兄弟节点*/
+		/*#p2~*:权值100<#p2+span(权值:100+1)  则其不会覆盖#p2+span中的样式属性*/
+		#p2~*{
+			border: 1px solid blue;
+		}
+
+		/*#p2~span:权值:100+1=#p2+span(权值:100+1)采用就近原则  则其会覆盖#p2+span中的样式属性*/
+		#p2~span{
+			border: 1px solid blue;
+		}
+	</style>	

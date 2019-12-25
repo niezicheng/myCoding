@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+</head>
+<body>
+<!-- 表单提交数据时是提交表单中标签的value值 -->
+	<form action="#">
+		<!-- autofocus自动聚焦；checked单选或复选的自动选中 ；selected下拉菜单默认选中的值；disabled禁用属性-->
+		用户名：<input autofocus type="text" name="username" /><br />
+		密码：	<input type="password" name="passowrd" /><br />
+		<!-- radio使用相同name属性来将标签设置为同一组并显现出互斥现象 -->
+		性别：	<input id="male" type="radio" name="gender" checked value="男" />
+					<!-- 点击label的时候点击某个表单控件，label中的for对应选中标签的id属性值-->
+					<label for="male">男</label>
+					<input id="female" type="radio" name="gender" value="女" />
+					<label for="female">女</label><br />
+		爱好：	<input type="checkbox" name="hobby" checked value="basketball" />篮球
+					<input type="checkbox" name="hobby" value="sing" />唱歌
+					<input type="checkbox" name="hobby" value="dancing" />跳舞
+					<br />
+					<!-- multiple 多项选择     size显示出来的行数 -->
+		籍贯: 	<select multiple size="2" name="address" id="">
+					<option value="">请选择</option>
+					<option value="shanghai">上海</option>
+					<option value="beijing">北京</option>
+					<option disabled value="jiangsu">江苏</option>
+					<option selected value="nanchang">南昌</option>
+					<option value="shenzhen">深圳</option>
+				</select>
+				<br />
+		个人简介：<textarea name="info" id="" cols="30" rows="10"></textarea><br />
+		<input type="submit" value="注册" />
+		<input type="reset" value="重置">
+		<!-- 图片按钮也可以提交表单 -->
+		<input type="image" src="../day02/images/323418.jpg" width="50px" alt="无图片">
+		<button>可提交</button>
+		<button type="submit">提交按钮</button>
+		<button type="reset">重置按钮</button>
+		<button type="button">普通button按钮不可提交</button>
+	</form>
+
+
+	<hr />
+	<form action="" enctype="multipart/form-data" method="post">
+		头像：<input name="file" type="file" />
+		<button>提交</button>
+	</form>
+	<hr />
+	<form action="#">
+		<!-- disabled禁用属性，表单不会提交他的value属性值 -->
+		<input type="text" name="hello" value="1001" disabled />
+		<!-- readonly只读但表单可以提交他的数据 -->
+		<input type="text" name="hello" value="1002" readonly />
+		<!-- 将id显示在type=hidden -->
+		<input type="hidden" name="hidden" value="123">
+		<button>提交</button>
+	</form>
+</body>
+</html>

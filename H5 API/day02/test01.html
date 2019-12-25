@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.parent{
+			position:relative;
+			width: 400px;
+			height: 400px;
+			margin-left:130px;
+			margin-top:120px;
+		}
+		canvas{
+			/*border:1px solid red;*/
+		}
+		#big-canvas{
+			position: absolute;
+			top:100px;
+			left:400px;
+			display: none;
+		}
+		#bd-canvas{
+			position: absolute;
+			top:0px;
+			left:0px;
+			opacity: 0.5;
+			display: none;
+		}
+		img{
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var parent = document.getElementsByClassName('parent')[0];
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			var bigCanvas = document.getElementById('big-canvas');
+			var bigContext = bigCanvas.getContext('2d');
+			// 波点画布
+			var bdCanvas = document.getElementById('bd-canvas');
+			var bdContext = bdCanvas.getContext('2d');
+			var imgBd = new Image();
+			imgBd.src = './images/bd.jpg';
+			imgBd.onload = function(){
+				bdContext.drawImage(imgBd,0,0,80,80);
+			}
+			// 图片画布的绘制
+			var img = new Image();
+			img.src = './images/2.JPG';
+			img.onload = function(){
+				context.drawImage(img,0,0,400,400);
+			}
+			canvas.onmousemove = function(event){
+				bigCanvas.style.display = 'block';
+				/*console.log(event.clientX); //在视口区的坐标x
+				console.log(event.clientY);  //在视口区的坐标y
+				console.log(event.pageX);  //在页面的坐标x
+				console.log(event.pageY);		//在页面的坐标y
+				console.log(parent.offsetLeft);  //parent在页面中的偏移x
+				console.log(parent.offsetTop);  //parent在页面中的偏移y
+				*/  
+				// 如果产生滚动条，要使用event.pageX比event.clientY更好,offsetLeft【距离离自己的定位祖先元素左边的距离】
+				var sx = event.pageX-parent.offsetLeft-20;
+				var sy = event.pageY-parent.offsetTop-20;
+				// sx是开始裁剪图片的位置
+				bigContext.clearRect(0,0,200,200);
+				// context.drawImage(image,sx,sy,swidth,sheight,x,y,width,height);
+				// 参数：图像对象，开始剪切的 x 坐标位置，开始剪切的 y坐标位置，被剪切图像的宽度，被剪切图像的高度，绘制位置的起始x坐标，起始y坐标，绘制图像的宽，高
+				bigContext.drawImage(canvas,sx,sy,80,80,0,0,200,200);
+				// 设置波点画布的显示
+				bdCanvas.style.display = 'block';
+				// 设置波点画布的位置
+				bdCanvas.style.left = sx+'px';
+				bdCanvas.style.top = sy+'px';
+			}
+			// 鼠标离开之后，隐藏放大的画布和波点画布
+			parent.onmouseleave = function(){
+				bigCanvas.style.display = 'none';
+				bdCanvas.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="parent">
+		<canvas id="canvas" width="400px" height="400px"></canvas>
+		<canvas id="big-canvas" width="200px" height="200px"></canvas>
+		<canvas id="bd-canvas" width="80px" height="80px"></canvas>
+	</div>
+	
+</body>
+</html>

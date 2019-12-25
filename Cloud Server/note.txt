@@ -1,0 +1,57 @@
+工具：
+	1.ftp工具   文件交换
+
+
+
+	创建文件
+		touch a.txt
+	更改权限为777
+		chmod -R 777 /var/www/html
+		-R  迭代修改权限
+		html 
+			a.txt   index.html
+		man chmod
+		查看手册
+
+
+npm工具
+	node package manage
+windows node自带了npm
+sudo apt-get install npm
+
+
+su - ubuntu    切换用户
+
+
+管道加过滤
+$ls /etc | grep passwd
+
+查看内部内容的
+$ more /etc/passwd
+$ more /etc/group
+
+创建组
+$ addgroup team
+$ adduser user1
+
+$ adduser --gid 1000 user2     //添加用户user2到组号为1000组
+$ usermod -g 1000 user1      //更改user1用户所在的组
+
+删除空的组
+$ groupdel user1
+
+
+ls -a /etc/skel     家目录从该文件中复制过去
+
+chmod 666 a.txt    修改文件a.txt 文件权限
+
+复制/etc/passwd内容到~/a.txt
+cp /etc/passwd ~/a.txt
+
+
+行首插入           I    
+光标前             i  
+行末添加内容       A    
+光标后             a
+在上一行添加一行   O
+在下一行添加一行   o

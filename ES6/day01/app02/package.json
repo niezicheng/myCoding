@@ -1,0 +1,16 @@
+{
+  "name": "app02",
+  "version": "1.0.0",
+  "description": "node项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"babel src --out-dir dist"
+  },
+  "author": "nzc",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
+  }
+}

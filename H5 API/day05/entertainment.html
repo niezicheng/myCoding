@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>太极图</title>
+	<style type="text/css">
+		canvas{
+			animation-name: myani;
+			animation-duration: 100s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+		@keyframes myani{
+			0%{
+				transform: rotateZ(0deg);
+			}
+			100%{
+				transform: rotateZ(50000deg);
+			}
+		}
+	</style>
+	<script type="text/javascript" src="../../JQuery/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			//绘制两个半圆
+			context.beginPath();
+			context.arc(200,200,200,Math.PI/2,Math.PI*3/2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.lineWidth = 3;
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,200,200,Math.PI*3/2,Math.PI/2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.lineWidth = 3;
+			// context.stroke();
+			context.fill();
+
+			// 绘制中圆
+			context.beginPath();
+			context.arc(200,100,100,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,300,100,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.stroke();
+			context.fill();
+
+			// 绘制中圆
+			context.beginPath();
+			context.arc(200,100,25,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = '#000';
+			// context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(200,300,25,0,Math.PI*2);
+			context.closePath();
+			context.fillStyle = 'coral';
+			// context.stroke();
+			context.fill();
+			var second = parseInt($('#canvas').css('animation-duration'));
+			// console.log(second);
+			$('#canvas').click(function(){
+				if(second>0){
+					second = second-5;
+					time = second+'s';
+					$('#canvas').css('animation-duration',time);
+				}else {
+					$('#canvas').css('animation-duration','1s');
+				}
+			});
+			
+		});
+		
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="400x" height="400px"></canvas>
+</body>
+</html>

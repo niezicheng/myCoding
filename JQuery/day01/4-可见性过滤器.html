@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可见性</title>
+	<style type="text/css">
+		.one{
+			display: none;
+		}
+		.two{
+			visibility: hidden;
+		}
+		.three{
+			opacity: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$result = $(':hidden');
+			$result = $('body :visible');
+			$result = $('body [title!=one]');	//选择属性title属性值不等于one的或没有该title属性的元素
+			console.log($result);
+		});
+	</script>
+</head>
+<body>
+	<div title="hello">hello</div>
+	<div class="one" title="one">display:none;</div>
+	<div class="two">visibility:hidden;</div>
+	<input type="hidden" name="">
+	<div class="three">
+		opacity:0;
+	</div>
+</body>
+</html>

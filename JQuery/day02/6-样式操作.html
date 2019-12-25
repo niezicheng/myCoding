@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>样式操作</title>
+	<style type="text/css">
+		.normal{
+			width: 100px;
+			height: 100px;
+		}
+		.red{
+			background: red;
+		}
+		.blue{
+			background: blue;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//添加类
+			// $('div').addClass('red');
+
+			//移除类
+			// $('div').removeClass('red');
+
+			$('button').click(function(){
+				if($('div').hasClass('red')){
+					$('div').removeClass('red');
+					$('div').addClass('blue');
+				}else{
+					$('div').removeClass('blue');
+					$('div').addClass('red');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<button>切换</button>
+	<div class="normal red">hello</div>
+</body>
+</html>

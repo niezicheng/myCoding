@@ -1,0 +1,120 @@
+正则表达式
+	/正则表达式/修饰符
+	模式次数
+	模式：
+		直接量 a b c
+		字符类
+			.
+			\d
+			\D
+			\w
+			\W
+			\s
+			\S
+		...
+		字符组
+			[xyz]
+			[^xyz]
+		位置
+			^
+			$
+			\b  字符与空格间
+			\B  字符与字符间、空格与空格间
+		分组
+			(hello){2}
+			hello{2}
+		选中x或y
+			x|y
+		次数
+			*
+			+
+			?
+			{2}
+			{2,}
+			{2,5}
+			次数后面？,代表非贪婪模式匹配
+
+包装器
+	Number
+	String
+	Boolean
+	装箱操作、拆箱操作
+Math对象
+	Math.max()
+	Math.min()
+	Math.ceil()
+	Math.floor()
+	Math.round()	四舍五入
+	Math.random()
+
+Date构造函数
+	new Date() 获取当前时间
+	new Date(时间戳)	将时间戳转换为时间类型
+	new Date('2019-07-18 09:09:09')
+	new Date('2019/07/18 09:09:09')
+
+	date.getFullYear()
+	date.getMonth()
+	date.getDate()
+	date.getHours()
+	date.getMinutes()
+	date.getSeconds()
+	date.getDay()  星期0-星期6
+
+	date.getTime()  获取js时间对象转化为相应的时间戳
+
+前后端关于时间的数据交互
+	需要前后端商量时间格式，
+		1.时间戳
+			前端给后台	时间戳
+				先转Date实例对象，调用getTime()
+			后台给前端	时间戳
+				先将时间戳转化Date实例对象
+				调用年月日时分秒的方法，转化成字符串，在前端页面显示
+		2.字符串
+		前端给后台	字符串
+			日期插件采集到的就是日期字符串
+		后台给前端	字符串
+
+面向对象编程
+	批量创建对象
+	对象属性特性的控制
+	继承
+
+验证：
+	其他引用数据类型，直接或间接的继承与Object	(instanceof)
+
+
+DOM操作
+	用来操作节点
+Node类型
+	Document类型	document
+	Element类型	元素节点类型
+	Text类型	文本节点
+	Comment类型		注释节点
+
+DOM层级关系
+	html
+		head body
+					文本节点 div 文本节点 span
+
+Node类型的属性和方法
+	
+	......
+Document类型的属性和方法
+	document.
+	......
+Element类型的属性和方法
+	......
+Text类型的属性和方法
+	......
+Comment类型的属性和方法
+	......
+
+
+
+
+
+
+
+

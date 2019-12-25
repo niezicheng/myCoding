@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-table :data="customers">
+      <template v-slot:default="slot">
+        <!-- {{ slot.row }} -->
+        <tr>
+          <td>{{ slot.row.id }}</td>
+          <td>{{ slot.row.name }}</td>
+          <td>{{ slot.row.age }}</td>
+        </tr>
+      </template>
+    </my-table>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        customers:[{
+          id:1,name:'zhangsan',age:21
+        },{
+          id:2,name:'zhangsan',age:21
+        },{
+          id:3,name:'zhangsan',age:21
+        },{
+          id:4,name:'zhangsan',age:21
+        }]
+      },
+      components:{
+        'my-table':{
+          template:`
+            <table>
+              <tbody>
+                <slot v-for="(row,index) in data" :row='row'></slot>
+              </tbody>
+            </table>
+          `,
+          // props:['data']
+          props:{
+            data:Array
+          }
+        }
+        
+      }
+    });
+  </script>
+</body>
+</html>

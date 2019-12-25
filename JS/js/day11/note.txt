@@ -1,0 +1,41 @@
+事件
+	三要素：
+		时间目标
+		事件处理程序
+		事件对象
+			target
+			currenttarget:当前正在处理事件的目标==this
+
+	事件的绑定与解绑
+		1.HTML事件处理程序
+		<div onclick="test()"></div>
+		<script type="text/javascript">
+			function test(){};
+		</script>
+		2.DOM0级的事件处理程序
+		div.onclick = functio(){}
+			非ie8以下浏览器event
+
+			ie8及以下window.event
+
+		div.onclick = null;  事件解绑
+		3.DOM2级事件处理程序
+			非ie8以下浏览器
+				div.addEventListener('click',handle,false);	参数：事件类型，事件处理程序(函数)，执行阶段(false冒泡阶段执行，true捕获阶段执行)
+				如果同一节点及同一事件类型绑定了多个事件处理程序，依次执行
+
+				div.removeEventListener('click',handle,false);
+				参数事件处理程序为匿名函数无法解绑
+				
+				function handle(event){}
+
+				ie8及以下浏览器
+					div.attachEvent('onclick',handle) 参数：on+事件名，事件处理程序
+					如果同一节点同一事件绑定多个事件处理程序，逆序执行
+					div.detachEvent('onclick',handle)
+	浏览器兼容的事件代码
+		1.事件的绑定与解绑
+		2.事件对象
+		3.事件目标
+		4.事件冒泡
+		5.事件默认

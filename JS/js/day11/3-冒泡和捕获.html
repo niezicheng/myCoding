@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡和捕获</title>
+	<style type="text/css">
+		#outer{
+			width: 200px;
+			height: 200px;
+			background: pink;
+			border:1px solid red;
+		}
+		#center{
+			width: 100px;
+			height: 100px;
+			background: cyan;
+			margin: 50px;
+			border: 1px solid #000;
+		}
+		#inner{
+			width: 50px;
+			height: 50px;
+			background: coral;
+			margin: 25px;
+		}	
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var outer = document.getElementById('outer');
+			var center = document.getElementById('center');
+			var inner = document.getElementById('inner');
+			function handle(event){
+				console.log(this,'冒泡阶段');
+			}
+			function handle2(event){
+				console.log(this,'捕获阶段');
+			}
+
+			//捕获阶段执行的代码
+			outer.addEventListener('click',handle2,true);
+			center.addEventListener('click',handle2,true);
+			inner.addEventListener('click',handle2,true);
+
+			// 冒泡阶段执行的代码
+			outer.addEventListener('click',handle);
+			center.addEventListener('click',handle);
+			inner.addEventListener('click',handle);
+		};
+		
+	</script>
+</head>
+<body>
+	<div id="outer">
+		<div id="center">
+			<div id="inner"></div>
+		</div>
+	</div>
+</body>
+</html>

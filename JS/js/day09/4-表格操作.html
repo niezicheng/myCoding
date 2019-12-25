@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格显示</title>
+	<script type="text/javascript">
+	console.log('--------------');
+		window.onload = function(){
+			var arr = [
+				{
+					sno:1001,
+					name:'zhangsan',
+					age:21
+				},{
+					sno:1002,
+					name:'lisi',
+					age:18
+				},{
+					sno:1003,
+					name:'lili',
+					age:17
+				}
+			];
+			//按钮点击绑定时间，将数据展示到表格中
+			var btn = document.getElementsByTagName('button')[0];
+			console.log(btn);
+			var tbody = document.getElementsByTagName('tbody')[0];
+			//点击按钮是，事件处理程序执行(函数执行)
+			btn.onclick = function(){
+				//数组中的一个对象-->tr
+				//对象的属性值-->td
+				//清空tbody
+				tbody.innerHTML = '';
+				arr.forEach(function(item){
+					var newTr = document.createElement('tr');
+					//写td
+					for(var key in item){
+						var newTd = document.createElement('td');
+						newTd.innerText = item[key];
+						newTr.appendChild(newTd);
+					}
+
+
+					tbody.appendChild(newTr);
+				});
+			};
+
+		};
+	</script>
+</head>
+<body>
+	<button>加载数据</button>
+	<table>
+		<thead>
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+</body>
+</html>

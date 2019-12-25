@@ -1,0 +1,304 @@
+<!-- 首页 -->
+<div class="home">
+	<div class="warpper">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="center-box">
+					<!-- 折线统计图 -->
+					<div id="hbroke" style="max-width:800px;height:255px"></div>
+					<div class="desc">
+							<span>19.75%</span>
+							<small>MORE VISITORS</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="right-box">
+					<div class="right-box-top">
+						<!-- 柱状统计图 -->
+						<div id="hColumnar" style="max-width:400px;height:125px"></div>
+						<div class="desc">
+							<span>19.75%</span>
+							<small>MORE VISITORS</small>
+						</div>
+					</div>
+					<div class="right-box-btm">
+						<!-- 扇形统计图 -->
+						<div id="hSector" style="max-width:400px;height:125px"></div>
+						<div class="desc">
+							<span>19.75%</span>
+							<small>MORE VISITORS</small>
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+//highChart画折线统计图
+hBroken();
+function hBroken(){
+		var chart = Highcharts.chart('hbroke', {
+
+		credits: {
+			enabled: false 	//去除版权信息
+		},
+		title: {
+			text: ''
+		},
+		// subtitle: {
+		// 	text: '数据来源：thesolarfoundation.com'
+		// },
+		xAxis: {
+			// minorTickLength: 0,
+		  // tickLength: 0,
+			tickWidth:0,   //去除刻度线
+			labels: {
+				enabled: false
+			},
+			// lineWidth: 0,
+		  // minorGridLineWidth: 0,
+		  lineColor: 'transparent'
+
+		  
+		},
+
+		yAxis: {
+			title: {
+				text: ''
+			},
+			gridLineWidth:0,  //网格线宽度设置为0px【y轴默认为1】
+
+			labels: {
+				enabled: false   //去除数据信息
+			}
+
+		},
+
+		legend: {
+			enabled:false   //去除图例
+		},
+		PlotLines:{
+			enabled:false
+		},
+		plotOptions: {
+			series: {
+				label: {
+					connectorAllowed: false
+				},
+				pointStart: 2012	//开始点信息
+			}
+		},
+		series: [{
+			name: 'pageViews',
+			data: [43934, 52503, 97031, 119931, 57177, 69658, 77133, 74175]
+		}, {
+			name: 'visitor',
+			data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+		}, {
+			name: 'other',
+			data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+		}],
+		responsive: {
+			rules: [{
+				condition: {
+					maxWidth: 500
+				},
+				
+				chartOptions: {
+					legend: {
+						layout: 'horizontal',
+						align: 'center',
+						verticalAlign: 'bottom'
+					},
+						labels: {
+						enabled: false
+					} 
+				}
+			}]
+		}
+	});
+}
+
+
+
+//highChart画柱状统计图
+hColumnar();
+function hColumnar(){
+	var chart = Highcharts.chart('hColumnar', {
+	
+	credits: {
+		enabled: false 	//去除版权信息
+	},
+	chart: {
+		type: 'column',
+		margin:[20,0,0,0]
+	},
+	title: {
+		text: ''
+	},
+	subtitle: {
+		text: ''
+	},
+	xAxis: {
+		visible:false,
+
+		title: {
+			text: ''
+		},
+		tickWidth:0,
+		labels: {
+			enabled: false
+		},
+		lineColor: 'transparent'
+	},
+	yAxis: {
+		visible:false,
+
+		min: 0,
+		title: {
+			text: ''
+		},
+		gridLineWidth:0,
+		labels: {
+			enabled: false
+		} 
+	},
+	legend: {
+		enabled: false
+	},
+	tooltip: {
+		pointFormat: '资讯信息总量: <b>{point.y:.1f} 百万</b>'
+	},
+	series: [{
+		tickWidth:0,
+		// labels: {
+		// 	enabled: false
+		// } ,
+		name: '总人口',
+		data: [
+			['上海', 24.25],
+			['南昌', 23.50],
+			['北京', 21.51],
+			['天津', 18.78],
+			['深圳', 16.06],
+			['江苏', 20.20],
+			['杭州', 22.16],
+			['丰城', 13.51],
+			['虎门', 24.25],
+			['西安', 12.44],
+			['泉州', 23.50],
+			['晋江', 12.03],
+			['广州', 10.46],
+			['西藏', 10.07],
+			['南宁', 25.05],
+			['上海', 26.99],
+			['武汉', 17.78],
+			['长沙', 19.73],
+			['河北', 10.27],
+			['黑龙江', 8.87]
+		],
+		dataLabels: {
+			// enabled: true,
+			// rotation: -90,
+			// color: '#FFFFFF',
+			// align: 'right',
+			// format: '{point.y:.1f}', // :.1f 为保留 1 位小数
+			// y: 10
+		}
+	}]
+});
+}
+
+
+
+//highChart画扇形统计图
+hSector();
+function hSector(){
+	var chart = Highcharts.chart('hSector', {
+		credits: {
+			enabled: false 	//去除版权信息
+		},
+		title: {
+			// text: '浏览器<br>占比',
+			text: '',
+			align: 'center',
+			verticalAlign: 'middle',
+			y: 50
+		},
+		// tooltip: {
+		// 	headerFormat: '{series.name}<br>',
+		// 	pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+		// },
+		plotOptions: {
+			pie: {
+				dataLabels: {
+					enabled: false, //去除上面的显示提示数据
+					distance: -50,
+					style: {
+						fontWeight: 'bold',
+						color: 'white',
+						textShadow: '0px 1px 2px black'
+					}
+				},
+				startAngle: 0, // 圆环的开始角度
+				endAngle: 360,    // 圆环的结束角度
+				center: ['75%', '70%']
+			}
+		},
+		series: [{
+			type: 'pie',
+			// name: '浏览器占比',
+			name: '',
+			innerSize: '50%',
+			data: [
+				['Firefox',   45.0],
+				['IE',       26.8],
+				['Chrome', 12.8],
+				['Safari',    8.5],
+				['Opera',     6.2],
+				{
+					name: '其他',
+					y: 0.7,
+					dataLabels: {
+						// // 数据比较少，没有空间显示数据标签，所以将其关闭
+						// enabled: false
+					}
+				}
+			]
+		}]
+	});
+}
+
+</script>
+</div>

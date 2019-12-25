@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录页面</title>
+	<link rel="stylesheet" type="text/css" href="./css/common.css">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+</head>
+<body>
+	<!-- 整体页面容器 -->
+	<div class="container">
+		<!-- 登录内容区域 -->
+		<div class="content-box">
+			<div class="top">
+				<span class="fl">
+					<a href="#">返回首页</a>
+				</span>
+				<span class="fr">
+					<a href="#">
+						没有账号?去注册
+					</a>
+				</span>
+			</div>
+			<div class="warpper">
+				<h2>宠物医院</h2>
+				<form action="./index-owner.html" method="post">
+				<div class="id-select">		
+					<label for="boss">
+						<input id="boss" type="radio" name="shenfeng" />
+						我是商店老板
+					</label>	
+					<label for="owner">
+						<input id="owner" type="radio" name="shenfeng" checked />
+						我是宠物主人
+					</label>
+				</div>
+				<div class="item">
+					<input type="text" name="useranme" placeholder="用户名" />
+				</div>
+				<div class="item">
+					<input type="text" name="useranme" placeholder="密码" />
+				</div>
+				<div class="item">
+					<p class="forgetPwd">
+						<a href="#">忘记密码</a>
+					</p>
+					<button>登录</button>
+				</div>
+				<div class="protocal">
+					登录即同意
+					<a href="#">《宠物医院使用协议》</a>
+					&
+					<a href="#">《隐私政策》</a>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
